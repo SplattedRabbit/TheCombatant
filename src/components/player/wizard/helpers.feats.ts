@@ -16,6 +16,174 @@ export interface FeatSlotDefinition {
   totemKey?: string;
 }
 
+type ClassFeatSlotGenerator = (classLevel: number, levelConfigs?: any[]) => FeatSlotDefinition[];
+
+export const CLASS_FEAT_SLOT_REGISTRY: Record<string, ClassFeatSlotGenerator> = {
+  fighter: (lvl) => {
+    if (lvl === 1 || lvl % 2 === 0) {
+      return [{
+        label: `Fighter Bonus Feat (Class Level ${lvl})`,
+        allowedCategories: ['combat']
+      }];
+    }
+    return [];
+  },
+
+  wizard: (lvl) => {
+    if (lvl === 1) {
+      return [{
+        label: 'Wizard (Scribe Scroll)',
+        allowedCategories: ['item_creation'],
+        defaultFeat: 'scribe_scroll'
+      }];
+    }
+    if (lvl % 5 === 0) {
+      return [{
+        label: `Wizard Bonus Feat (Class Level ${lvl})`,
+        allowedCategories: ['metamagic', 'item_creation']
+      }];
+    }
+    return [];
+  },
+
+  shadowbane_inquisitor: (lvl) => {
+    if (lvl === 3) {
+      return [{
+        label: 'Shadowbane Inquisitor (Improved Sunder)',
+        allowedCategories: ['combat'],
+        defaultFeat: 'improved_sunder'
+      }];
+    }
+    return [];
+  },
+
+  ranger: (lvl) => {
+    switch (lvl) {
+      case 1:
+        return [{
+          label: 'Ranger (Track)',
+          allowedCategories: ['general'],
+          defaultFeat: 'track'
+        }];
+      case 2:
+        return [{
+          label: 'Ranger Combat Style',
+          allowedCategories: ['combat'],
+          defaultFeat: 'rapid_shot',
+          allowedFeats: ['rapid_shot', 'two_weapon_fighting']
+        }];
+      case 3:
+        return [{
+          label: 'Ranger (Endurance)',
+          allowedCategories: ['general'],
+          defaultFeat: 'endurance'
+        }];
+      case 6:
+        return [{
+          label: 'Ranger Improved Combat Style',
+          allowedCategories: ['combat'],
+          defaultFeat: 'manyshot',
+          allowedFeats: ['manyshot', 'improved_two_weapon_fighting']
+        }];
+      case 11:
+        return [{
+          label: 'Ranger Greater Combat Style',
+          allowedCategories: ['combat'],
+          defaultFeat: 'improved_precise_shot',
+          allowedFeats: ['improved_precise_shot', 'greater_two_weapon_fighting']
+        }];
+      default:
+        return [];
+    }
+  },
+
+  monk: (lvl) => {
+    if (lvl === 1) {
+      return [
+        {
+          label: 'Monk (Improved Unarmed Strike)',
+          allowedCategories: ['combat'],
+          defaultFeat: 'improved_unarmed_strike'
+        },
+        {
+          label: 'Monk Bonus Feat (Level 1)',
+          allowedCategories: ['combat'],
+          defaultFeat: 'stunning_fist',
+          allowedFeats: ['stunning_fist', 'improved_grapple']
+        }
+      ];
+    }
+    if (lvl === 2) {
+      return [{
+        label: 'Monk Bonus Feat (Level 2)',
+        allowedCategories: ['combat'],
+        defaultFeat: 'combat_reflexes',
+        allowedFeats: ['combat_reflexes', 'deflect_arrows']
+      }];
+    }
+    if (lvl === 6) {
+      return [{
+        label: 'Monk Bonus Feat (Level 6)',
+        allowedCategories: ['combat'],
+        defaultFeat: 'improved_trip',
+        allowedFeats: ['improved_trip', 'improved_disarm']
+      }];
+    }
+    return [];
+  },
+
+  duskblade: (lvl) => {
+    if (lvl === 2) {
+      return [{
+        label: 'Duskblade (Combat Casting)',
+        allowedCategories: ['general'],
+        defaultFeat: 'combat_casting'
+      }];
+    }
+    return [];
+  },
+
+  knight: (lvl) => {
+    if (lvl === 2) {
+      return [{
+        label: 'Knight (Mounted Combat)',
+        allowedCategories: ['combat'],
+        defaultFeat: 'mounted_combat'
+      }];
+    }
+    return [];
+  },
+
+  dragon_shaman: (lvl, levelConfigs) => {
+    const currentTotemKey = levelConfigs?.find(c => c.dragonTotem)?.dragonTotem || 'red';
+    if (lvl === 2) {
+      return [{
+        label: 'Dragon Shaman (Skill Focus: Totem Skill)',
+        allowedCategories: ['general'],
+        defaultFeat: 'skill_focus',
+        allowedFeats: ['skill_focus'],
+        hasOption: true,
+        optionType: 'skill',
+        optionScope: 'totem',
+        totemKey: currentTotemKey,
+      }];
+    }
+    if (lvl === 8 || lvl === 16) {
+      return [{
+        label: 'Dragon Shaman (Skill Focus: Class Skill)',
+        allowedCategories: ['general'],
+        defaultFeat: 'skill_focus',
+        allowedFeats: ['skill_focus'],
+        hasOption: true,
+        optionType: 'skill',
+        optionScope: 'class',
+        totemKey: currentTotemKey,
+      }];
+    }
+    return [];
+  }
+};
+
 // Helper to determine feat slots at a level
 export const getFeatSlotsAtLevel = (lvlIdx: number, currentClassType: string, selectedRace: string, levelConfigs: any[]): FeatSlotDefinition[] => {
   const slots: FeatSlotDefinition[] = [];
@@ -47,150 +215,11 @@ export const getFeatSlotsAtLevel = (lvlIdx: number, currentClassType: string, se
   }
   classLevel += 1; // including current level
 
-  if (currentClassType === 'fighter') {
-    if (classLevel === 1 || classLevel % 2 === 0) {
-      slots.push({
-        label: `Fighter Bonus Feat (Class Level ${classLevel})`,
-        allowedCategories: ['combat']
-      });
-    }
-  } else if (currentClassType === 'wizard') {
-    if (classLevel === 1) {
-      slots.push({
-        label: `Wizard (Scribe Scroll)`,
-        allowedCategories: ['item_creation'],
-        defaultFeat: 'scribe_scroll'
-      });
-    } else if (classLevel % 5 === 0) {
-      slots.push({
-        label: `Wizard Bonus Feat (Class Level ${classLevel})`,
-        allowedCategories: ['metamagic', 'item_creation']
-      });
-    }
-  } else if (currentClassType === 'shadowbane_inquisitor') {
-    if (classLevel === 3) {
-      slots.push({
-        label: 'Shadowbane Inquisitor (Improved Sunder)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'improved_sunder'
-      });
-    }
-  } else if (currentClassType === 'ranger') {
-    if (classLevel === 1) {
-      slots.push({
-        label: 'Ranger (Track)',
-        allowedCategories: ['general'],
-        defaultFeat: 'track'
-      });
-    } else if (classLevel === 2) {
-      slots.push({
-        label: 'Ranger Combat Style',
-        allowedCategories: ['combat'],
-        defaultFeat: 'rapid_shot',
-        allowedFeats: ['rapid_shot', 'two_weapon_fighting']
-      });
-    } else if (classLevel === 3) {
-      slots.push({
-        label: 'Ranger (Endurance)',
-        allowedCategories: ['general'],
-        defaultFeat: 'endurance'
-      });
-    } else if (classLevel === 6) {
-      slots.push({
-        label: 'Ranger Improved Combat Style',
-        allowedCategories: ['combat'],
-        defaultFeat: 'manyshot',
-        allowedFeats: ['manyshot', 'improved_two_weapon_fighting']
-      });
-    } else if (classLevel === 11) {
-      slots.push({
-        label: 'Ranger Greater Combat Style',
-        allowedCategories: ['combat'],
-        defaultFeat: 'improved_precise_shot',
-        allowedFeats: ['improved_precise_shot', 'greater_two_weapon_fighting']
-      });
-    }
-  } else if (currentClassType === 'monk') {
-    if (classLevel === 1) {
-      slots.push({
-        label: 'Monk (Improved Unarmed Strike)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'improved_unarmed_strike'
-      });
-      slots.push({
-        label: 'Monk Bonus Feat (Level 1)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'stunning_fist',
-        allowedFeats: ['stunning_fist', 'improved_grapple']
-      });
-    } else if (classLevel === 2) {
-      slots.push({
-        label: 'Monk Bonus Feat (Level 2)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'combat_reflexes',
-        allowedFeats: ['combat_reflexes', 'deflect_arrows']
-      });
-    } else if (classLevel === 6) {
-      slots.push({
-        label: 'Monk Bonus Feat (Level 6)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'improved_trip',
-        allowedFeats: ['improved_trip', 'improved_disarm']
-      });
-    }
-  } else if (currentClassType === 'duskblade') {
-    if (classLevel === 2) {
-      slots.push({
-        label: 'Duskblade (Combat Casting)',
-        allowedCategories: ['general'],
-        defaultFeat: 'combat_casting'
-      });
-    }
-  } else if (currentClassType === 'knight') {
-    if (classLevel === 2) {
-      slots.push({
-        label: 'Knight (Mounted Combat)',
-        allowedCategories: ['combat'],
-        defaultFeat: 'mounted_combat'
-      });
-    }
-  } else if (currentClassType === 'dragon_shaman') {
-    const currentTotemKey = levelConfigs?.find(c => c.dragonTotem)?.dragonTotem || 'red';
-    if (classLevel === 2) {
-      slots.push({
-        label: 'Dragon Shaman (Skill Focus: Totem Skill)',
-        allowedCategories: ['general'],
-        defaultFeat: 'skill_focus',
-        allowedFeats: ['skill_focus'],
-        hasOption: true,
-        optionType: 'skill',
-        optionScope: 'totem',
-        totemKey: currentTotemKey,
-      });
-    } else if (classLevel === 8) {
-      slots.push({
-        label: 'Dragon Shaman (Skill Focus: Class Skill)',
-        allowedCategories: ['general'],
-        defaultFeat: 'skill_focus',
-        allowedFeats: ['skill_focus'],
-        hasOption: true,
-        optionType: 'skill',
-        optionScope: 'class',
-        totemKey: currentTotemKey,
-      });
-    } else if (classLevel === 16) {
-      slots.push({
-        label: 'Dragon Shaman (Skill Focus: Class Skill)',
-        allowedCategories: ['general'],
-        defaultFeat: 'skill_focus',
-        allowedFeats: ['skill_focus'],
-        hasOption: true,
-        optionType: 'skill',
-        optionScope: 'class',
-        totemKey: currentTotemKey,
-      });
-    }
+  const generator = CLASS_FEAT_SLOT_REGISTRY[currentClassType];
+  if (generator) {
+    slots.push(...generator(classLevel, levelConfigs));
   }
 
   return slots;
 };
+
