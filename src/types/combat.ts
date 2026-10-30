@@ -341,6 +341,7 @@ export interface Combatant {
   // Combat Toggles
   isTotalDefense?: boolean;
   isSmiteActive?: boolean;
+  _smiteChargedForDamage?: boolean;
   isFavoredEnemyActive?: boolean;
   isSneakAttacking?: boolean;
   isTrickyFightingActive?: boolean;

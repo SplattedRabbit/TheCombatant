@@ -24,20 +24,23 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
 
   const hasPaladin = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'paladin');
   const paladinClass = hasPaladin ? pc.classes.find((c: any) => c.classType === 'paladin') : null;
+  const hasInquisitor = Array.isArray(pc.classes) && pc.classes.some((c: any) => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
+  const inquisitorClass = hasInquisitor ? pc.classes.find((c: any) => c.classType === 'shadowbane_inquisitor') : null;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus(selectedTarget) : 0;
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
 
   const isRanged = weapon.grip === 'rng';
   const isMelee = !isRanged;
 
-  const smiteAbility = pc.dailyAbilities?.find((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil");
-  const smiteMax = smiteAbility ? smiteAbility.max : 0;
-  const smiteUsed = smiteAbility ? smiteAbility.used : 0;
-  const smiteRemaining = Math.max(0, smiteMax - smiteUsed);
+  const smiteRemaining = Array.isArray(pc.dailyAbilities)
+    ? pc.dailyAbilities
+        .filter((a: any) => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt")
+        .reduce((sum: number, a: any) => sum + Math.max(0, a.max - a.used), 0)
+    : 0;
 
   const handleSmiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.checked;
-    if (val && smiteMax > 0 && smiteRemaining <= 0) {
+    if (val && smiteRemaining <= 0) {
       return;
     }
     setSmiteActive(val);
@@ -131,9 +134,9 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
         </div>
         <hr style={{ border: 'none', borderTop: '0.5px solid rgba(200, 169, 110, 0.4)', margin: '5px 0 12px' }} />
 
-        {(hasPaladin && isMelee || favoredEnemyBonus > 0 || sneakAttackDice > 0) && (
+        {((hasPaladin || hasInquisitor) && isMelee || favoredEnemyBonus > 0 || sneakAttackDice > 0) && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginBottom: '12px', padding: '6px 10px', background: 'rgba(200,169,110,0.05)', border: '0.5px solid rgba(200,169,110,0.2)', borderRadius: '3px', textAlign: 'left', fontSize: '10px', fontFamily: 'var(--font-body)' }}>
-            {hasPaladin && isMelee && (
+            {(hasPaladin || hasInquisitor) && isMelee && (
               <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', margin: 0, fontWeight: 'bold', color: 'var(--red)' }}>
                 <input
                   type="checkbox"
@@ -141,7 +144,7 @@ export const DamageChoiceDialog: React.FC<DamageChoiceDialogProps> = ({
                   onChange={handleSmiteChange}
                   style={{ margin: 0, width: '13px', height: '13px', cursor: 'pointer' }}
                 />
-                Smite Evil (+{paladinClass.level} Damage)
+                {hasInquisitor && !hasPaladin ? 'Smite Corrupt' : 'Smite Evil'} (+{(paladinClass?.level || 0) + (inquisitorClass?.level || 0)} Damage)
               </label>
             )}
             {favoredEnemyBonus > 0 && (

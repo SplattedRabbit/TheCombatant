@@ -8,16 +8,16 @@
  * @notHere   Modifier calculation -> ModifierCalculator.js
  */
 
-import { WeaponRegistry, isLightWeapon, matchesFeatOption } from '../../models/Weapon.js';
+import { WeaponRegistry, isLightWeapon, isFinessableWeapon, matchesFeatOption } from '../../models/Weapon.js';
 import { buildFinalDamageDiceAndBreakdown } from './DamageFormulaBuilder.js';
 import { getFavoredEnemyBonus } from '../../models/helpers/classes/RangerHelper.js';
 
-export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtkBreakdown, activeAtkPenalties, activeAtkPenaltyBreakdowns, generalDmgMod, generalDmgBreakdown, paDmgBonus, sequence) {
+export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtkBreakdown, activeAtkPenalties, activeAtkPenaltyBreakdowns, generalDmgMod, generalDmgBreakdown, paDmgBonus, sequence, smiteAtkBonus = 0, smiteAtkBreakdown = [], smiteDmgBonus = 0, smiteDmgBreakdown = []) {
   baseAttacks.forEach((baseAtk, index) => {
     let atkAbilityMod = ctx.isRanged ? ctx.dexMod : ctx.strMod;
     let atkAbilityLabel = ctx.isRanged ? 'DEX' : 'STR';
 
-    if (ctx.isMelee && ctx.hasFeat('weapon_finesse') && ctx.isLight && ctx.dexMod > ctx.strMod) {
+    if (ctx.isMelee && ctx.hasFeat('weapon_finesse') && (ctx.isLight || ctx.isFinessable) && ctx.dexMod > ctx.strMod) {
       atkAbilityMod = ctx.dexMod;
       atkAbilityLabel = 'DEX (Finesse)';
     }
@@ -66,19 +66,25 @@ export function buildPrimarySequence(ctx, baseAttacks, generalAtkMod, generalAtk
       }
     }
 
-    const atkTotal = baseAtk + atkAbilityMod + generalAtkMod + activeAtkPenalties;
-    const dmgTotal = dmgAbilityMod + generalDmgMod + paDmgBonus;
+    const isSmiteAttack = index === 0 && (smiteAtkBonus > 0 || smiteDmgBonus > 0 || smiteAtkBreakdown.length > 0 || smiteDmgBreakdown.length > 0);
+    const effectiveSmiteAtk = isSmiteAttack ? smiteAtkBonus : 0;
+    const effectiveSmiteDmg = isSmiteAttack ? smiteDmgBonus : 0;
+
+    const atkTotal = baseAtk + atkAbilityMod + generalAtkMod + effectiveSmiteAtk + activeAtkPenalties;
+    const dmgTotal = dmgAbilityMod + generalDmgMod + effectiveSmiteDmg + paDmgBonus;
 
     const atkBreakdown = [
       { label: `Base Attack Bonus (BAB #${index + 1})`, value: baseAtk },
       { label: `${atkAbilityLabel} Modifier`, value: atkAbilityMod },
       ...generalAtkBreakdown,
+      ...(isSmiteAttack ? smiteAtkBreakdown : []),
       ...activeAtkPenaltyBreakdowns
     ];
 
     const dmgBreakdown = [
       { label: dmgAbilityLabel, value: dmgAbilityMod },
-      ...generalDmgBreakdown
+      ...generalDmgBreakdown,
+      ...(isSmiteAttack ? smiteDmgBreakdown : [])
     ];
     if (paDmgBonus > 0) {
       dmgBreakdown.push({ label: 'Power Attack', value: paDmgBonus });
@@ -100,7 +106,7 @@ export function appendHasteAttack(ctx, generalAtkMod, generalAtkBreakdown, activ
   const baseAtk = ctx.babVal;
   let atkAbilityMod = ctx.strMod;
   let atkAbilityLabel = 'STR';
-  if (ctx.hasFeat('weapon_finesse') && ctx.isLight && ctx.dexMod > ctx.strMod) {
+  if (ctx.hasFeat('weapon_finesse') && (ctx.isLight || ctx.isFinessable) && ctx.dexMod > ctx.strMod) {
     atkAbilityMod = ctx.dexMod;
     atkAbilityLabel = 'DEX (Finesse)';
   }
@@ -211,7 +217,7 @@ export function appendFlurryAttacks(ctx, generalAtkMod, generalAtkBreakdown, act
     const baseAtk = ctx.babVal;
     let atkAbilityMod = ctx.strMod;
     let atkAbilityLabel = 'STR';
-    if (ctx.hasFeat('weapon_finesse') && ctx.isLight && ctx.dexMod > ctx.strMod) {
+    if (ctx.hasFeat('weapon_finesse') && (ctx.isLight || ctx.isFinessable) && ctx.dexMod > ctx.strMod) {
       atkAbilityMod = ctx.dexMod;
       atkAbilityLabel = 'DEX (Finesse)';
     }
@@ -252,6 +258,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
 
   const ohEnh = parseInt(offhandWeapon.enhancement) || 0;
   const isOhLight = isLightWeapon(offhandWeapon) || offhandWeapon.isDoubleWielded;
+  const isOhFinessable = isOhLight || isFinessableWeapon(offhandWeapon);
   
   let ohAtkMod = ohEnh;
   const ohAtkBreakdown = [];
@@ -302,16 +309,6 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     ohAtkBreakdown.push({ label: 'Weapon Attack Bonus', value: ohCustomAtk });
   }
 
-  if (ctx.options.smite) {
-    const paladinClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'paladin');
-    if (paladinClass) {
-      if (ctx.chaMod > 0) {
-        ohAtkMod += ctx.chaMod;
-        ohAtkBreakdown.push({ label: 'Smite Evil (CHA)', value: ctx.chaMod });
-      }
-    }
-  }
-
   if (ctx.options.favoredEnemy) {
     const targetType = ctx.options.targetCreatureType || ctx.pc.activeFavoredEnemyTarget;
     const feBonus = typeof ctx.pc.getFavoredEnemyBonus === 'function'
@@ -341,7 +338,7 @@ export function appendOffhandAttacks(ctx, twfPenalties, sequence) {
     if (isOhRanged) {
       atkAbilityMod = ctx.dexMod;
       atkAbilityLabel = 'DEX';
-    } else if (ctx.hasFeat('weapon_finesse') && isOhLight && ctx.dexMod > ctx.strMod) {
+    } else if (ctx.hasFeat('weapon_finesse') && isOhFinessable && ctx.dexMod > ctx.strMod) {
       atkAbilityMod = ctx.dexMod;
       atkAbilityLabel = 'DEX (Finesse)';
     }

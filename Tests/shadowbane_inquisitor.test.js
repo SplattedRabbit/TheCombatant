@@ -7,6 +7,7 @@ import { recalculateDailyAbilities } from '../js/state/pc/PCGeneral.js';
 import { consumeSmiteEvilCharge } from '../js/state/pc/PCFeatsSpells.js';
 import { getPrestigeClassFeatures, getSneakAttackDiceFromPrestigeClasses } from '../js/rules/prestigeClassEngine.js';
 import { AttackEngine } from '../js/rules/AttackEngine.js';
+import { ShadowbaneInquisitorRules } from '../js/rules/classes/ShadowbaneInquisitorRules.js';
 
 test('Shadowbane Inquisitor - Prerequisites Validation (RAW D&D 3.5e)', () => {
   const pc = new Combatant({
@@ -181,4 +182,126 @@ test('Shadowbane Inquisitor - Smite & Daily Abilities Lifecycle', () => {
   const smiteDmgPart = primaryAtk.dmgBreakdown.find(b => b.label.includes('Smite Corrupt') || b.label.includes('Smite'));
   assert.ok(smiteDmgPart, 'Smite damage breakdown should include inquisitor level');
   assert.strictEqual(smiteDmgPart.value, 6);
+});
+
+test('Shadowbane Inquisitor - Bug #37: Smite Uses at Level 10 (RAW Complete Adventurer Table 2-18)', () => {
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(1), 0);
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(2), 1);
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(5), 1);
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(6), 2);
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(9), 2);
+  assert.strictEqual(ShadowbaneInquisitorRules.getSmiteCorruptUses(10), 3, 'Level 10 Shadowbane Inquisitor must have 3 smite corrupt uses');
+
+  const pcLvl10 = new Combatant({
+    name: 'Master Inquisitor',
+    classes: [
+      { classType: 'paladin', level: 5 },
+      { classType: 'shadowbane_inquisitor', level: 10 }
+    ]
+  });
+  recalculateDailyAbilities(pcLvl10);
+  const inqSmite = pcLvl10.dailyAbilities.find(a => a.name === 'Smite (Inquisitor)' || a.name === 'Smite Corrupt');
+  assert.ok(inqSmite, 'Smite (Inquisitor) daily ability must exist');
+  assert.strictEqual(inqSmite.max, 3, 'Daily ability Smite max must be 3 at level 10');
+});
+
+test('Shadowbane Inquisitor - Bug #40: Smite Consumption, Deadlock Prevention and Single Attack Application', () => {
+  const pc = new Combatant({
+    name: 'Dual Smiter',
+    alignment: 'LG',
+    str: 16, // +3
+    dex: 14, // +2
+    cha: 16, // +3
+    bab: { base: 11 }, // Iteratives at +11/+6/+1
+    classes: [
+      { classType: 'paladin', level: 4 }, // Smite Evil 1/day, +4 dmg
+      { classType: 'shadowbane_inquisitor', level: 6 } // Smite Corrupt 2/day, +6 dmg
+    ],
+    weapons: [
+      {
+        id: 'w_main',
+        name: 'Longsword',
+        type: 'longsword',
+        grip: '1h',
+        hand: 'main',
+        damageDice: '1w8',
+        crit: '19-20 / x2',
+        isEquipped: true
+      },
+      {
+        id: 'w_off',
+        name: 'Dagger',
+        type: 'dagger',
+        grip: 'sec',
+        hand: 'off',
+        damageDice: '1w4',
+        crit: '19-20 / x2',
+        isEquipped: true
+      }
+    ],
+    feats: [{ id: 'two_weapon_fighting' }]
+  });
+
+  recalculateDailyAbilities(pc);
+  const palSmite = pc.dailyAbilities.find(a => a.name === 'Smite Evil' || a.name === 'Böses niederstrecken');
+  const inqSmite = pc.dailyAbilities.find(a => a.name === 'Smite (Inquisitor)' || a.name === 'Smite Corrupt');
+  assert.ok(palSmite, 'Paladin smite must exist');
+  assert.ok(inqSmite, 'Inquisitor smite must exist');
+  assert.strictEqual(palSmite.max, 1);
+  assert.strictEqual(inqSmite.max, 2);
+
+  // Set as active PC in state
+  const state = CombatState.getState();
+  state.combatants = [pc];
+  state.localPCId = pc.id;
+
+  // 1. Deadlock prevention: Exhaust Paladin smite first
+  palSmite.used = palSmite.max; // Paladin smites empty!
+  assert.strictEqual(palSmite.used, 1);
+  assert.strictEqual(inqSmite.used, 0);
+
+  // Consuming should NOT fail with remaining: 0; it should automatically use Inquisitor smite!
+  const res = consumeSmiteEvilCharge();
+  assert.strictEqual(res.success, true, 'Should successfully consume Inquisitor smite when Paladin smite is exhausted');
+  assert.strictEqual(inqSmite.used, 1, 'Inquisitor smite should now have 1 used');
+  assert.strictEqual(res.remaining, 1, '1 Inquisitor smite remaining');
+
+  // Preferred source selection:
+  inqSmite.used = 0;
+  palSmite.used = 0;
+  const resInq = consumeSmiteEvilCharge('inquisitor');
+  assert.strictEqual(resInq.success, true);
+  assert.strictEqual(inqSmite.used, 1, 'Targeted Inquisitor smite used');
+  assert.strictEqual(palSmite.used, 0, 'Paladin smite untouched');
+
+  // 2. Multi-attack check (RAW: Smite applies ONLY to a single attack, not iteratives or offhand)
+  const fullSeq = AttackEngine.calculateAttackSequence(pc, pc.weapons[0], true, { smite: true, smiteSource: 'inquisitor' });
+  // With BAB 11 and TWF: Primary attacks #1 (+11), #2 (+6), #3 (+1) + offhand attack
+  assert.ok(fullSeq.length >= 3, 'Full sequence should have multiple attacks');
+
+  const firstAtk = fullSeq[0];
+  const secondAtk = fullSeq[1];
+  const offhandAtk = fullSeq.find(a => a.isOffhand);
+
+  // First attack MUST have Smite Corrupt attack (+3 CHA) and damage (+6 Inquisitor level)
+  const firstSmiteAtk = firstAtk.atkBreakdown.find(b => b.label.includes('Smite'));
+  const firstSmiteDmg = firstAtk.dmgBreakdown.find(b => b.label.includes('Smite'));
+  assert.ok(firstSmiteAtk, 'First attack must have smite attack bonus');
+  assert.strictEqual(firstSmiteAtk.value, 3, 'CHA mod +3 on first attack');
+  assert.ok(firstSmiteDmg, 'First attack must have smite damage bonus');
+  assert.strictEqual(firstSmiteDmg.value, 6, 'Inquisitor level +6 damage on first attack');
+
+  // Second attack MUST NOT have Smite bonus
+  const secondSmiteAtk = secondAtk.atkBreakdown.find(b => b.label.includes('Smite'));
+  const secondSmiteDmg = secondAtk.dmgBreakdown.find(b => b.label.includes('Smite'));
+  assert.strictEqual(secondSmiteAtk, undefined, 'Second attack must NOT have smite attack bonus');
+  assert.strictEqual(secondSmiteDmg, undefined, 'Second attack must NOT have smite damage bonus');
+
+  // Off-hand attack MUST NOT have Smite bonus
+  if (offhandAtk) {
+    const ohSmiteAtk = offhandAtk.atkBreakdown.find(b => b.label.includes('Smite'));
+    const ohSmiteDmg = offhandAtk.dmgBreakdown.find(b => b.label.includes('Smite'));
+    assert.strictEqual(ohSmiteAtk, undefined, 'Off-hand attack must NOT have smite attack bonus');
+    assert.strictEqual(ohSmiteDmg, undefined, 'Off-hand attack must NOT have smite damage bonus');
+  }
 });

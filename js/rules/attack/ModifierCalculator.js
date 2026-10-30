@@ -76,14 +76,17 @@ export function calculateGeneralAtkModifiers(ctx) {
     generalAtkBreakdown.push({ label: 'Weapon Attack Bonus', value: customAtkOffset });
   }
 
+  let smiteAtkBonus = 0;
+  const smiteAtkBreakdown = [];
   if (ctx.options.smite && ctx.isMelee) {
     const paladinClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'paladin');
     const shadowbaneClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
     if (paladinClass || shadowbaneClass) {
       if (ctx.chaMod > 0) {
-        generalAtkMod += ctx.chaMod;
-        const label = shadowbaneClass && !paladinClass ? 'Smite Corrupt (CHA)' : 'Smite Evil (CHA)';
-        generalAtkBreakdown.push({ label, value: ctx.chaMod });
+        smiteAtkBonus = ctx.chaMod;
+        const isCorrupt = ctx.options.smiteSource === 'inquisitor' || (shadowbaneClass && !paladinClass);
+        const label = isCorrupt ? 'Smite Corrupt (CHA)' : 'Smite Evil (CHA)';
+        smiteAtkBreakdown.push({ label, value: ctx.chaMod });
       }
     }
   }
@@ -106,7 +109,7 @@ export function calculateGeneralAtkModifiers(ctx) {
     generalAtkBreakdown.push(...ctx.buffAtkBreakdown);
   }
 
-  return { generalAtkMod, generalAtkBreakdown };
+  return { generalAtkMod, generalAtkBreakdown, smiteAtkBonus, smiteAtkBreakdown };
 }
 
 export function calculateGeneralDmgModifiers(ctx) {
@@ -150,16 +153,48 @@ export function calculateGeneralDmgModifiers(ctx) {
     }
   }
 
+  let smiteDmgBonus = 0;
+  const smiteDmgBreakdown = [];
   if (ctx.options.smite && ctx.isMelee) {
     const paladinClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'paladin');
-    if (paladinClass) {
-      generalDmgMod += paladinClass.level;
-      generalDmgBreakdown.push({ label: 'Smite Evil (Paladin Level)', value: paladinClass.level });
-    }
     const shadowbaneClass = Array.isArray(ctx.pc.classes) && ctx.pc.classes.find(c => c.classType === 'shadowbane_inquisitor' && c.level >= 2);
-    if (shadowbaneClass) {
-      generalDmgMod += shadowbaneClass.level;
-      generalDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor Level)', value: shadowbaneClass.level });
+    const hasChargingSmite = Array.isArray(ctx.pc.acfs) && ctx.pc.acfs.includes('paladin_charging_smite');
+
+    const source = ctx.options.smiteSource;
+    if (source === 'inquisitor') {
+      if (shadowbaneClass) {
+        smiteDmgBonus += shadowbaneClass.level;
+        smiteDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor Level)', value: shadowbaneClass.level });
+      }
+    } else if (source === 'paladin') {
+      if (paladinClass) {
+        const palDmg = hasChargingSmite ? paladinClass.level * 2 : paladinClass.level;
+        const palLabel = hasChargingSmite ? 'Charging Smite (Paladin Level ×2)' : 'Smite Evil (Paladin Level)';
+        smiteDmgBonus += palDmg;
+        smiteDmgBreakdown.push({ label: palLabel, value: palDmg });
+      }
+    } else {
+      if (paladinClass && shadowbaneClass) {
+        const palAb = ctx.pc.dailyAbilities?.find(a => (a.name === "Böses niederstrecken" || a.name === "Smite Evil") && a.used < a.max);
+        const inqAb = ctx.pc.dailyAbilities?.find(a => (a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt") && a.used < a.max);
+        if (!palAb && inqAb) {
+          smiteDmgBonus += shadowbaneClass.level;
+          smiteDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor Level)', value: shadowbaneClass.level });
+        } else {
+          const palDmg = hasChargingSmite ? paladinClass.level * 2 : paladinClass.level;
+          const palLabel = hasChargingSmite ? 'Charging Smite (Paladin Level ×2)' : 'Smite Evil (Paladin Level)';
+          smiteDmgBonus += palDmg;
+          smiteDmgBreakdown.push({ label: palLabel, value: palDmg });
+        }
+      } else if (paladinClass) {
+        const palDmg = hasChargingSmite ? paladinClass.level * 2 : paladinClass.level;
+        const palLabel = hasChargingSmite ? 'Charging Smite (Paladin Level ×2)' : 'Smite Evil (Paladin Level)';
+        smiteDmgBonus += palDmg;
+        smiteDmgBreakdown.push({ label: palLabel, value: palDmg });
+      } else if (shadowbaneClass) {
+        smiteDmgBonus += shadowbaneClass.level;
+        smiteDmgBreakdown.push({ label: 'Smite Corrupt (Inquisitor Level)', value: shadowbaneClass.level });
+      }
     }
   }
 
@@ -182,5 +217,5 @@ export function calculateGeneralDmgModifiers(ctx) {
     generalDmgBreakdown.push(...ctx.buffDmgBreakdown);
   }
 
-  return { generalDmgMod, generalDmgBreakdown, paDmgBonus };
+  return { generalDmgMod, generalDmgBreakdown, paDmgBonus, smiteDmgBonus, smiteDmgBreakdown };
 }

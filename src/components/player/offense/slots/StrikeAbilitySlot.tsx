@@ -53,17 +53,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
   const sneakAttackDice = typeof pc.getSneakAttackDiceCount === 'function' ? pc.getSneakAttackDiceCount() : 0;
   const favoredEnemyBonus = typeof pc.getFavoredEnemyBonus === 'function' ? pc.getFavoredEnemyBonus() : 0;
 
-  const smiteAbility = Array.isArray(pc.dailyAbilities)
-    ? pc.dailyAbilities.find(
-        (a: any) =>
-          a.name === 'Böses niederstrecken' ||
-          a.name === 'Smite Evil' ||
-          a.name === 'Smite (Inquisitor)' ||
-          a.name === 'Smite Corrupt',
-      )
+  const palSmiteAbility = Array.isArray(pc.dailyAbilities)
+    ? pc.dailyAbilities.find((a: any) => a.name === 'Böses niederstrecken' || a.name === 'Smite Evil')
     : null;
-  const smiteMax = smiteAbility ? smiteAbility.max : 0;
-  const smiteUsed = smiteAbility ? smiteAbility.used : 0;
+  const inqSmiteAbility = Array.isArray(pc.dailyAbilities)
+    ? pc.dailyAbilities.find((a: any) => a.name === 'Smite (Inquisitor)' || a.name === 'Smite Corrupt')
+    : null;
 
   const chaValue = pc.cha ? (typeof pc.cha.getValue === 'function' ? pc.cha.getValue() : pc.cha) : 10;
   const chaMod = getAblMod(chaValue);
@@ -81,15 +76,20 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
     render: (selectorDropdown?: React.ReactNode) => React.ReactNode;
   }> = [];
 
-  // 1. Paladin / Shadowbane Inquisitor
-  if (paladinLvl > 0 || shadowbaneLvl >= 2 || !!smiteAbility) {
-    const smiteTitle = shadowbaneLvl >= 2 && paladinLvl === 0 ? 'Smite Corrupt' : (hasChargingSmite ? 'Charging Smite' : 'Smite Evil');
-    const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, noSneak: true });
+  // 1. Paladin Smite Evil / Charging Smite
+  const hasPaladinSmite = paladinLvl > 0 || !!palSmiteAbility;
+  const hasInquisitorSmite = shadowbaneLvl >= 2 || !!inqSmiteAbility;
+
+  if (hasPaladinSmite) {
+    const palSmiteMax = palSmiteAbility ? palSmiteAbility.max : 0;
+    const palSmiteUsed = palSmiteAbility ? palSmiteAbility.used : 0;
+    const smiteTitle = hasChargingSmite ? 'Charging Smite' : 'Smite Evil';
+    const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, smiteSource: 'paladin', noSneak: true });
     const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
-    const smiteDmgText = shadowbaneLvl >= 2 && paladinLvl === 0 ? `+${shadowbaneLvl}` : (hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl + shadowbaneLvl}`);
+    const smiteDmgText = hasChargingSmite ? `+${paladinLvl * 2}` : `+${paladinLvl}`;
 
     strikes.push({
-      id: 'smite',
+      id: hasInquisitorSmite ? 'smite_paladin' : 'smite',
       name: smiteTitle,
       render: (selectorDropdown) => (
         <SmiteStrikeCard
@@ -104,11 +104,80 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
           stdSmite={stdSmite}
           chaMod={chaMod}
           smiteDmgText={smiteDmgText}
-          smiteMax={smiteMax}
-          smiteUsed={smiteUsed}
+          smiteMax={palSmiteMax}
+          smiteUsed={palSmiteUsed}
+          smiteSource="paladin"
         />
       ),
     });
+  }
+
+  // 2. Shadowbane Inquisitor Smite Corrupt
+  if (hasInquisitorSmite) {
+    const inqSmiteMax = inqSmiteAbility ? inqSmiteAbility.max : 0;
+    const inqSmiteUsed = inqSmiteAbility ? inqSmiteAbility.used : 0;
+    const smiteTitle = 'Smite Corrupt';
+    const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, smiteSource: 'inquisitor', noSneak: true });
+    const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
+    const smiteDmgText = `+${shadowbaneLvl}`;
+
+    strikes.push({
+      id: hasPaladinSmite ? 'smite_inquisitor' : 'smite',
+      name: smiteTitle,
+      render: (selectorDropdown) => (
+        <SmiteStrikeCard
+          pc={pc}
+          w={w}
+          formatMod={formatMod}
+          selectorDropdown={selectorDropdown}
+          handleRollAttack={handleRollAttack}
+          handleRollDamage={handleRollDamage}
+          smiteTitle={smiteTitle}
+          hasChargingSmite={false}
+          stdSmite={stdSmite}
+          chaMod={chaMod}
+          smiteDmgText={smiteDmgText}
+          smiteMax={inqSmiteMax}
+          smiteUsed={inqSmiteUsed}
+          smiteSource="inquisitor"
+        />
+      ),
+    });
+  }
+
+  // 3. Fallback generic smite
+  if (!hasPaladinSmite && !hasInquisitorSmite) {
+    const genericSmite = Array.isArray(pc.dailyAbilities)
+      ? pc.dailyAbilities.find((a: any) => (a.name || '').toLowerCase().includes('smite'))
+      : null;
+    if (genericSmite) {
+      const smiteMax = genericSmite.max || 0;
+      const smiteUsed = genericSmite.used || 0;
+      const smiteTitle = genericSmite.name;
+      const smiteSeq = AttackEngine.calculateAttackSequence(pc, w, false, { smite: true, noSneak: true });
+      const stdSmite = smiteSeq[0] || { atkTotal: 0, dmgTotal: 0, damageDice: '1w8' };
+      strikes.push({
+        id: 'smite',
+        name: smiteTitle,
+        render: (selectorDropdown) => (
+          <SmiteStrikeCard
+            pc={pc}
+            w={w}
+            formatMod={formatMod}
+            selectorDropdown={selectorDropdown}
+            handleRollAttack={handleRollAttack}
+            handleRollDamage={handleRollDamage}
+            smiteTitle={smiteTitle}
+            hasChargingSmite={false}
+            stdSmite={stdSmite}
+            chaMod={chaMod}
+            smiteDmgText={`+${paladinLvl + shadowbaneLvl}`}
+            smiteMax={smiteMax}
+            smiteUsed={smiteUsed}
+          />
+        ),
+      });
+    }
   }
 
   // =========================================================================
@@ -305,11 +374,12 @@ export const StrikeAbilitySlot: React.FC<StrikeAbilitySlotProps> = ({
 
   const isSelectedValid = pc.selectedClassStrike && (
     strikes.some((s) => s.id === pc.selectedClassStrike) ||
+    (pc.selectedClassStrike === 'smite' && strikes.some((s) => s.id.startsWith('smite'))) ||
     (pc.selectedClassStrike === 'sudden_strike' && strikes.some((s) => s.id === 'sneak_sudden' || s.id === 'sneak')) ||
     (pc.selectedClassStrike === 'sneak' && strikes.some((s) => s.id === 'sneak_sudden' || s.id === 'sudden_strike'))
   );
   const selectedStrikeId = isSelectedValid
-    ? (strikes.find((s) => s.id === pc.selectedClassStrike)?.id || strikes.find((s) => ['sneak_sudden', 'sneak', 'sudden_strike'].includes(s.id))?.id || strikes[0].id)
+    ? (strikes.find((s) => s.id === pc.selectedClassStrike)?.id || (pc.selectedClassStrike === 'smite' && strikes.find((s) => s.id.startsWith('smite'))?.id) || strikes.find((s) => ['sneak_sudden', 'sneak', 'sudden_strike'].includes(s.id))?.id || strikes[0].id)
     : strikes[0].id;
   const currentStrike = strikes.find((s) => s.id === selectedStrikeId) || strikes[0];
 

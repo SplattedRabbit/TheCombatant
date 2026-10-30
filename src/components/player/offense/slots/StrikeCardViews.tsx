@@ -17,12 +17,13 @@ interface StrikeCardBaseProps {
 
 export const SmiteStrikeCard: React.FC<StrikeCardBaseProps & {
   smiteTitle: string;
-  hasChargingSmite: boolean;
+  hasChargingSmite?: boolean;
   stdSmite: any;
   chaMod: number;
   smiteDmgText: string;
   smiteMax: number;
   smiteUsed: number;
+  smiteSource?: 'paladin' | 'inquisitor';
 }> = ({
   pc,
   w,
@@ -31,12 +32,13 @@ export const SmiteStrikeCard: React.FC<StrikeCardBaseProps & {
   handleRollAttack,
   handleRollDamage,
   smiteTitle,
-  hasChargingSmite,
+  hasChargingSmite = false,
   stdSmite,
   chaMod,
   smiteDmgText,
   smiteMax,
   smiteUsed,
+  smiteSource,
 }) => (
   <div
     className="arpg-slot class-ability-slot rarity-epic"
@@ -91,7 +93,7 @@ export const SmiteStrikeCard: React.FC<StrikeCardBaseProps & {
       <button
         className="xbtn xbtn-atk"
         disabled={pc.isTotalDefense}
-        onClick={(e) => handleRollAttack(w, false, e, { smite: true })}
+        onClick={(e) => handleRollAttack(w, false, e, { smite: true, smiteSource })}
         style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
         title={`Roll Smite Attack (${formatMod(stdSmite.atkTotal)})`}
       >
@@ -100,7 +102,7 @@ export const SmiteStrikeCard: React.FC<StrikeCardBaseProps & {
       <button
         className="xbtn xbtn-dmg"
         disabled={pc.isTotalDefense}
-        onClick={(e) => handleRollDamage(w, false, e, { smite: true })}
+        onClick={(e) => handleRollDamage(w, false, e, { smite: true, smiteSource })}
         style={{ flex: 1, padding: '2px 0', fontSize: '7.5px', fontWeight: 'bold', height: '18px', lineHeight: 1 }}
         title={`Roll Smite Damage (${stdSmite.damageDice} ${formatMod(stdSmite.dmgTotal)})`}
       >

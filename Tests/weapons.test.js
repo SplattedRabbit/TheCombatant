@@ -5,19 +5,27 @@ import assert from 'node:assert';
 import { CombatState } from '../js/state.js';
 import { getActivePC, updateSession } from '../js/state/state-core.js';
 import { createCombatant } from '../js/models/model-core.js';
-import { getCritThreatDisplay, isLightWeapon, matchesFeatOption, Weapon } from '../js/models/Weapon.js';
+import { getCritThreatDisplay, isLightWeapon, isFinessableWeapon, matchesFeatOption, Weapon } from '../js/models/Weapon.js';
 import { uiRegistry } from '../js/ui/ui-shared.js';
 import { AttackEngine } from '../js/rules/AttackEngine.js';
 
 
-test('Weapons - isLightWeapon parsing', () => {
+test('Weapons - isLightWeapon and isFinessableWeapon parsing (RAW D&D 3.5e Bug #39)', () => {
   assert.strictEqual(isLightWeapon('Dolch'), true, 'Dolch should be light');
   assert.strictEqual(isLightWeapon('Dagger'), true, 'Dagger should be light');
   assert.strictEqual(isLightWeapon('Kurzschwert'), true, 'Kurzschwert should be light');
-  assert.strictEqual(isLightWeapon('Rapier'), true, 'Rapier should be light');
-  assert.strictEqual(isLightWeapon('Spiked Chain'), true, 'Spiked Chain should be light');
+  assert.strictEqual(isLightWeapon('Rapier'), false, 'Rapier is one-handed, not light');
+  assert.strictEqual(isLightWeapon('Spiked Chain'), false, 'Spiked Chain is two-handed, not light');
+  assert.strictEqual(isLightWeapon('Dornenkette'), false, 'Dornenkette is two-handed, not light');
   assert.strictEqual(isLightWeapon('Zweihänder'), false, 'Zweihänder should not be light');
   assert.strictEqual(isLightWeapon('Langschwert'), false, 'Langschwert should not be light');
+
+  assert.strictEqual(isFinessableWeapon('Rapier'), true, 'Rapier should be finessable');
+  assert.strictEqual(isFinessableWeapon('Spiked Chain'), true, 'Spiked Chain should be finessable');
+  assert.strictEqual(isFinessableWeapon('Dornenkette'), true, 'Dornenkette should be finessable');
+  assert.strictEqual(isFinessableWeapon('Whip'), true, 'Whip should be finessable');
+  assert.strictEqual(isFinessableWeapon('Peitsche'), true, 'Peitsche should be finessable');
+  assert.strictEqual(isFinessableWeapon('Langschwert'), false, 'Langschwert should not be finessable');
 });
 
 test('Weapons - getCritThreatDisplay calculations (Keen doubling)', () => {
@@ -294,5 +302,83 @@ test('Weapons - Shield Bash Grips and Damage Dice Scaling', () => {
   assert.strictEqual(getBaseDmg(heavyShield, false), '1d4');
   assert.strictEqual(getBaseDmg(lightShield, true), '1d2');
   assert.strictEqual(getBaseDmg(heavyShield, true), '1d3');
+});
+
+test('Weapons - Bug #39: Spiked Chain & Rapier Power Attack, Finesse and TWF penalties', () => {
+  // 1. Spiked Chain with Weapon Finesse and Power Attack
+  const pc = createCombatant({
+    name: 'Chainmaster',
+    str: 14, // +2
+    dex: 18, // +4
+    bab: { base: 6 },
+    feats: [{ id: 'weapon_finesse' }, { id: 'power_attack' }],
+    powerAttackPenalty: 3
+  });
+
+  const spikedChain = new Weapon({
+    name: 'Spiked Chain',
+    type: 'spiked_chain',
+    grip: '2h',
+    damageDice: '2w4',
+    crit: 'x2'
+  });
+
+  // Calculation:
+  // BAB 6, DEX 4 (Finesse applies because isFinessable is true), PA -3
+  // Atk = 6 + 4 - 3 = 7
+  // Dmg: 2h STR = 14 (+2 mod * 1.5 = +3), Power Attack two-handed 2x = 3 * 2 = +6
+  // DmgTotal = 3 + 6 = 9
+  const seqChain = AttackEngine.calculateAttackSequence(pc, spikedChain, false);
+  assert.ok(seqChain.length > 0);
+  assert.strictEqual(seqChain[0].atkTotal, 7, 'Attack total with DEX finesse and -3 PA should be 7');
+  assert.strictEqual(seqChain[0].dmgTotal, 9, 'Damage total with 1.5x STR (+3) and 2x PA (+6) should be 9');
+  const paPart = seqChain[0].dmgBreakdown.find(b => b.label === 'Power Attack');
+  assert.ok(paPart, 'Damage breakdown should include Power Attack');
+  assert.strictEqual(paPart.value, 6, 'Power Attack bonus on Spiked Chain should be 2x penalty (+6)');
+
+  // 2. Rapier with Power Attack (1h, not light -> 1x PA bonus)
+  const rapier = new Weapon({
+    name: 'Rapier',
+    type: 'rapier',
+    grip: '1h',
+    damageDice: '1w6',
+    crit: '18-20 / x2'
+  });
+
+  const seqRapier = AttackEngine.calculateAttackSequence(pc, rapier, false);
+  assert.ok(seqRapier.length > 0);
+  assert.strictEqual(seqRapier[0].atkTotal, 7, 'Attack total with DEX finesse and -3 PA should be 7');
+  // Dmg: 1h STR = +2, Power Attack one-handed 1x = 3 * 1 = +3 -> Total = 5
+  assert.strictEqual(seqRapier[0].dmgTotal, 5, 'Damage total with 1x STR (+2) and 1x PA (+3) should be 5');
+  const paRapierPart = seqRapier[0].dmgBreakdown.find(b => b.label === 'Power Attack');
+  assert.ok(paRapierPart, 'Rapier damage breakdown should include Power Attack');
+  assert.strictEqual(paRapierPart.value, 3, 'Power Attack bonus on Rapier should be 1x penalty (+3)');
+
+  // 3. Rapier in off-hand with TWF feat:
+  // Main hand Longsword, Off-hand Rapier.
+  // Rapier is one-handed (not light), so TWF penalty is -4 / -4 (not -2 / -2).
+  const pcTWF = createCombatant({
+    name: 'Dual Duelist',
+    str: 16, // +3
+    dex: 16, // +3
+    bab: { base: 6 },
+    feats: [{ id: 'two_weapon_fighting' }]
+  });
+  const mainSword = new Weapon({ id: 'w1', name: 'Longsword', type: 'longsword', grip: '1h', isEquipped: true, hand: 'main' });
+  const offRapier = new Weapon({ id: 'w2', name: 'Rapier', type: 'rapier', grip: 'sec', isEquipped: true, hand: 'off' });
+  pcTWF.weapons = [mainSword, offRapier];
+
+  const seqTWF = AttackEngine.calculateAttackSequence(pcTWF, mainSword, true);
+  const primaryAtk = seqTWF.find(a => !a.isOffhand);
+  const offhandAtk = seqTWF.find(a => a.isOffhand);
+  assert.ok(primaryAtk && offhandAtk, 'Should have primary and off-hand attacks');
+
+  const twfPrimaryPart = primaryAtk.atkBreakdown.find(b => b.label.includes('Two-Weapon Fighting'));
+  assert.ok(twfPrimaryPart);
+  assert.strictEqual(twfPrimaryPart.value, -4, 'Primary penalty should be -4 with non-light off-hand');
+
+  const twfOffhandPart = offhandAtk.atkBreakdown.find(b => b.label.includes('Two-Weapon Fighting'));
+  assert.ok(twfOffhandPart);
+  assert.strictEqual(twfOffhandPart.value, -4, 'Off-hand penalty should be -4 for Rapier (one-handed, not light)');
 });
 

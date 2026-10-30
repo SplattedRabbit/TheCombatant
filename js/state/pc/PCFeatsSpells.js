@@ -62,17 +62,37 @@ export function updatePCDailyAbilityUsed(idx, diff) {
   }
 }
 
-export function consumeSmiteEvilCharge() {
+export function consumeSmiteEvilCharge(preferredSource) {
   const pc = getActivePC();
   if (pc && Array.isArray(pc.dailyAbilities)) {
-    const smiteAbility = pc.dailyAbilities.find(a => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt");
+    let smiteAbility = null;
+    if (preferredSource === 'inquisitor') {
+      smiteAbility = pc.dailyAbilities.find(a => (a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt") && a.used < a.max);
+    } else if (preferredSource === 'paladin') {
+      smiteAbility = pc.dailyAbilities.find(a => (a.name === "Böses niederstrecken" || a.name === "Smite Evil") && a.used < a.max);
+    }
+    
+    // If preferred not found or not specified, pick the first one that has charges remaining
+    if (!smiteAbility) {
+      smiteAbility = pc.dailyAbilities.find(a => 
+        (a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt") && a.used < a.max
+      );
+    }
+
     if (smiteAbility) {
-      if (smiteAbility.used < smiteAbility.max) {
-        smiteAbility.used += 1;
-        saveToStorage();
-        syncPCToHost();
-        return { success: true, remaining: smiteAbility.max - smiteAbility.used };
-      } else {
+      smiteAbility.used += 1;
+      saveToStorage();
+      syncPCToHost();
+      const allSmites = pc.dailyAbilities.filter(a =>
+        a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt"
+      );
+      const remainingTotal = allSmites.reduce((sum, a) => sum + Math.max(0, a.max - a.used), 0);
+      return { success: true, remaining: remainingTotal };
+    } else {
+      const hasAnySmite = pc.dailyAbilities.some(a =>
+        a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt"
+      );
+      if (hasAnySmite) {
         return { success: false, remaining: 0 };
       }
     }

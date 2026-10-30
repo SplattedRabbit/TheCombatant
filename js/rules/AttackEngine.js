@@ -50,8 +50,8 @@ export const AttackEngine = {
     const baseAttacks = calculateBaseAttacks(ctx, isFullAttack);
 
     // 3. Resolve active modifiers & bonuses
-    const { generalAtkMod, generalAtkBreakdown } = calculateGeneralAtkModifiers(ctx);
-    const { generalDmgMod, generalDmgBreakdown, paDmgBonus } = calculateGeneralDmgModifiers(ctx);
+    const { generalAtkMod, generalAtkBreakdown, smiteAtkBonus = 0, smiteAtkBreakdown = [] } = calculateGeneralAtkModifiers(ctx);
+    const { generalDmgMod, generalDmgBreakdown, paDmgBonus, smiteDmgBonus = 0, smiteDmgBreakdown = [] } = calculateGeneralDmgModifiers(ctx);
 
     // 4. Resolve penalties & specific states
     const { isTWFActive, twfPenalties } = calculateTWFPenalties(ctx, isFullAttack);
@@ -78,7 +78,9 @@ export const AttackEngine = {
       ctx, baseAttacks, generalAtkMod, generalAtkBreakdown,
       activeAtkPenalties, activeAtkPenaltyBreakdowns,
       generalDmgMod, generalDmgBreakdown, paDmgBonus,
-      sequence
+      sequence,
+      smiteAtkBonus, smiteAtkBreakdown,
+      smiteDmgBonus, smiteDmgBreakdown
     );
 
     // 7. Append extra actions

@@ -144,10 +144,11 @@ export const PCOffenseTab: React.FC = () => {
     const targetWeapon = w || mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
     const isSmite = customOptions.smite || (pc.isSmiteActive && !customOptions.noSmite);
     if (isSmite) {
-      const res = CombatState.consumeSmiteEvilCharge();
+      const res = CombatState.consumeSmiteEvilCharge(customOptions.smiteSource);
       if (res && res.remaining === 0) {
         CombatState.updatePCField('isSmiteActive', false);
       }
+      pc._smiteChargedForDamage = true;
     }
     const opts = {
       ...(isOffhand ? { isOffhandAttack: true } : {}),
@@ -161,9 +162,13 @@ export const PCOffenseTab: React.FC = () => {
     const targetWeapon = w || mainHandWeapon || { name: 'Unarmed Strike', damageDice: '1w3', damage: '1w3', crit: '20 / x2', grip: '1h', enhancement: 0 };
     const isSmite = customOptions.smite || (pc.isSmiteActive && !customOptions.noSmite);
     if (isSmite) {
-      const res = CombatState.consumeSmiteEvilCharge();
-      if (res && res.remaining === 0) {
-        CombatState.updatePCField('isSmiteActive', false);
+      if (pc._smiteChargedForDamage) {
+        delete pc._smiteChargedForDamage;
+      } else {
+        const res = CombatState.consumeSmiteEvilCharge(customOptions.smiteSource);
+        if (res && res.remaining === 0) {
+          CombatState.updatePCField('isSmiteActive', false);
+        }
       }
     }
     const opts = {

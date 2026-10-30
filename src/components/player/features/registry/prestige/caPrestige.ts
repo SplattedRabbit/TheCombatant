@@ -52,10 +52,10 @@ Within this illuminated area, she gains a +5 competence bonus on Search and Spot
         source: `Shadowbane Inquisitor Lv.${level}`,
         category: 'combat',
         typeLabel: 'Divine Buff',
-        summary: `Spend 1 Turn Undead attempt to gain a +${stealthBonus} sacred bonus on Hide and Move Silently for ${level} rounds.`,
-        rawRules: `Starting at 2nd level, a Shadowbane Inquisitor can cloak herself in divine favor. By expending one daily use of her turn undead ability, she gains a +${stealthBonus} sacred bonus on Hide and Move Silently checks for a number of rounds equal to her Shadowbane Inquisitor level (${level} rounds).`,
+        summary: `Sacrifice a prepared divine spell or spell slot to gain a +${stealthBonus} sacred bonus on Hide and Move Silently for (Cha mod + spell level) minutes (min 1 min).`,
+        rawRules: `Starting at 2nd level, a Shadowbane Inquisitor can cloak herself in divine favor. By sacrificing a prepared divine spell or spell slot, she gains a +${stealthBonus} sacred bonus on Hide and Move Silently checks. This bonus lasts for a number of minutes equal to her Charisma modifier (if any) plus the level of the spell sacrificed (minimum 1 minute).`,
         actionType: 'Swift Action',
-        duration: `${level} rounds`,
+        duration: '(Cha mod + spell level) minutes',
       });
     }
 
@@ -111,8 +111,8 @@ Within this illuminated area, she gains a +5 competence bonus on Search and Spot
         source: `Shadowbane Inquisitor Lv.${level}`,
         category: 'combat',
         typeLabel: 'Supernatural Burst',
-        summary: 'Spend 1 Turn Undead attempt while Pierce Shadows is active to deal 4d6 divine damage to all creatures in the light radius.',
-        rawRules: `At 9th level, while her Pierce Shadows ability is active, a Shadowbane Inquisitor can spend an additional turn undead attempt to make the light flash with searing divine intensity. All creatures within the Pierce Shadows radius take 4d6 points of divine damage (no save). Evil undead and evil outsiders take double damage (8d6).`,
+        summary: 'Spend 1 Turn Undead attempt while Pierce Shadows is active to deal 4d6 divine damage to all creatures in the light radius (undead affected as if struck by searing light).',
+        rawRules: `At 9th level, while her Pierce Shadows ability is active, a Shadowbane Inquisitor can spend an additional turn undead attempt to make the light flash with searing divine intensity. All creatures within the Pierce Shadows radius (except the inquisitor) take 4d6 points of divine damage (no save). This damage results directly from divine power and is not subject to being reduced by energy resistance. Undead within the illuminated area are affected as if struck by searing light.`,
         actionType: 'Standard Action',
         range: `${pRadius} ft radius`,
       });

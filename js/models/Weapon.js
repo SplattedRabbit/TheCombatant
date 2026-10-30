@@ -1,7 +1,7 @@
 /**
  * @module    Weapon
  * @summary   WeaponRegistry (alle PHB-Waffen), Weapon-Klasse mit Gettern für grip/damageDice/crit/extraDamage. Hilfsfunktionen: isLightWeapon, matchesFeatOption, getCritThreatDisplay.
- * @exports   WeaponRegistry, Weapon (class), isLightWeapon, isMonkWeapon, matchesFeatOption, getCritThreatDisplay
+ * @exports   WeaponRegistry, Weapon (class), isLightWeapon, isFinessableWeapon, isMonkWeapon, matchesFeatOption, getCritThreatDisplay
  * @reads     weapon.type, weapon.extraDamageDice, weapon.extraDamageType, weapon.isKeen
  * @stateOps  Keine — Mutation via PCManager (addPCWeapon, updatePCWeapon, togglePCWeaponEquip)
  * @depends   Keine externen Imports
@@ -18,14 +18,14 @@ export const WeaponRegistry = {
 
   // Melee - One-Handed
   longsword: { key: 'longsword', name: 'Longsword', nameDe: 'Langschwert', nameEn: 'Longsword', grip: '1h', damageDice: '1w8', crit: '19-20 / x2' },
-  rapier: { key: 'rapier', name: 'Rapier', nameDe: 'Rapier', nameEn: 'Rapier', grip: '1h', damageDice: '1w6', crit: '18-20 / x2', isLight: true }, // rapier is finessable
+  rapier: { key: 'rapier', name: 'Rapier', nameDe: 'Rapier', nameEn: 'Rapier', grip: '1h', damageDice: '1w6', crit: '18-20 / x2', isFinessable: true },
   battleaxe: { key: 'battleaxe', name: 'Battleaxe', nameDe: 'Streitaxt', nameEn: 'Battleaxe', grip: '1h', damageDice: '1w8', crit: 'x3' },
   heavy_mace: { key: 'heavy_mace', name: 'Heavy Mace', nameDe: 'Streitkolben', nameEn: 'Heavy Mace', grip: '1h', damageDice: '1w8', crit: 'x2' },
   club: { key: 'club', name: 'Club', nameDe: 'Keule', nameEn: 'Club', grip: '1h', damageDice: '1w6', crit: 'x2' },
   shortspear: { key: 'shortspear', name: 'Shortspear', nameDe: 'Kurzspeer', nameEn: 'Shortspear', grip: '1h', damageDice: '1w6', crit: 'x2' },
   morningstar: { key: 'morningstar', name: 'Morningstar', nameDe: 'Morgenstern', nameEn: 'Morningstar', grip: '1h', damageDice: '1w8', crit: 'x2' },
   scimitar: { key: 'scimitar', name: 'Scimitar', nameDe: 'Krummsäbel', nameEn: 'Scimitar', grip: '1h', damageDice: '1w6', crit: '18-20 / x2' },
-  whip: { key: 'whip', name: 'Whip', nameDe: 'Peitsche', nameEn: 'Whip', grip: '1h', damageDice: '1w3', crit: 'x2', isLight: true }, // whip is finessable
+  whip: { key: 'whip', name: 'Whip', nameDe: 'Peitsche', nameEn: 'Whip', grip: '1h', damageDice: '1w3', crit: 'x2', isFinessable: true },
 
   // Melee - Two-Handed
   greatsword: { key: 'greatsword', name: 'Greatsword', nameDe: 'Zweihänder', nameEn: 'Greatsword', grip: '2h', damageDice: '2w6', crit: '19-20 / x2' },
@@ -34,7 +34,7 @@ export const WeaponRegistry = {
   halberd: { key: 'halberd', name: 'Halberd', nameDe: 'Hellebarde', nameEn: 'Halberd', grip: '2h', damageDice: '1w10', crit: 'x3' },
   scythe: { key: 'scythe', name: 'Scythe', nameDe: 'Sense', nameEn: 'Scythe', grip: '2h', damageDice: '2w4', crit: 'x4' },
   quarterstaff: { key: 'quarterstaff', name: 'Quarterstaff', nameDe: 'Kampfstab', nameEn: 'Quarterstaff', grip: '2h', damageDice: '1w6', crit: 'x2', isMonk: true, isDouble: true },
-  spiked_chain: { key: 'spiked_chain', name: 'Spiked Chain', nameDe: 'Dornenkette', nameEn: 'Spiked Chain', grip: '2h', damageDice: '2w4', crit: 'x2', isLight: true }, // spiked chain is finessable
+  spiked_chain: { key: 'spiked_chain', name: 'Spiked Chain', nameDe: 'Dornenkette', nameEn: 'Spiked Chain', grip: '2h', damageDice: '2w4', crit: 'x2', isFinessable: true },
 
   // Ranged
   shortbow: { key: 'shortbow', name: 'Shortbow', nameDe: 'Kurzbogen', nameEn: 'Shortbow', grip: 'rng', damageDice: '1w6', crit: 'x3', isBow: true },
@@ -143,6 +143,14 @@ export class Weapon {
     return def.crit;
   }
 
+  get isLight() {
+    return isLightWeapon(this);
+  }
+
+  get isFinessable() {
+    return isFinessableWeapon(this);
+  }
+
   get extraDamage() {
     if (this.extraDamageDice) {
       return (this.extraDamageDice + ' ' + (this.extraDamageType || '')).trim();
@@ -187,12 +195,24 @@ export function isLightWeapon(w) {
          n.includes('handbeil') || n.includes('handaxe') ||
          n.includes('keule') || n.includes('mace') ||
          n.includes('sichel') || n.includes('sickle') ||
-         n.includes('rapier') ||
-         n.includes('peitsche') || n.includes('whip') ||
-         n.includes('dornenkette') || n.includes('spiked chain') ||
          n.includes('waffenlos') || n.includes('faust') || n.includes('unarmed') ||
          n.includes('klaue') || n.includes('claw') ||
          n.includes('biss') || n.includes('bite');
+}
+
+export function isFinessableWeapon(w) {
+  if (!w) return false;
+  if (typeof w === 'object') {
+    const typeDef = WeaponRegistry[w.type];
+    if (typeDef && typeDef.isFinessable !== undefined) {
+      return typeDef.isFinessable;
+    }
+    return isFinessableWeapon(w.name);
+  }
+  const n = w.toLowerCase().trim();
+  return n.includes('rapier') ||
+         n.includes('peitsche') || n.includes('whip') ||
+         n.includes('dornenkette') || n.includes('spiked chain');
 }
 
 export function matchesFeatOption(w, option) {

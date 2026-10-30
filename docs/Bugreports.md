@@ -29,17 +29,11 @@ Wenn **Zustände/Conditions** (*feared, staggered, shaken, blinded, prone, sicke
 
 ---
 
-#### 🐛 Reine Bugs im bestehenden Code (5 offene Bugs):
+#### 🐛 Reine Bugs im bestehenden Code (1 offener Bug):
 Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen oder desynchronisiert Clients:
 
-1. **Waffen & Kampfmechanik:**
-   - **#39 (WeaponRegistry `isLight`-Hack):** Dornenkette macht bei Power Attack 0 Bonusschaden; Rapier in der Schildhand erhält falsche Abzüge für leichte Waffen.
-   - **#40 (Smite Doppel-Abzug & Blockade):** 1 Schlag zieht 2 Ladungen ab; Inquisitor-Smites blockiert, sobald Paladin-Smites leer sind; Smite addiert sich fälschlich auf alle Iterativangriffe.
-
-2. **Zauber- & Klassenlogik:**
+1. **Zauber- & Klassenlogik:**
    - **#34 (Multiclass Spell-DC Attribut-Hijack):** Grimoire zwingt Attribut der ersten Casterklasse auf alle Sprüche auf (Kleriker-DCs rechnen mit Int).
-   - **#37 (Inquisitor Regelfälschungen & Smite-Cap):** Erfundene Kosten, falsche Wirkungsdauern und falscher Stufe-10-Cap in `caPrestige.ts` & `ShadowbaneInquisitorRules.js`.
-   - **#18 (Smite-Ressourcen-Kollision im Widget):** Widget zeigt nur Paladin-Smites, nicht Inquisitor-Smites.
 
 ---
 
@@ -65,7 +59,10 @@ Hier existiert der Code bereits, rechnet jedoch falsch, bricht Datenstrukturen o
 - **#29 (`switchActiveCharacter` sendet kein Sync):** `switchActiveCharacter` führt `broadcastActivePC()` aus und informiert den Host sofort über den aktiven Helden.
 - **#30 (Presence Broadcast-Sturm):** `broadcastActivePC()` feuert nur noch bei neu hinzutretendem Host (`hasHost && !previousHostPresent`), nicht bei jedem Client-Presence-Tick.
 - **#31 (Identitätsverlust bei Reload):** `localPCId` wird persistent in `localStorage` (`dd_local_pc_id`) gesichert und verhindert falschen Fallback nach F5.
-- **#35 (Stat-Referenzkopplung `baseZa`/`baseFort`):** Hydrierung in `PCGeneral.js` stellt `pc.baseFort = pc.baseZa` und `pc.baseWill = pc.baseWil` nach JSON-Deserialisierung verlässlich wieder her.
+- **#18 (Smite-Ressourcen-Kollision im Widget):** In `StrikeAbilitySlot.tsx` separate Strike-Karten für *Smite Evil* (Paladin) und *Smite Corrupt* (Shadowbane Inquisitor) implementiert; kein Verschlucken bei Multiclassing.
+- **#37 (Inquisitor Regelfälschungen & Smite-Cap):** *Sacred Stealth* auf Zauberslot-Opferung und Minutendauer korrigiert; *Burning Light* auf reinen 4d6 Heiligschaden bereinigt; Stufe-10-Cap für *Smite Corrupt* auf 3/Tag in `ShadowbaneInquisitorRules.js` und `PCGeneral.js` korrigiert (RAW Complete Adventurer S. 68–69).
+- **#39 (WeaponRegistry `isLight`-Hack):** `isFinessable: true` für Rapier, Whip und Spiked Chain eingeführt und `isLight: true` entfernt; Dornenkette profitiert bei Power Attack vom 2x Zweihandfaktor (+6 Schaden bei -3 Malus); Rapier erhält 1x Einhandschaden (+3) und korrekte TWF-Abzüge (-4/-4 mit Talent).
+- **#40 (Smite Doppel-Abzug & Verbrauchsblockade):** `consumeSmiteEvilCharge` wählt die nächste Ressource mit `used < max` und unterstützt `preferredSource`; `pc._smiteChargedForDamage` verhindert doppelten Abzug bei Wurf von Angriff und anschließendem Schaden; Smite-Angriffs- und Schadensboni werden strikt nur auf den ersten Angriff der Angriffssequenz angewendet (RAW PHB S. 44).
 - **#41 (Initiative <= 0 im Header):** In `PCHeader.tsx` via `calculateInitiativeTotal` angebunden; reale Initiativewerte <= 0 (z.B. 0 oder -1) werden korrekt als Zahl gerendert statt als `'--'`.
 - **#42 (Stonecunning bei Zwerg):** In `CombatantSkills.js` Stonecunning für Zwerge um +2 auf `search` und `appraise` analog zu RAW PHB S. 15 erweitert.
 - **Bereinigung aller digitalen Würfelbots:** Vollständige Entfernung von automatischen Zufallsgeneratoren (`Math.random()`) in Atemwaffe (Dragon Shaman), Wild Empathy (Ranger), Manuelle Reparatur (Living Construct) und Trank-Fallback; strikte Umstellung auf Tabletop-First-Formelanzeigen und physische Würfe am Tisch.
@@ -320,23 +317,20 @@ Folgende 8 Regellogik-, Stacking- und Zustands-Bugs wurden im Rahmen der tiefgeh
 Folgende 7 Regellogik-, RAW- und Interaktions-Bugs wurden bei der tiefgehenden Überprüfung der angeforderten Kombinationen (*Dwarf: Rogue/Paladin/Shadowbane Inquisitor*, *Dwarf: Rogue/Wizard/Spellwarp Sniper*, *Lizardfolk: Dragon Shaman*, *Deep Halfling: Fighter/Battle Trickster*) identifiziert:
 
 ### 18. `StrikeAbilitySlot.tsx` – Smite-Ressourcen-Kollision bei Paladin / Shadowbane Inquisitor
-- **Status:** **Offen (Identifiziert im Deep Audit)**
-- **Klassifizierung:** **Bug** (Bestehendes Tactical-Strike-Widget bricht mit `find()` beim ersten Treffer ab und sperrt Inquisitor-Smites aus).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Bestehendes Tactical-Strike-Widget brach mit `find()` beim ersten Treffer ab und sperrte Inquisitor-Smites aus).
 - **Kategorie:** UI-Ressourcen-Slot & Multiclassing
-- **Betroffene Dateien:** [`src/components/player/combat/StrikeAbilitySlot.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/combat/StrikeAbilitySlot.tsx)
+- **Betroffene Dateien:** [`src/components/player/offense/slots/StrikeAbilitySlot.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/offense/slots/StrikeAbilitySlot.tsx), [`src/components/player/offense/slots/StrikeCardViews.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/offense/slots/StrikeCardViews.tsx)
 - **Problem:**
   - Paladin vergibt `dailyAbilities["Smite Evil"]` (1–5/Tag). Der Shadowbane Inquisitor (Complete Adventurer S. 68) vergibt ab Stufe 2 eigene Ladungen `dailyAbilities["Smite (Inquisitor)"]` (1–3/Tag für *Smite Evil* / *Smite Corrupt*).
-  - In `StrikeAbilitySlot.tsx` (Zeile 54) sucht das Tactical-Strike-Widget via:
-    ```typescript
-    pc.dailyAbilities.find(a => a.name === 'Smite Evil' || a.name === 'Smite (Inquisitor)')
-    ```
-  - `find()` stoppt beim ersten Treffer. Besitzt ein Charakter beide Klassen, werden ausschließlich die Paladin-Ladungen angezeigt und verbraucht. Die Shadowbane-Inquisitor-Smite-Ladungen sind im Strike-Widget unsichtbar und können im Kampf nicht ausgelöst werden.
+  - In `StrikeAbilitySlot.tsx` suchte das Tactical-Strike-Widget via `find()`, wodurch Inquisitor-Smites von Paladin-Smites vollständig maskiert wurden.
 - **Auswirkungen für Spieler:**
-  - Ein Shadowbane Inquisitor kann im taktischen Strike-Widget auf dem Haupt-Combat-Screen nur seine Paladin-Smites sehen und auslösen. Seine mühsam erworbenen Inquisitor-Smites sind im Kampf-Interface unsichtbar und unzugänglich.
+  - Ein Shadowbane Inquisitor konnte im taktischen Strike-Widget auf dem Haupt-Combat-Screen nur seine Paladin-Smites sehen und auslösen. Seine mühsam erworbenen Inquisitor-Smites waren im Kampf-Interface unsichtbar und unzugänglich.
 - **Auswirkungen für Spielleiter (DM):**
-  - Der Spieler reklamiert mitten im Gefecht, dass er seine Klassenfähigkeiten nicht einsetzen kann, was den Spielfluss bremst und zu manuellen Notizen zwingt.
-- **Vorgeschlagene Lösung:**
-  - Beide Ressourcen-Pools im Tactical-Strike-Slot aggregieren (`max = sum(max)`, `used = sum(used)`) oder als zwei separate Buttons ("Smite Evil" / "Smite Corrupt") im Slot anbieten.
+  - Der Spieler reklamierte mitten im Gefecht, dass er seine Klassenfähigkeiten nicht einsetzen kann, was den Spielfluss bremste und zu manuellen Notizen zwang.
+- **Behebung:**
+  - `StrikeAbilitySlot.tsx` differenziert nun zwischen `hasPaladinSmite` und `hasInquisitorSmite`. Besitzt der Charakter beide Klassen, werden im Slot zwei eigenständige Strike-Karten angeboten (*Smite Evil* und *Smite Corrupt*), jeweils mit korrekter Schadensformel, eigenem Ladungszähler und passender `smiteSource` (`'paladin'` bzw. `'inquisitor'`).
+- **Verifikation:** `Tests/shadowbane_inquisitor.test.js`
 
 ### 19. `cumulativeFeatures.ts` – Fehlerhafte Smite-Schadensanzeige im Tooltip
 - **Status:** **Behoben (Branch: `bugfixes`)**
@@ -703,37 +697,22 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - In `cumulativeFeatures.ts`, `PaladinRules.js` und `PCGeneral.js` die effektive Paladin-Stufe für Turn Undead aus `paladinLevel + shadowbaneInquisitorLevel` berechnen und ab Stufe 4 freischalten.
 
 ### 37. Shadowbane Inquisitor: Regelfälschungen bei Sacred Stealth, Burning Light & Smite
-- **Status:** **Offen (Empirisch belegt)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Regel- und Datenfehler in `caPrestige.ts` und `ShadowbaneInquisitorRules.js`: Erfundene Ressourcenkosten, falsche Wirkungsdauern, falsche Verdopplungsregeln und zu niedriges Stufe-10-Cap).
 - **Kategorie:** D&D 3.5e RAW & Daten-Integrität
-- **Betroffene Dateien:** [`src/components/player/features/registry/prestige/caPrestige.ts`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/features/registry/prestige/caPrestige.ts), [`js/rules/classes/ShadowbaneInquisitorRules.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/classes/ShadowbaneInquisitorRules.js)
+- **Betroffene Dateien:** [`src/components/player/features/registry/prestige/caPrestige.ts`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/features/registry/prestige/caPrestige.ts), [`js/rules/classes/ShadowbaneInquisitorRules.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/classes/ShadowbaneInquisitorRules.js)
 - **Beweisführung / Code-Fundstelle:**
-  - **Sacred Stealth Fälschung:** In `caPrestige.ts` Zeilen 55–56 steht:
-    `"Spend 1 Turn Undead attempt to gain a +${stealthBonus} sacred bonus on Hide and Move Silently for ${level} rounds."`
-    RAW Complete Adventurer S. 69:
-    *"To do this, he must lose a prepared divine spell from memory (or give up a potential spell slot for the day... He gains a +4 sacred bonus on Hide and Move Silently checks for a number of minutes equal to his Charisma bonus (if any) plus the level of spell given up in this manner."*
-    -> Die App erfand fälschlich Kosten von Turn Undead und eine Rundendauer statt Zauberslot-Opferung und Minutendauer.
-  - **Burning Light Fälschung:** In `caPrestige.ts` Zeile 115 steht:
-    `"Evil undead and evil outsiders take double damage (8d6)."`
-    RAW Complete Adventurer S. 69:
-    *"All creatures within the illuminated area (except for the inquisitor) take 4d6 points of damage. This damage results directly from divine power and is not subject to being reduced by energy resistance."*
-    -> Es gibt im Regelwerk keinen doppelten Schaden gegen böse Untote/Outsider.
-  - **Smite Cap auf Stufe 10:** In `ShadowbaneInquisitorRules.js` Zeilen 21–25:
-    ```javascript
-    getSmiteCorruptUses(level) {
-      if (level >= 6) return 2;
-      if (level >= 2) return 1;
-      return 0;
-    }
-    ```
-    Complete Adventurer Tabelle 2-18 RAW: Auf Stufe 10 erhält der Inquisitor 3 Anwendungen pro Tag. Zeile 21 gibt für Stufe 10 nur 2 zurück.
+  - **Sacred Stealth:** In `caPrestige.ts` wurden fälschlich Kosten von Turn Undead und Rundendauern beschrieben. RAW Complete Adventurer S. 69 erfordert die Opferung eines vorbereiteten göttlichen Zaubers/Zauberslots für eine Wirkungsdauer von (Cha-Mod + Zaubergrad) Minuten.
+  - **Burning Light:** In `caPrestige.ts` wurde fälschlich doppelter Schaden (8d6) gegen böse Untote/Outsider angegeben. RAW Complete Adventurer S. 69 verursacht die Fähigkeit 4d6 Heiligschaden (Untote reagieren analog *Searing Light*).
+  - **Smite Cap auf Stufe 10:** In `ShadowbaneInquisitorRules.js` gab `getSmiteCorruptUses` für Stufe 10 nur 2 statt 3 Anwendungen zurück.
 - **Auswirkungen für Spieler:**
-  - *Sacred Stealth* verlangt fälschlicherweise Turn-Undead-Versuche statt Zauberslots und hält nur Runden statt Minuten; *Burning Light* hat falsche Schadensregeln. Auf Stufe 10 fehlt dem Inquisitor dauerhaft die 3. tägliche Smite-Anwendung.
+  - *Sacred Stealth* verlangte fälschlicherweise Turn-Undead-Versuche statt Zauberslots und hielt nur Runden statt Minuten; *Burning Light* hatte falsche Schadensregeln. Auf Stufe 10 fehlte dem Inquisitor dauerhaft die 3. tägliche Smite-Anwendung.
 - **Auswirkungen für Spielleiter (DM):**
-  - Führt zu massiven Regeldiskussionen am Spieltisch, wenn Spieler ihre Fähigkeiten laut offiziellem Buch (*Complete Adventurer*) spielen wollen, die App aber falsche Ressourcen abbucht und Buff-Dauern nach wenigen Runden ablaufen lässt.
-- **Vorgeschlagene Lösung:**
-  - Beschreibungen und Kosten in `caPrestige.ts` an RAW anpassen.
-  - In `ShadowbaneInquisitorRules.js` `if (level >= 10) return 3;` ergänzen.
+  - Führte zu Regeldiskussionen am Spieltisch, wenn Spieler ihre Fähigkeiten laut offiziellem Buch (*Complete Adventurer*) spielen wollten.
+- **Behebung:**
+  - Beschreibungen und Mechaniken in `caPrestige.ts` an Complete Adventurer S. 68–69 RAW angepasst.
+  - In `ShadowbaneInquisitorRules.js` `if (level >= 10) return 3;` ergänzt.
+- **Verifikation:** `Tests/shadowbane_inquisitor.test.js`
 
 ### 38. Battle Trickster: Stufe 2 Bonus-Talent fehlt & Bonus Skill Tricks berechnen Skill-Punkte
 - **Status:** **Offen (Empirisch belegt)**
@@ -761,55 +740,35 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - `BattleTricksterRules.js` Schwelle auf Stufe 3 korrigieren.
 
 ### 39. WeaponRegistry `isLight`-Hack verfälscht Power Attack und Beidhändigkeit bei Rapier & Spiked Chain
-- **Status:** **Offen (Empirisch belegt)**
-- **Klassifizierung:** **Bug** (Architektur- und Modellierungsfehler: Das Setzen von `isLight: true` als Abkürzung für Weapon Finesse bricht nachgelagerte Power-Attack- und TWF-Regeln).
+- **Status:** **Behoben (Branch: `bugfixes`)**
+- **Klassifizierung:** **Bug** (Architektur- und Modellierungsfehler: Das Setzen von `isLight: true` als Abkürzung für Weapon Finesse brach nachgelagerte Power-Attack- und TWF-Regeln).
 - **Kategorie:** Combat Math & Waffen-Definitionen
-- **Betroffene Dateien:** [`js/models/Weapon.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/models/Weapon.js), [`js/rules/attack/ModifierCalculator.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/attack/ModifierCalculator.js), [`js/rules/attack/BaseAttackCalculator.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/attack/BaseAttackCalculator.js)
-- **Beweisführung / Code-Fundstelle:**
-  - In `Weapon.js` wurden `rapier` (Zeile 21), `whip` (Zeile 28) und `spiked_chain` (Zeile 37) mit `isLight: true` versehen, damit `Weapon Finesse` greift (`ctx.isLight`).
-  - **Empirischer Fehler 1 (Power Attack blockiert):**
-    In `ModifierCalculator.js` Zeile 142 steht:
-    ```javascript
-    if (ctx.isOffhand || (ctx.isLight && !ctx.isUnarmed && !ctx.isNatural)) {
-      paDmgBonus = 0;
-    }
-    ```
-    Da `spiked_chain` als `isLight: true` markiert ist, erhält eine zweihändige Dornenkette mit Power Attack **0 Schadensbonus**. D&D 3.5e RAW (PHB S. 98, Power Attack) nennt explizit die Spiked Chain als Gegenbeispiel: *"If you have a two-handed weapon, such as a spiked chain, that is treated as a light weapon for the purposes of the Weapon Finesse feat, you may still add the bonus for Power Attack to damage dealt with it (two-handed x2)."*
-    Auch ein einhändiger Rapier wird blockiert (`paDmgBonus = 0`), obwohl RAW einhändige Waffen Power Attack nutzen dürfen.
-  - **Empirischer Fehler 2 (Falscher TWF-Abzug bei Rapier in Schildhand):**
-    In `BaseAttackCalculator.js` Zeile 44: Waffengriff in der Nebenhand prüft `isLightWeapon(weapon)`. Da Rapier `isLight: true` hat, vergibt die App die leichten TWF-Abzüge (-2 / -2), statt der korrekten RAW-Abzüge für einhändige Waffen (-4 / -4 mit Talent, -6 / -10 ohne Talent; PHB S. 160).
-- **Auswirkungen für Spieler:**
-  - Kämpfer mit Dornenkette (Spiked Chain) erhalten bei *Power Attack* 0 Bonusschaden (statt des zweihändigen x2-Faktors), was den gesamten Build ruiniert. Wer einen Rapier in der Schildhand führt, profitiert unrechtmäßig von zu geringen Abzügen für leichte Waffen (-2/-2 statt -4/-4).
-- **Auswirkungen für Spielleiter (DM):**
-  - Dornenketten-Builds machen drastisch zu wenig Schaden; Nebenhand-Rapier-Builds treffen unberechtigt häufig. Die Waffen- und Kampfbalance wird verfälscht.
-- **Vorgeschlagene Lösung:**
-  - In `Weapon.js` die Eigenschaft `isFinessable: true` einführen und `isLight: true` bei Rapier und Spiked Chain entfernen.
-  - `SequenceBuilder.js` und `Weapon Finesse` auf `(ctx.isLight || ctx.weapon.isFinessable)` umstellen.
+- **Betroffene Dateien:** [`js/models/Weapon.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/models/Weapon.js), [`js/rules/attack/AttackContext.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/attack/AttackContext.js), [`js/rules/attack/SequenceBuilder.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/attack/SequenceBuilder.js)
+- **Problem:**
+  - In `Weapon.js` wurden `rapier`, `whip` und `spiked_chain` fälschlich als `isLight: true` definiert, um Weapon Finesse zu triggern.
+  - Power Attack verweigerte deshalb für Spiked Chain (zweihändig) und Rapier (einhändig) fälschlich jeglichen Power-Attack-Schadensbonus (0 Schaden).
+  - Ein Rapier in der Nebenhand erhielt fälschlich die geringen Abzüge für leichte Waffen (-2/-2 statt -4/-4).
+- **Behebung:**
+  - `isLight: true` bei Rapier, Whip und Spiked Chain entfernt und stattdessen `isFinessable: true` sowie `isFinessableWeapon()` eingeführt.
+  - `AttackContext.js` und `SequenceBuilder.js` prüfen nun `(ctx.isLight || ctx.isFinessable)` für Weapon Finesse.
+  - Power Attack ermittelt für Spiked Chain (`grip: '2h'`) korrekt den zweihändigen 2x-Faktor (z.B. +6 Schaden bei -3 Malus) und für Rapier (`grip: '1h'`) den einhändigen 1x-Faktor (z.B. +3 Schaden).
+  - TWF-Abzüge für Nebenhand-Rapier berechnen korrekt -4/-4 mit TWF-Feat.
+- **Verifikation:** `Tests/weapons.test.js`
 
 ### 40. Smite Evil / Smite Corrupt: Doppel-Abzug und Verbrauchsblockade
-- **Status:** **Offen (Empirisch belegt)**
+- **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Bug** (Ablauf- und Logikfehler in bestehendem Code: Doppelter Aufruf in `PCOffenseTab.tsx`, Deadlock bei `find()` in `PCFeatsSpells.js` und fälschliche Multiplikation auf alle Iterativangriffe).
 - **Kategorie:** Combat Actions & Ressourcen-Tracking
-- **Betroffene Dateien:** [`js/state/pc/PCFeatsSpells.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/state/pc/PCFeatsSpells.js), [`src/components/player/offense/PCOffenseTab.tsx`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/src/components/player/offense/PCOffenseTab.tsx), [`js/rules/attack/ModifierCalculator.js`](file:///c:/Users/Juls/Desktop/Session%20Prep%20Pfingsten/2027/CombatApp/js/rules/attack/ModifierCalculator.js)
-- **Beweisführung / Code-Fundstelle:**
-  - **Verbrauchsblockade für Inquisitor:**
-    In `PCFeatsSpells.js` Zeile 68:
-    ```javascript
-    const smiteAbility = pc.dailyAbilities.find(a => a.name === "Böses niederstrecken" || a.name === "Smite Evil" || a.name === "Smite (Inquisitor)" || a.name === "Smite Corrupt");
-    ```
-    `find` liefert immer die erste Ressource (`Smite Evil`). Sind alle Paladin-Smites aufgebraucht (`smiteAbility.used >= smiteAbility.max`), springt Zeile 76 sofort in `return { success: false, remaining: 0 };`. Die Inquisitor-Smites werden niemals erreicht.
-  - **Doppelter Verbrauch pro Angriff:**
-    In `PCOffenseTab.tsx` wird `CombatState.consumeSmiteEvilCharge()` sowohl in `handleRollAttack` (Zeile 147) als auch in `handleRollDamage` (Zeile 164) aufgerufen. Führt der Spieler den Angriffswurf aus und rollt danach den Schaden, werden zwei Tagesverbräuche abgezogen.
-  - **Fälschliche Multi-Klassen-Addition:**
-    In `ModifierCalculator.js` Zeilen 153–164 werden bei aktiviertem Smite die Paladin-Stufe UND die Inquisitor-Stufe additiv auf den Schaden geschlagen (+9 bei Paladin 4 / Inquisitor 5) und auf jeden einzelnen Iterativangriff des Angriffsablaufs angewendet.
-- **Auswirkungen für Spieler:**
-  - Ein einziger Smite-Angriff zieht 2 Ladungen ab (eine beim Angriff, eine beim Schaden). Sobald Paladin-Smites verbraucht sind, sind auch alle Inquisitor-Smites gesperrt. Zudem wird der Smite-Schaden fälschlich auf alle Mehrfachangriffe einer Runde aufgeschlagen.
-- **Auswirkungen für Spielleiter (DM):**
-  - Spieler beschweren sich über rasant leere Smite-Ressourcen und blockierte Klassenfeatures. Gleichzeitig verursachen Vollangriffe mit Smite unzulässig hohen Schaden auf allen Iterativangriffen.
-- **Vorgeschlagene Lösung:**
-  - `consumeSmiteEvilCharge` so anpassen, dass es die erste Ressource mit `used < max` wählt.
-  - Den Abzug nur beim Bestätigen des Angriffs (oder Schadens) einmalig ausführen.
-  - Im Schadensrechner gezielt die gewählte Smite-Quelle anwenden.
+- **Betroffene Dateien:** [`js/state/pc/PCFeatsSpells.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/state/pc/PCFeatsSpells.js), [`src/components/player/offense/PCOffenseTab.tsx`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/src/components/player/offense/PCOffenseTab.tsx), [`js/rules/attack/ModifierCalculator.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/attack/ModifierCalculator.js), [`js/rules/attack/SequenceBuilder.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/attack/SequenceBuilder.js), [`js/rules/AttackEngine.js`](file:///c:/Users/styles/PRIVATE/TheCombatant/TheCombatant/js/rules/AttackEngine.js)
+- **Problem:**
+  - `consumeSmiteEvilCharge` stoppte beim ersten Treffer mit `find()`: Waren Paladin-Smites aufgebraucht, wurden alle Inquisitor-Smites mit `return { success: false, remaining: 0 }` dauerhaft blockiert.
+  - In `PCOffenseTab.tsx` riefen sowohl `handleRollAttack` als auch `handleRollDamage` `consumeSmiteEvilCharge()` auf, was 2 tägliche Ladungen für einen einzigen Angriff verbrauchte.
+  - Smite-Boni wurden fälschlicherweise auf alle Iterativ- und Nebenhand-Angriffe eines Vollangriffs aufgeschlagen.
+- **Behebung:**
+  - `consumeSmiteEvilCharge` sucht gezielt nach `used < max` und unterstützt `preferredSource` (`'paladin'` vs. `'inquisitor'`).
+  - `pc._smiteChargedForDamage` markiert, dass der Smite-Angriff bereits beim Angriffswurf autorisiert wurde, und verhindert die Doppelabbuchung beim Schadenswurf.
+  - Smite-Boni (`smiteAtkBonus`, `smiteDmgBonus`) werden in `AttackEngine.js` und `SequenceBuilder.js` strikt nur noch auf den ersten Primärangriff (`index === 0`) der Sequenz angewendet und sind von Haste-, Flurry-, Rapid-Shot- und Offhand-Angriffen vollständig entkoppelt.
+- **Verifikation:** `Tests/shadowbane_inquisitor.test.js`
 
 ### 41. Initiative 0 oder negativ wird im Header verworfen
 - **Status:** **Behoben (Branch: `bugfixes`)**

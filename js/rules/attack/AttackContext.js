@@ -8,7 +8,7 @@
  * @notHere   Sequenz-Generierung -> SequenceBuilder.js
  */
 
-import { isLightWeapon } from '../../models/Weapon.js';
+import { isLightWeapon, isFinessableWeapon } from '../../models/Weapon.js';
 import { CombatSpells } from '../../spells.js';
 import { resolveModifierStacking } from '../RulesStacking.js';
 
@@ -113,6 +113,7 @@ export function buildContext(pc, weapon, options = {}, allCombatants = []) {
   const isMelee = !isRanged;
   const isUnarmed = weapon.grip === 'unarmed';
   const isLight = isLightWeapon(weapon);
+  const isFinessable = isLight || isFinessableWeapon(weapon);
 
   const hasFeat = (featId) => {
     if (Array.isArray(pc.feats) && pc.feats.some(f => (typeof f === 'string' ? f === featId : f?.id === featId))) {
@@ -189,6 +190,7 @@ export function buildContext(pc, weapon, options = {}, allCombatants = []) {
     isMelee,
     isUnarmed,
     isLight,
+    isFinessable,
     hasFeat,
     hasBuff,
     paPenalty,

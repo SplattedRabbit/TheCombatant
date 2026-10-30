@@ -19,6 +19,7 @@ export const ShadowbaneInquisitorRules = {
   },
 
   getSmiteCorruptUses(level) {
+    if (level >= 10) return 3;
     if (level >= 6) return 2;
     if (level >= 2) return 1;
     return 0;
