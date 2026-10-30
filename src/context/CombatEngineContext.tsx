@@ -99,15 +99,27 @@ export function CombatEngineProvider({ children }: ProviderProps) {
 
     bootstrap();
 
-    // Flush any pending saves before browser window closes or reloads
-    const handleBeforeUnload = () => {
-      storageService.flushPendingSaves();
+    // Flush any pending saves before browser window closes, backgrounds, or reloads
+    const flush = () => {
+      storageService.flushPendingSaves().catch((err: any) => {
+        logger.warn('[CombatEngineContext] Background flush error:', err);
+      });
     };
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        flush();
+      }
+    };
+
+    window.addEventListener('beforeunload', flush);
+    window.addEventListener('pagehide', flush);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       mounted = false;
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('beforeunload', flush);
+      window.removeEventListener('pagehide', flush);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 

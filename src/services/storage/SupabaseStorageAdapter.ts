@@ -250,6 +250,20 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
           if (existingCamp?.id) {
             this.setActiveCampaignId(existingCamp.id);
+          } else {
+            // Fallback: If DM has an active campaign, auto-bind to the most recent active one
+            const { data: recentCamp } = await this.client
+              .from('campaigns')
+              .select('id')
+              .eq('dm_user_id', this.userId)
+              .eq('is_active', true)
+              .order('updated_at', { ascending: false })
+              .limit(1)
+              .maybeSingle();
+
+            if (recentCamp?.id) {
+              this.setActiveCampaignId(recentCamp.id);
+            }
           }
         }
 
@@ -267,7 +281,8 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
           if (error) throw error;
           logger.log('%c[SupabaseStorage] Updated active campaign successfully:', 'color: #059669;', this.activeCampaignId);
         } else {
-          logger.log('%c[SupabaseStorage] No active campaign selected, skipping auto-campaign creation', 'color: #6b7280;');
+          logger.warn('[SupabaseStorage] No active campaign selected, skipping cloud save');
+          return;
         }
       } else {
         // Player Character Mode: safely find the LOCAL player's PC
@@ -361,6 +376,7 @@ export class SupabaseStorageAdapter implements IStorageAdapter {
 
       this.notify('saved');
     } catch (err: any) {
+      this.pendingStateToSave = state;
       console.error('[SupabaseStorage] Cloud save failed | Code:', err?.code, '| Message:', err?.message, '| Details:', err?.details, '| Hint:', err?.hint, err);
       this.notify('error', err instanceof Error ? err : new Error(String(err?.message || err)));
     }

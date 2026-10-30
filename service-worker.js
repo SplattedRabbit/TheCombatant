@@ -1,7 +1,7 @@
-const CACHE_NAME = 'dnd-combatsheet-v6.9.3-cache-v55';
+const CACHE_NAME = 'dnd-combatsheet-v6.9.3-cache-v61';
 const ASSETS = [
+  './dist/assets/app-core-8XcPAvWO.js',
   './dist/assets/app-core-B0_r4yT4.css',
-  './dist/assets/app-core-Cq62K8yY.js',
   './dist/assets/BaseDialogs-BzECGd7R.js',
   './dist/assets/data-registry-D415KScX.js',
   './dist/assets/icon-192-BiJXAwPn.png',
@@ -55,6 +55,12 @@ self.addEventListener('activate', event => {
 // Fetch event - Network-First (Network falling back to cache)
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+
+  // Never intercept external database or auth APIs (e.g. Supabase, WebSockets)
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin && !url.hostname.includes('googleapis.com') && !url.hostname.includes('gstatic.com')) {
+    return;
+  }
 
   event.respondWith(
     fetch(event.request).then(networkResponse => {

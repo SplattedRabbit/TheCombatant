@@ -45,8 +45,6 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
           activeCampId = fresh.id;
           await campaignService.switchActiveCampaign(activeCampId);
         }
-      } else {
-        await campaignService.switchActiveCampaign(activeCampId);
       }
 
       if (activeCampId) {
@@ -54,6 +52,7 @@ export const DMScreen: React.FC<DMScreenProps> = ({ state }) => {
         const activeCamp = campaigns.find((c) => c.id === activeCampId) || campaigns[0];
         const roomCode = activeCamp?.inviteCode || activeCampId;
         const userId = storageService.getCurrentUserId() || 'dm-host';
+        CombatState.updateSession(true, 'host', roomCode);
         await realtimeManager.joinCampaign(roomCode, 'host', {
           userId,
           userName: 'Dungeon Master',
