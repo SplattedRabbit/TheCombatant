@@ -149,7 +149,7 @@ globalThis.document.createElement = (tagName) => {
   return el;
 };
 
-test('Spell Buff Phase 3 - Prepared Cast prompts Dialog & Applies Buff locally', async () => {
+test('Spell Buff Casting - Prepared Cast prompts Dialog & Applies Buff locally', async () => {
   const pc = new Combatant({
     id: 'pc_prep_caster',
     name: 'Prepared Wizard',
@@ -206,7 +206,7 @@ test('Spell Buff Phase 3 - Prepared Cast prompts Dialog & Applies Buff locally',
   assert.deepStrictEqual(activeB.sharedWith, [pc.id], 'Target list should contain pc ID');
 });
 
-test('Spell Buff Phase 3 - Spontaneous Cast with Metamagic (Extend Spell) doubles duration', async () => {
+test('Spell Buff Casting - Spontaneous Cast with Metamagic (Extend Spell) doubles duration', async () => {
   const pc = new Combatant({
     id: 'pc_spon_caster',
     name: 'Sorcerer with Metamagic',
@@ -264,7 +264,7 @@ test('Spell Buff Phase 3 - Spontaneous Cast with Metamagic (Extend Spell) double
   assert.strictEqual(activeB.durationRemainingRounds, 160, 'Duration should be doubled due to Extend Spell');
 });
 
-test('Spell Buff Phase 3 - Targeting Allies only excludes Caster stats', async () => {
+test('Spell Buff Casting - Targeting Allies only excludes Caster stats', async () => {
   const pc = new Combatant({
     id: 'caster_pc',
     name: 'Caster',
@@ -348,6 +348,6 @@ test('Spell Buff Phase 3 - Targeting Allies only excludes Caster stats', async (
   assert.strictEqual(finalStr, 10, 'Caster STR should remain 10 since buff was cast on Ally only');
 });
 
-test('Spell Buff Phase 3 - Teardown', () => {
+test('Spell Buff Casting - Teardown', () => {
   globalThis.document.createElement = originalCreateElement;
 });

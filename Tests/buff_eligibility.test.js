@@ -17,7 +17,7 @@ const spellsPath = path.resolve(__dirname, '../data/spells-phb.json');
 const spellsData = JSON.parse(fs.readFileSync(spellsPath, 'utf8'));
 Object.assign(CombatSpells.REGISTRY, spellsData);
 
-test('Buff Rules Phase 1 - isBuffEligible checking', () => {
+test('Buff Eligibility - isBuffEligible checking', () => {
   const pc = new Combatant({
     id: 'pc_test_eligible',
     name: 'Eligible Hero',
@@ -54,7 +54,7 @@ test('Buff Rules Phase 1 - isBuffEligible checking', () => {
   assert.strictEqual(isBuffEligible(pc, 'inspire_courage_4', true), false, 'Bard lvl 15 does not have access to inspire courage 4');
 });
 
-test('Buff Rules Phase 1 - Stat Exclusion based on sharedWith', () => {
+test('Buff Eligibility - Stat Exclusion based on sharedWith', () => {
   const pc = new Combatant({
     id: 'my_pc_id',
     name: 'Stat Hero',
@@ -89,7 +89,7 @@ test('Buff Rules Phase 1 - Stat Exclusion based on sharedWith', () => {
   assert.strictEqual(pc.str.getValue(), 14, 'Strength should be 14 if sharedWith is undefined');
 });
 
-test('Buff Rules Phase 1 - Attack/Damage context target exclusion', () => {
+test('Buff Eligibility - Attack/Damage context target exclusion', () => {
   const pc = new Combatant({
     id: 'my_pc_id',
     name: 'Attack Hero',
@@ -120,7 +120,7 @@ test('Buff Rules Phase 1 - Attack/Damage context target exclusion', () => {
   assert.strictEqual(ctx.buffAtkBonus, 1, 'Should receive Haste bonus if included');
 });
 
-test('Buff Rules Phase 1 - Spell Buff Eligibility for Cleric/Druid/Fighter without learnedSpells', () => {
+test('Buff Eligibility - Spell Buff Eligibility for Cleric/Druid/Fighter without learnedSpells', () => {
   const cleric = new Combatant({
     id: 'cleric_test',
     name: 'Cleric Hero',
@@ -143,7 +143,7 @@ test('Buff Rules Phase 1 - Spell Buff Eligibility for Cleric/Druid/Fighter witho
   assert.strictEqual(isBuffEligible(fighter, 'bulls_strength', false), true, 'Fighter should be eligible for spell buffs');
 });
 
-test('Buff Rules Phase 1 - Combatant quickBuffs initialization and serialization', () => {
+test('Buff Eligibility - Combatant quickBuffs initialization and serialization', () => {
   const testQuickBuffs = [
     { key: 'haste', name: 'Hast', isClass: false },
     { key: 'bulls_strength', name: 'Bärenstärke', isClass: false }

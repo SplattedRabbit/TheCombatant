@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { showCustomAlert } from '@core/ui/components/dialogs.js';
+import { RACIAL_TRAITS_DATA } from './racialTraitsData';
 
 interface RacialTraitsCardProps {
   pc: any;
@@ -59,123 +60,28 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
     showCustomAlert('Manuelle Reparatur (Living Construct) 🛠️', resultMsg, 'Verstanden', '🛠️');
   };
 
+  const renderTraitList = () => {
+    const traits = RACIAL_TRAITS_DATA[race];
+    if (!traits) return null;
+    const conScore = pc.con?.total || pc.con?.base || 10;
+    const placeholders: Record<string, string> = { holdBreathRounds: String(conScore * 4) };
+    return (
+      <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
+        {traits.map(trait => (
+          <li key={trait.title}>
+            <strong>{trait.title}:</strong>{' '}
+            {trait.text.replace(/\{(\w+)\}/g, (_, key) => placeholders[key] ?? '')}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   const getRacialTraitsContent = () => {
-    if (race === 'human') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Extra Feat:</strong> 1 extra feat at level 1.</li>
-          <li><strong>Extra Skill Points:</strong> +4 skill points at level 1, +1 at each additional level.</li>
-        </ul>
-      );
-    } else if (race === 'dwarf') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
-          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
-          <li><strong>Stability:</strong> +4 bonus on ability checks made to resist being bull rushed or tripped.</li>
-          <li><strong>Racial Bonuses against Poison/Spells:</strong> +2 saving throw bonus against poison, spells, and spell-like effects.</li>
-          <li><strong>Stonecunning:</strong> +2 bonus on Search checks to notice unusual stonework.</li>
-          <li><strong>Speed:</strong> Movement speed is not reduced by wearing heavy armor or carrying a heavy load.</li>
-        </ul>
-      );
-    } else if (race === 'elf') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Constitution (already included).</li>
-          <li><strong>Immunities:</strong> Immune to magic sleep effects.</li>
-          <li><strong>Saving Throw Bonuses against Enchantment:</strong> +2 saving throw bonus against enchantment spells or effects.</li>
-          <li><strong>Keen Senses:</strong> +2 racial bonus on Search, Spot, and Listen checks (already included).</li>
-          <li><strong>Weapon Familiarity:</strong> Automatically proficient with longsword, rapier, longbow, and shortbow.</li>
-        </ul>
-      );
-    } else if (race === 'gnome') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Strength (already included).</li>
-          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
-          <li><strong>Saving Throw Bonuses against Illusion:</strong> +2 saving throw bonus against illusion spells or effects.</li>
-          <li><strong>Defensive Training against Giants:</strong> +4 dodge bonus to AC against monsters of the giant type.</li>
-          <li><strong>Keen Senses:</strong> +2 racial bonus on Listen and Craft (alchemy) checks.</li>
-        </ul>
-      );
-    } else if (race === 'halfling') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
-          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
-          <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
-          <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
-          <li><strong>Keen Senses:</strong> +2 racial bonus on Climb, Jump, Listen, and Move Silently checks (already included).</li>
-        </ul>
-      );
-    } else if (race === 'deep_halfling') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, -2 Strength (already included).</li>
-          <li><strong>Small Size:</strong> +1 size bonus to AC, +1 size bonus on attack rolls, +4 bonus on Hide checks (already included).</li>
-          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
-          <li><strong>Stonecunning:</strong> +2 racial bonus on Search checks to notice unusual stonework and find stone traps like a rogue.</li>
-          <li><strong>Craft &amp; Appraise Mastery:</strong> +2 racial bonus on Appraise and Craft checks related to stone or metal.</li>
-          <li><strong>Halfling Luck:</strong> +1 racial bonus on all saving throws (already included).</li>
-          <li><strong>Fearless:</strong> +2 morale bonus on saving throws against fear.</li>
-          <li><strong>Keen Senses:</strong> +2 racial bonus on Listen checks (already included; no bonuses on Climb, Jump, Move Silently).</li>
-          <li><strong>Languages:</strong> Speaks Dwarven fluently.</li>
-        </ul>
-      );
-    } else if (race === 'half_elf') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Immunities:</strong> Immune to magic sleep effects, +2 saving throw bonus against enchantment spells or effects.</li>
-          <li><strong>Keen Senses:</strong> +1 racial bonus on Listen, Spot, and Search checks (already included).</li>
-          <li><strong>Diplomatic Senses:</strong> +2 racial bonus on Diplomacy and Gather Information checks (already included).</li>
-          <li><strong>Elven Blood:</strong> For all effects, a half-elf is considered an elf.</li>
-        </ul>
-      );
-    } else if (race === 'half_orc') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Strength, -2 Intelligence, -2 Charisma (already included).</li>
-          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
-          <li><strong>Orc Blood:</strong> For all effects, a half-orc is considered an orc.</li>
-        </ul>
-      );
-    } else if (race === 'tiefling') {
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Dexterity, +2 Intelligence, -2 Charisma (already included).</li>
-          <li><strong>Type:</strong> Outsider (Native) (immune to person-targeting spells like Charm Person).</li>
-          <li><strong>Darkvision:</strong> Can see in the dark up to 60 feet.</li>
-          <li><strong>Resistances:</strong> Resistance to cold 5, electricity 5, and fire 5.</li>
-          <li><strong>Keen Senses:</strong> +2 racial bonus on Bluff and Hide checks (already included).</li>
-          <li><strong>Darkness:</strong> Can use Darkness as a spell-like ability 1/day.</li>
-          <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
-        </ul>
-      );
-    } else if (race === 'lizardfolk') {
-      const conScore = pc.con?.total || pc.con?.base || 10;
-      const holdBreathRounds = conScore * 4;
-      return (
-        <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-          <li><strong>Ability Score Adjustments:</strong> +2 Strength, +2 Constitution, -2 Intelligence (already included).</li>
-          <li><strong>Natural Armor:</strong> +5 racial natural armor bonus to AC (already included).</li>
-          <li><strong>Natural Weapons:</strong> 2 Claws (1d4 primary) and 1 Bite (1d4 secondary).</li>
-          <li><strong>Hold Breath (Ex):</strong> Can hold breath for up to 4 × Constitution score ({holdBreathRounds} rounds) before risking drowning.</li>
-          <li><strong>Keen Acrobatics &amp; Swimming:</strong> +4 racial bonus on Balance, Jump, and Swim checks (already included).</li>
-          <li><strong>Level Adjustment:</strong> +1 (increases ECL by 1).</li>
-          <li><strong>Favored Class:</strong> Druid.</li>
-        </ul>
-      );
-    } else if (race === 'anima_construct') {
+    if (race === 'anima_construct') {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <ul style={{ margin: 0, paddingLeft: '12px', fontSize: '9px', fontFamily: 'var(--font-body)', lineHeight: 1.3, color: 'var(--inkm)' }}>
-            <li><strong>Ability Score Adjustments:</strong> +2 Constitution, -2 Charisma (already included).</li>
-            <li><strong>Type:</strong> Construct (Living Construct subtype). Has Con score, susceptible to mind-affecting and critical hits.</li>
-            <li><strong>Immunities:</strong> Immune to poisons, diseases, and magic sleep effects.</li>
-            <li><strong>No Metabolism:</strong> Does not eat, drink, or breathe (immune to drowning).</li>
-            <li><strong>Halved Magical Healing:</strong> Any incoming magical healing is halved (rounded down).</li>
-            <li><strong>Natural Armor:</strong> +1 racial natural armor bonus (already included).</li>
-          </ul>
+          {renderTraitList()}
 
           <div style={{ borderTop: '0.5px dashed rgba(200, 169, 110, 0.4)', paddingTop: '8px', marginTop: '4px' }}>
             <strong style={{ fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--red)', fontFamily: 'var(--font-title)' }}>
@@ -223,7 +129,7 @@ export const RacialTraitsCard: React.FC<RacialTraitsCardProps> = ({ pc }) => {
         </div>
       );
     }
-    return null;
+    return renderTraitList();
   };
 
   return (

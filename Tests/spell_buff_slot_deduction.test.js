@@ -61,7 +61,7 @@ globalThis.document.createElement = (tagName) => {
   return el;
 };
 
-test('Spell Buff Phase 2 - Prepared caster slot deduction', async () => {
+test('Spell Buff Slot Deduction - Prepared caster slot deduction', async () => {
   const pc = new Combatant({
     id: 'pc_prep_test',
     name: 'Prepared Mage',
@@ -96,7 +96,7 @@ test('Spell Buff Phase 2 - Prepared caster slot deduction', async () => {
   assert.strictEqual(pc.activeBuffs[0].spellKey, 'bulls_strength');
 });
 
-test('Spell Buff Phase 2 - Spontaneous caster slot deduction', async () => {
+test('Spell Buff Slot Deduction - Spontaneous caster slot deduction', async () => {
   const pc = new Combatant({
     id: 'pc_spon_test',
     name: 'Sorcerer',
@@ -122,7 +122,7 @@ test('Spell Buff Phase 2 - Spontaneous caster slot deduction', async () => {
   assert.strictEqual(pc.activeBuffs.length, 1, 'Buff should be active');
 });
 
-test('Spell Buff Phase 2 - No slots available confirmation override', async () => {
+test('Spell Buff Slot Deduction - No slots available confirmation override', async () => {
   const pc = new Combatant({
     id: 'pc_no_slots_test',
     name: 'OOM Mage',
@@ -150,6 +150,6 @@ test('Spell Buff Phase 2 - No slots available confirmation override', async () =
 });
 
 // Restore createElement after all tests in this file run
-test('Spell Buff Phase 2 - Teardown', () => {
+test('Spell Buff Slot Deduction - Teardown', () => {
   globalThis.document.createElement = originalCreateElement;
 });

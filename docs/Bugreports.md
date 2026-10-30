@@ -291,7 +291,7 @@ Folgende 8 Regellogik-, Stacking- und Zustands-Bugs wurden im Rahmen der tiefgeh
   - Im DM-Tracker werden die Ressourcen des betroffenen Spielers als defekt oder leer angezeigt.
 - **Behebung:**
   - In `PCGeneral.js` wird `currentUsed` vor der Zuweisung validiert: `typeof pc.spellSlots[lvl].used === 'number' && !isNaN(...) ? pc.spellSlots[lvl].used : 0` und mit `Math.min(max, Math.max(0, currentUsed))` abgesichert.
-- **Verifikation:** `Tests/quick_wins_bugs.test.js`
+- **Verifikation:** `Tests/spell_slots.test.js`
 
 ### 17. Phantom-/Zombie-Charaktere nach Löschung im LocalStorage
 - **Status:** **Behoben (Branch: `bugfixes`)**
@@ -677,7 +677,7 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Desynchronisation zwischen Spielerbogen und DM-Combat-Tracker: Der DM sieht veraltete oder abweichende Rettungswürfe für den Spielercharakter.
 - **Behebung:**
   - In `PCGeneral.js` wird die Kopplung nach Re-Instanziierung strikt wiederhergestellt: `pc.baseFort = pc.baseZa;` und `pc.baseWill = pc.baseWil;`.
-- **Verifikation:** `Tests/quick_wins_bugs.test.js`
+- **Verifikation:** `Tests/saving-throws.test.js`
 
 ### 36. Shadowbane Inquisitor: `Turn Undead` fehlt in Feature-Registry und wird aktiv gelöscht
 - **Status:** **Offen (Empirisch belegt)**
@@ -785,7 +785,7 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - Unsicherheit bei der Initiativ-Reihenfolge.
 - **Behebung:**
   - Anbindung an die kanonische Hilfsfunktion `calculateInitiativeTotal` in `PCHeader.tsx`; reale Werte <= 0 werden verlässlich als Zahl dargestellt, während ungespielte Charaktere weiterhin sauber `'--'` anzeigen.
-- **Verifikation:** `Tests/quick_wins_bugs.test.js`
+- **Verifikation:** `Tests/rules.test.js`
 
 ### 42. Rassenboni-Inkonsistenzen bei Zwerg & Tiefen-Halbling
 - **Status:** **Behoben (Branch: `bugfixes`)**
@@ -801,7 +801,7 @@ Folgende 7 Netzwerk-, State- und Live-Synchronisations-Bugs wurden bei der Code-
   - In Dungeons scheiterten Zwerge an geheimen Steintüren oder Fallen, die sie hätten bemerken müssen.
 - **Behebung:**
   - In `CombatantSkills.js` für Zwerg `['craft', 'search', 'appraise']` freigeschaltet (RAW PHB S. 15).
-- **Verifikation:** `Tests/quick_wins_bugs.test.js`
+- **Verifikation:** `Tests/races.test.js`
 ### 43. Multiplayer-Charakter-Überschreibung & Roster-Persistenz im Mehrspieler-Tisch
 - **Status:** **Behoben (Branch: `bugfixes`)**
 - **Klassifizierung:** **Kritischer Bug** (Cross-Account-Charakter-Überschreibung & fehlende Adapter-Delegation im Roster-Speicher).

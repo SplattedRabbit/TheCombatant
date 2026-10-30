@@ -1,6 +1,4 @@
-// Tests/rules.test.js - Test suite for D&D 3.5e rules calculators (BAB, Saves, Spell Slots)
-
-import { test } from 'node:test';
+import { test, describe, it } from 'node:test';
 import assert from 'node:assert';
 import { BABCalculator } from '../js/rules/BABCalculator.js';
 import { SaveCalculator } from '../js/rules/SaveCalculator.js';
@@ -11,6 +9,9 @@ import { Combatant } from '../js/models/Combatant.js';
 import { Armor } from '../js/models/Armor.js';
 import { applyClassModifiers } from '../js/models/helpers/modifiers/ClassModifierApplier.js';
 import { calculateMaxSpellSlots } from '../js/rules/RulesSpells.js';
+import assertAlt13 from 'node:assert/strict';
+import { calculateBab, calculateSave } from '../js/rules/RulesMath.js';
+import { calculateInitiativeTotal } from '../src/components/player/attributeHelper.ts';
 
 test('BABCalculator - Einzelklassen-Berechnung', () => {
   // Fighter Level 3 (guter BAB-Verlauf): BAB = 3
@@ -471,3 +472,57 @@ test('ClassModifiers - Buckler-Ausnahme: Mönch-RK-Bonus bleibt bei Buckler erha
   );
 });
 
+describe('RulesMath Module', () => {
+  it('calculateBab: good progression scales levels directly', () => {
+    assertAlt13.equal(calculateBab('good', 1), 1);
+    assertAlt13.equal(calculateBab('good', 5), 5);
+    assertAlt13.equal(calculateBab('good', 20), 20);
+  });
+
+  it('calculateBab: avg progression scales to 75%', () => {
+    assertAlt13.equal(calculateBab('avg', 1), 0);
+    assertAlt13.equal(calculateBab('avg', 2), 1);
+    assertAlt13.equal(calculateBab('avg', 4), 3);
+    assertAlt13.equal(calculateBab('avg', 20), 15);
+  });
+
+  it('calculateBab: poor progression scales to 50%', () => {
+    assertAlt13.equal(calculateBab('poor', 1), 0);
+    assertAlt13.equal(calculateBab('poor', 2), 1);
+    assertAlt13.equal(calculateBab('poor', 5), 2);
+    assertAlt13.equal(calculateBab('poor', 20), 10);
+  });
+
+  it('calculateSave: good save formulas', () => {
+    assertAlt13.equal(calculateSave('good', 1), 2); // 2 + 0.5 * 1
+    assertAlt13.equal(calculateSave('good', 2), 3); // 2 + 0.5 * 2
+    assertAlt13.equal(calculateSave('good', 5), 4); // 2 + 0.5 * 5 = 4.5 -> 4
+    assertAlt13.equal(calculateSave('good', 20), 12);
+  });
+
+  it('calculateSave: poor save formulas', () => {
+    assertAlt13.equal(calculateSave('poor', 1), 0);
+    assertAlt13.equal(calculateSave('poor', 3), 1);
+    assertAlt13.equal(calculateSave('poor', 6), 2);
+    assertAlt13.equal(calculateSave('poor', 20), 6);
+  });
+});
+
+describe("Initiative calculation", () => {
+test('Bug #41: calculateInitiativeTotal correctly computes and displays 0 and negative totals', () => {
+  // Dexterity 8 gives -1 modifier. On a natural 1, total is 0.
+  const zeroInit = calculateInitiativeTotal(1, -1);
+  assert.strictEqual(zeroInit.total, 0, 'Total should be 0');
+  assert.strictEqual(zeroInit.display, '0', 'Display should be "0", not "--"');
+
+  // Dexterity 6 gives -2 modifier. On a natural 1, total is -1.
+  const negativeInit = calculateInitiativeTotal(1, -2);
+  assert.strictEqual(negativeInit.total, -1, 'Total should be -1');
+  assert.strictEqual(negativeInit.display, '-1', 'Display should be "-1", not "--"');
+
+  // Unrolled initiative (null / undefined / 0) still returns '--'
+  assert.strictEqual(calculateInitiativeTotal(null, 4).display, '--');
+  assert.strictEqual(calculateInitiativeTotal(undefined, 4).display, '--');
+  assert.strictEqual(calculateInitiativeTotal(0, 4).display, '--');
+});
+});

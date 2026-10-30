@@ -1,3 +1,11 @@
+import { test, describe } from 'node:test';
+import assert from 'node:assert';
+import { SaveCalculator } from '../js/rules/SaveCalculator.js';
+import { Combatant } from '../js/models/Combatant.js';
+import { Item } from '../js/models/Item.js';
+import { Stat } from '../js/models/Stat.js';
+import { recalculatePCStats } from '../js/state/pc/PCGeneral.js';
+
 /**
  * @module    saving-throws.test
  * @summary   Tests für SaveCalculator (Basis-Rettungswürfe) und ihre Anwendung in Combatant (Magic Items, Talente)
@@ -9,12 +17,6 @@
  */
 // Tests/saving-throws.test.js - Test suite for D&D 3.5e Saving Throw system
 
-import { test } from 'node:test';
-import assert from 'node:assert';
-import { SaveCalculator } from '../js/rules/SaveCalculator.js';
-import { Combatant } from '../js/models/Combatant.js';
-import { Item } from '../js/models/Item.js';
-import { Stat } from '../js/models/Stat.js';
 
 // ---------------------------------------------------------------------------
 // Hilfsfunktion: Erstellt einen einfachen PC ohne CON/DEX/WIS-Boni,
@@ -208,4 +210,30 @@ test('Saves - Talent lightning_reflexes (+2 Ref): Combatant wendet +2 auf ref an
 
   assert.strictEqual(pc.ref.getValue(), baseRef + 2, 'Ref sollte durch lightning_reflexes um 2 höher sein');
   assert.strictEqual(pc.wil.getValue(), pc.wil.base + 0, 'Wil sollte durch lightning_reflexes unverändert sein');
+});
+
+describe("Save alias coupling", () => {
+test('Bug #35: recalculateDerivedStats preserves and restores baseFort/baseWill alias pointer coupling', () => {
+  const pc = new Combatant({
+    name: 'Paladin Test',
+    classes: [{ classType: 'paladin', level: 5 }]
+  });
+
+  // Break reference alias as if deserialized from JSON without prototypes
+  delete pc.baseFort;
+  delete pc.baseWill;
+  pc.baseZa = { base: 4 };
+  pc.baseWil = { base: 1 };
+
+  recalculatePCStats(pc);
+
+  // Both baseZa and baseFort should refer to the exact same Stat instance
+  assert.ok(pc.baseZa instanceof Stat, 'baseZa should be Stat instance');
+  assert.ok(pc.baseFort instanceof Stat, 'baseFort should be Stat instance');
+  assert.strictEqual(pc.baseZa, pc.baseFort, 'baseZa and baseFort must share identical object identity');
+
+  assert.ok(pc.baseWil instanceof Stat, 'baseWil should be Stat instance');
+  assert.ok(pc.baseWill instanceof Stat, 'baseWill should be Stat instance');
+  assert.strictEqual(pc.baseWil, pc.baseWill, 'baseWil and baseWill must share identical object identity');
+});
 });

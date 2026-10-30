@@ -98,26 +98,24 @@ export function getEffectiveCasterLevel(pc, classType, spell = null) {
   return effectiveLevel;
 }
 
+/** Declarative caster class config: spell slot table + key casting ability. */
+const CASTER_CLASS_CONFIG = {
+  wizard:    { table: WIZ_CLER_DRU_TABLE,     keyAbility: 'int' },
+  cleric:    { table: WIZ_CLER_DRU_TABLE,     keyAbility: 'wis' },
+  druid:     { table: WIZ_CLER_DRU_TABLE,     keyAbility: 'wis' },
+  sorcerer:  { table: SORCERER_TABLE,         keyAbility: 'cha' },
+  bard:      { table: BARD_TABLE,             keyAbility: 'cha' },
+  paladin:   { table: PALADIN_RANGER_TABLE,   keyAbility: 'wis' },
+  ranger:    { table: PALADIN_RANGER_TABLE,   keyAbility: 'wis' },
+  assassin:  { table: ASSASSIN_TABLE,         keyAbility: 'int' },
+  duskblade: { table: DUSKBLADE_TABLE,        keyAbility: 'int' },
+  beguiler:  { table: BEGUILER_TABLE,         keyAbility: 'int' }
+};
+
 export function getMaxSpellLevel(classType, classLevel) {
-  let table;
-  if (['wizard', 'cleric', 'druid'].includes(classType)) {
-    table = WIZ_CLER_DRU_TABLE;
-  } else if (classType === 'sorcerer') {
-    table = SORCERER_TABLE;
-  } else if (classType === 'bard') {
-    table = BARD_TABLE;
-  } else if (['paladin', 'ranger'].includes(classType)) {
-    table = PALADIN_RANGER_TABLE;
-  } else if (classType === 'assassin') {
-    table = ASSASSIN_TABLE;
-  } else if (classType === 'duskblade') {
-    table = DUSKBLADE_TABLE;
-  } else if (classType === 'beguiler') {
-    table = BEGUILER_TABLE;
-  } else {
-    return -1;
-  }
-  const slots = table[classLevel];
+  const config = CASTER_CLASS_CONFIG[classType];
+  if (!config) return -1;
+  const slots = config.table[classLevel];
   return slots ? slots.length - 1 : -1;
 }
 
@@ -130,32 +128,9 @@ export function calculateMaxSpellSlots(pc) {
   let hasCaster = false;
 
   pc.classes.forEach(c => {
-    let table;
-    let keyAbility;
-    if (['wizard', 'cleric', 'druid'].includes(c.classType)) {
-      table = WIZ_CLER_DRU_TABLE;
-      keyAbility = c.classType === 'wizard' ? 'int' : 'wis';
-    } else if (c.classType === 'sorcerer') {
-      table = SORCERER_TABLE;
-      keyAbility = 'cha';
-    } else if (c.classType === 'bard') {
-      table = BARD_TABLE;
-      keyAbility = 'cha';
-    } else if (['paladin', 'ranger'].includes(c.classType)) {
-      table = PALADIN_RANGER_TABLE;
-      keyAbility = 'wis';
-    } else if (c.classType === 'assassin') {
-      table = ASSASSIN_TABLE;
-      keyAbility = 'int';
-    } else if (c.classType === 'duskblade') {
-      table = DUSKBLADE_TABLE;
-      keyAbility = 'int';
-    } else if (c.classType === 'beguiler') {
-      table = BEGUILER_TABLE;
-      keyAbility = 'int';
-    } else {
-      return; // Non-caster
-    }
+    const config = CASTER_CLASS_CONFIG[c.classType];
+    if (!config) return; // Non-caster
+    const { table, keyAbility } = config;
 
     hasCaster = true;
     const level = getEffectiveCasterLevel(pc, c.classType);
