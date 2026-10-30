@@ -14,7 +14,7 @@
 
 ```powershell
 # GEZIELTER TEST (Token-optimiert für Einzeldatei):
-node scripts/run_agent_tests.js Tests/bugfixes_v350.test.js
+node scripts/run_agent_tests.js Tests/<file>.test.js
 
 # GLOBALER TESTLAUF (Token-optimiert, einmalig vor Turn-Ende):
 node scripts/run_agent_tests.js
@@ -39,7 +39,7 @@ node scratch/search_dmg.js "<Suchabfrage>"
 Models  (js/models/)   → Daten & Domänenlogik, kein HTML, keine D&D-Regeln
 Rules   (js/rules/)    → Pure D&D-3.5e-Funktionen, kein DOM, kein State
 State   (js/state/)    → Mutiert Models, feuert Events — Zugang NUR via js/state.js
-UI      (js/ui/)       → Rendert DOM, liest State, ruft Dialoge auf
+UI      (src/ & js/ui/)→ Rendert DOM/React, liest State, ruft Dialoge auf
 Data    (js/data/)     → Statische Registries (Waffen, Rüstungen, Talente, Skills)
 
 Richtung: UI → State → Models ← Rules
@@ -54,31 +54,31 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 |-----------------------|----------------------------------------------------------|----------------------------------------------|
 | Wild Shape            | `js/models/helpers/classes/DruidHelper.js`                | `Combatant.js`, `src/components/player/features/DruidFeaturesCard.tsx` |
 | Natürliche Angriffe   | `src/components/player/offense/slots/NaturalAttacksSection.tsx` | `js/rules/attack/AttackContext.js`, `js/rules/attack/BaseAttackCalculator.js` |
-| Magische Gegenstände  | `js/models/Item.js`, `js/data/magicItems-data.js` (Fassade), `js/data/magicItems/`, `src/components/player/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
+| Magische Gegenstände  | `js/models/Item.js`, `js/data/magicItems-data.js` (Fassade), `js/data/magicItems/`, `src/components/player/armory/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
 | Waffen-UI             | `src/components/player/offense/WeaponStashCard.tsx`      | `AttackEngine.js`, `js/models/Weapon.js`, `js/state/pc/equipment/PCWeapons.js` |
-| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx`, `js/state/pc/equipment/PCArmor.js` | `PCOffenseTab.tsx`                           |
+| Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx`, `js/state/pc/equipment/PCArmor.js` | `src/components/player/offense/PCOffenseTab.tsx` |
 | Ausrüstung (State)    | `js/state/pc/PCEquipment.js` (Fassade), `js/state/pc/equipment/` (`PCWeapons.js`, `PCArmor.js`, `PCItems.js`) | `js/state/PCManager.js` |
-| Ausrüstung (React)    | `src/components/player/PCOffenseTab.tsx`, `src/components/player/offense/ActiveEquipmentSlots.tsx` | `PlayerSheet.tsx` |
-| Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffenseTab.tsx`, `js/ui/dialogs/AttackChoiceDialog.js` |
+| Ausrüstung (React)    | `src/components/player/offense/PCOffenseTab.tsx`, `src/components/player/offense/ActiveEquipmentSlots.tsx` | `src/components/player/PlayerSheet.tsx` |
+| Kampf-Stances & Powers| `src/components/player/offense/ClassCombatAbilitiesCard.tsx`, `src/components/player/offense/stances/` | `src/components/player/offense/PCOffenseTab.tsx` |
+| Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffenseTab.tsx`, `src/components/dialogs/AttackChoiceDialog.tsx` |
 | Rettungswürfe         | `js/rules/SaveCalculator.js`                             | `js/models/Combatant.js`, `helpers/modifiers/` |
-| Zauber / Slots        | `src/components/player/PCSpellbookTab.tsx`, `src/components/player/PCSpellsTab.tsx`, `helpers/spells/CombatantSpells.js`, `js/rules/RulesData.js` (Fassade), `js/rules/data/` | `js/rules/SpellSlotCalculator.js`, `Combatant.js` |
-| Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`    | `Combatant.js`, `src/components/player/features/` (z.B. `UnifiedFeatureCard.tsx`) |
-| Talente               | `js/data/feats-data.js` (Fassade), `js/data/feats/combat/`, `js/data/feats/general/`, `js/data/feats/magic/` (je nach Quellbuch `phb`/`phb2`/`ca`/`cs`) | `PCManager.js` (`addPCFeat`), `src/components/player/PCFeatsTab.tsx` |
-| Auren & Buffs         | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js`, `js/rules/BuffRules.js` | `js/network/SyncProtocol.js` (Sync über Supabase Realtime, kein WebRTC) |
-| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.tsx`, `PCOffenseTab.tsx` |
-| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.tsx`, `AttackEngine.js`, `PCOffenseTab.tsx` |
-| Initiative / RK       | `src/components/player/PCDefenses.tsx`, `src/components/player/PCDefensesTab.tsx` | `Combatant.js`, `helpers/modifiers/` |
-| HP & Globe            | `src/components/player/PCHealthGlobe.tsx`                | `PCManager.js` (`applyDamage`/`applyHeal`)  |
-| Netzwerk-Sync         | `js/network/SyncProtocol.js`                             | `js/network/MessageQueue.js`, `js/network/DeltaRenderer.js` (Supabase Realtime; PeerJS/WebRTC-`NetworkManager.js` entfernt) |
+| Zauber / Slots        | `src/components/player/spells/PCSpellbookTab.tsx`, `src/components/player/spells/PCSpellsTab.tsx`, `helpers/spells/CombatantSpells.js`, `js/rules/RulesData.js` (Fassade), `js/rules/data/` | `js/rules/SpellSlotCalculator.js`, `Combatant.js` |
+| Klassen-Features      | `js/models/helpers/classes/CombatantClassFeatures.js`, `src/components/player/features/registry/` | `Combatant.js`, `src/components/player/features/` (`UnifiedFeatureCard.tsx`, `racialTraitsData.ts`) |
+| Talente & Prereqs     | `js/data/feats-data.js` (Fassade), `js/data/feats/` (`combat/`, `general/`, `magic/`), `js/rules/RulesFeats.js`, `js/rules/featPrerequisites.js` | `PCManager.js` (`addPCFeat`), `src/components/player/feats/PCFeatsTab.tsx`, `src/components/player/wizard/helpers.feats.ts` |
+| Auren & Buffs         | `js/models/helpers/modifiers/SpellModifierApplier.js`, `js/rules/attack/AttackContext.js`, `js/rules/BuffRules.js` | `js/network/SyncProtocol.js` (Sync über Supabase Realtime) |
+| Zwei-Waffen-Kampf     | `AttackEngine.js` (`buildContext`)                       | `offense/WeaponStashCard.tsx`, `offense/PCOffenseTab.tsx` |
+| Doppelwaffen          | `Weapon.js` (`isDoubleWielded`)                          | `offense/WeaponStashCard.tsx`, `AttackEngine.js`, `offense/PCOffenseTab.tsx` |
+| Initiative / RK       | `src/components/player/defenses/PCDefenses.tsx`, `src/components/player/defenses/PCDefensesTab.tsx` | `Combatant.js`, `helpers/modifiers/` |
+| HP & Globe            | `src/components/player/attributes/PCHealthGlobe.tsx`     | `PCManager.js` (`applyDamage`/`applyHeal`)  |
+| Netzwerk-Sync         | `js/network/SyncProtocol.js`, `src/services/network/RealtimeManager.ts`, `src/services/network/RealtimeSyncBridge.ts` | `js/network/MessageQueue.js`, `js/network/DeltaRenderer.js` |
 | Service Worker / Cache| `service-worker.js`, `scratch/update_sw.js`              | `index.html`                                 |
-| DM-Screen & Init-Bar  | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx` | `src/App.tsx`, `src/components/player/PlayerSheet.tsx` |
+| DM-Screen & Stash     | `src/components/dm/DMScreen.tsx`, `DMCombatantsTable.tsx`, `InitBar.tsx`, `DMStashTab.tsx`, `js/state/DMStash.js` | `src/App.tsx`, `src/components/dialogs/modals/DistributeItemModal.tsx`, `LootRevealModal.tsx` |
 | Kampf-Verwaltung      | `js/state/EncounterManager.js`, `js/state/ConditionManager.js`, `js/state/ConcentrationManager.js`, `js/state/EncounterSamples.js` | `js/state.js`, `js/network/SyncProtocol.js`, `Tests/` |
-| Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-data.js` (Fassade, mergt `-dmg.js`/`-cs.js`/`-ca.js`) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `PCAttributes.tsx`, `Step3LevelConfig.tsx`, `Tests/prestige.test.js`, `Tests/prestigeClassEngine.test.js`, `Tests/prestige_guidance.test.js` |
+| Prestige Classes      | `js/rules/classValidation.js` (Voraussetzungen), `js/rules/prestigeClassEngine.js` (Stufen-Features), `js/data/prestigeClasses-data.js` (Fassade, mergt `-dmg.js`/`-cs.js`/`-ca.js`) | `src/components/player/features/PrestigeClassFeaturesCard.tsx`, `attributes/PCAttributes.tsx`, `wizard/Step3LevelConfig.tsx`, `Tests/prestige*.test.js` |
 | App-Skalierung & Zoom | `src/App.tsx`, `css/layout.css` (`zoom: var(--app-scale, 1)`) | `html, body` (kein `transform: scale` auf Root; native Pinch-Zoom-Unterstützung) |
 | Modals & Overlays     | `src/context/DialogContext.tsx`, `src/components/dialogs/modals/DialogOverlay.tsx`, `css/popups.css` | Alle Dialoge montieren via `createPortal(..., document.body)`; Skalierung nur auf `.custom-alert-box` etc. |
 
 ---
-
 
 ## 4. State-API — häufige Aktionen
 
@@ -121,10 +121,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 - **N++** bei Bugfix / kleinerer Änderung innerhalb einer Version
 - **N=1** wenn X, Y oder Z hochgehen
-- Immer **beide** Stellen gleichzeitig bumpen:
-  - `service-worker.js` Zeile 1: `const CACHE_NAME = '...'`
-  - `index.html` Footer-Versionsstring
-- ⚠️ **Bekannte Abweichung (Stand 2026-09-11):** `index.html` enthält aktuell keinen Footer-Versionsstring mehr. Ob dieser wieder eingeführt werden soll, ist offen (Nutzer-Entscheidung ausstehend) — bis dahin ist `service-worker.js` die einzige verlässliche Versionsquelle.
+- `service-worker.js` Zeile 1 (`const CACHE_NAME = '...'`) ist die zentrale Versionsquelle und wird beim Build über `scratch/update_sw.js` automatisch aktualisiert.
 
 ---
 
@@ -136,7 +133,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 - PHB/DMG-Rohtexte in den Kontext laden — `scratch/search_phb.js` / `scratch/search_dmg.js` nutzen
 - Zeilennummern in `AGENT.md` eintragen — veralten sofort, nur Funktionsnamen
 - Halbe Ränge bei cross-class skills verbessern den Wurf nicht — beim Modifikator immer `Math.floor`
-- `CombatState` direkt in Rules-Engines (`js/rules/`, `js/models/helpers/modifiers/`) importieren — Rules-Funktionen erhalten benötigte State-Daten (z. B. `allCombatants` für geteilte Buffs) als expliziten Parameter vom Aufrufer, Schreibzugriffe (z. B. `updatePCBatch`) als injizierten Callback (behobenes Anti-Pattern, siehe `Refactoring_Zielbild.md` WP7: `AttackContext.js`, `BuffRules.js`, `SpellModifierApplier.js`)
+- `CombatState` direkt in Rules-Engines (`js/rules/`, `js/models/helpers/modifiers/`) importieren — Rules-Funktionen erhalten benötigte State-Daten (z. B. `allCombatants` für geteilte Buffs) als expliziten Parameter vom Aufrufer, Schreibzugriffe (z. B. `updatePCBatch`) als injizierten Callback (`AttackContext.js`, `BuffRules.js`, `SpellModifierApplier.js`).
 - `window.__REACT_DIALOG_BRIDGE__` direkt aus React-Komponenten aufrufen. React-Komponenten müssen immer den `useDialog()` Hook verwenden. Die Bridge existiert ausschließlich als Fallback-Fassade für Vanilla JS (`js/ui/components/dialogs.js`).
 - `transform: scale()` auf Vollbild-Overlays (`position: fixed; inset: 0; background: rgba(...)`) anwenden — das schrumpft den Backdrop bei Skalierung < 1.0 zusammen, hinterlässt unbeschattete Ränder und blockiert den nativen Pinch-Zoom auf Touchgeräten (iPad/Safari/Windows/Android).
 - Modals oder Dialoge direkt als unportaliertes Kind-Element tief innerhalb von `#appRoot` rendern. Modals müssen ausnahmslos via React `createPortal(content, document.body)` an `document.body` gehängt werden.
@@ -144,7 +141,7 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ---
 
-## 6.1 Explizite Regel- & Homebrew-Entscheidungen (NIEMALS RÜCKGÄNGIG MACHEN)
+## 6.1 Explizite Regel-, Homebrew- & Tabletop-First-Entscheidungen (NIEMALS RÜCKGÄNGIG MACHEN)
 
 - **Zusammenlegung von Sneak Attack & Sudden Strike (Expliziter Nutzer-Homebrew):**
   - **Kontext:** Gemäß D&D 3.5e RAW (Complete Adventurer S. 8) addieren sich die Schadenswürfel von *Sneak Attack* und *Sudden Strike*, wenn die Bedingungen beider Fähigkeiten erfüllt sind (z. B. Gegner verliert Dex-Bonus zur RK), während reines Flankieren nur für Sneak Attack gilt.
@@ -154,6 +151,12 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
     - Titel bei nur Schurke / PrC: `Sneak Attack`.
   - **Regel-Annahme:** Für die Berechnung wird davon ausgegangen, dass die Konditionen bei Durchführung erfüllt sind. Alle Würfel (`pc.getSneakAttackDiceCount()`) werden voll aufeinandergerechnet und zusammen ausgewürfelt.
   - **WICHTIG FÜR AGENTS:** Diese Zusammenlegung ist eine feste Benutzer-Entscheidung und darf **niemals** auf zwei getrennte, sich gegenseitig ausschließende Strike-Karten im Tactical Slot zurückgebaut werden!
+- **Getrennte Strike-Karten für Smite Evil (Paladin) & Smite Corrupt (Shadowbane Inquisitor):**
+  - Im Gegensatz zu Sneak/Sudden Strike besitzen *Smite Evil* und *Smite Corrupt* getrennte tägliche Ressourcen-Pools und unterschiedliche Zielkriterien. Bei Multiclass-Charakteren müssen beide als **separate** Optionen in `StrikeAbilitySlot.tsx` wählbar sein (`preferredSource: 'paladin' | 'inquisitor'`).
+- **Tabletop-First Prinzip (Kein digitaler Würfelbot / Physisches Würfeln am Tisch):**
+  - In der App dürfen **keine digitalen Zufallswürfelbots (`Math.random()`)** für Angriffe, Schaden, Heilung, Atemwaffen, Wild Empathy oder Tränke eingebaut werden. Die App zeigt stets die exakten **Würfelformeln, Modifikatoren, Breakdowns und Ziel-DCs** an, damit die Spieler physisch am Tisch würfeln.
+- **Tischanforderungen (Conditions & Reichweiten Out-of-Scope für Rechen-Engine):**
+  - Temporäre Zustände (*Blinded, Prone, Shaken, Sickened, Feared, Staggered*) sowie Entfernungen/Sichtlinien (z. B. 30 ft. / 60 ft. für Precision Damage) werden bewusst am physischen Spieltisch/Battlemat abgehandelt und nicht automatisch in die Angriffs-/Skill-Engine eingerechnet.
 
 ---
 
@@ -171,12 +174,12 @@ Format: `dnd-combatsheet-vX.Y.Z-cache-vN`
 
 ---
 
-## 6.3 Rüstungs- & Schild-Unterscheidung (`isShieldItem` Standard)
+## 6.3 Rüstungs- & Schild-Unterscheidung (`isShieldItem` Standard) & `isFinessable`
 
-- **Problem & Invariante:** Schilde und Körperrüstungen werden im selben `pc.armor`-Array verwaltet, sind aber zwei grundverschiedene Ausrüstungs-Slots, die gemäß D&D 3.5e RAW **gleichzeitig** angelegt werden dürfen (AC-Boni stacken, MaxDex nimmt das Minimum, ACP ist kumulativ).
-- **Verbindliche Prüffunktion:** Zum Prüfen, ob ein Gegenstand ein Schild ist, **muss ausnahmslos `isShieldItem(item)`** (aus `js/models/Armor.js`, re-exportiert in `js/models/model-core.js`) verwendet werden.
-- **Anti-Pattern:** Niemals `item.isShield` oder `item.isShield === target.isShield` direkt abfragen! Bei serialisierten State-Snapshots oder Plain-Objects aus Storage/Netzwerk existiert der Prototyp-Getter `isShield` nicht (`undefined`). Ein Vergleich `undefined === undefined` führte historisch dazu, dass Schilde Körperrüstungen ablegten und umgekehrt.
-- **Zweihandwaffen:** Zweihändige Waffen (`grip === '2h'`) legen beim Ausrüsten via `isShieldItem` automatisch nur den Schild ab; die Körperrüstung bleibt unberührt.
+- **Schilde vs. Rüstung (`isShieldItem`):** Schilde und Körperrüstungen werden im selben `pc.armor`-Array verwaltet, sind aber zwei grundverschiedene Ausrüstungs-Slots, die gemäß D&D 3.5e RAW **gleichzeitig** angelegt werden dürfen (AC-Boni stacken, MaxDex nimmt das Minimum, ACP ist kumulativ).
+  - Zum Prüfen, ob ein Gegenstand ein Schild ist, **muss ausnahmslos `isShieldItem(item)`** (aus `js/models/Armor.js`, re-exportiert in `js/models/model-core.js`) verwendet werden. Niemals `item.isShield` direkt auf Plain Objects abfragen!
+  - Zweihändige Waffen (`grip === '2h'`) legen beim Ausrüsten via `isShieldItem` automatisch nur den Schild ab; die Körperrüstung bleibt unberührt.
+- **Weapon Finesse vs. Leichte Waffen (`isFinessable`):** Waffen wie *Rapier*, *Whip* und *Spiked Chain* sind **nicht** leicht (`isLight: false`), sondern tragen das Flag `isFinessable: true` (`isFinessableWeapon(w)`). Dadurch profitieren sie von *Weapon Finesse*, behalten aber ihre korrekten Power-Attack-Multiplikatoren (1x für Rapier, 2x für Spiked Chain) und TWF-Abzüge.
 
 ---
 
@@ -196,11 +199,14 @@ Die 4 taktischen Slots im Combat-Tab (`MainHandSlot.tsx`, `OffHandSlot.tsx`, `Ar
 
 ---
 
-## 7. Offene Bugs & Roadmap
+## 7. Dokumentations-Struktur (Single Source of Truth)
 
-- Ältere Refactoring-Masterpläne und Code-Audits wurden am 2026-09-02 bewusst archiviert und entfernt (Single Source of Truth statt Kontext-Altlasten).
-- Versionshistorie & Features: `docs/CHANGELOG.md`
-- Entwicklerhandbuch (UI-Details, Skalierung, Dialog-Maße): `docs/DEVELOPER_GUIDE.md`
+Das Projekt nutzt bewusst nur **5 zentrale Markdown-Dokumente**, um Redundanzen zu vermeiden:
+- **`AGENT.md`** — Verbindliche KI-Agenten-Anleitung, Feature-Index, Invarianten & Selbstwartungsregeln.
+- **`Planned_Features.md`** — Zentrales Backlog für offene Bugs/Regellücken, geplante Refactorings und zukünftige Features.
+- **`README.md`** — Projektübersicht und Feature-Zusammenfassung für Nutzer & Entwickler.
+- **`docs/ARCHITECTURE.md`** — Technische Referenz: 6-Schichten-Architektur, Entwickler-Setup, Qualitäts-Gates & Test-Strategie.
+- **`docs/CHANGELOG.md`** — Vollständige Versions- und Release-Historie.
 
 ---
 
@@ -248,7 +254,7 @@ An **nicht-offensichtlichen Stellen** (Feature-Logik in generischer Datei, Cross
 ### 9.1 UI-Komponenten (`src/components/`) — Harter Standard
 | Größe | Bedeutung | Status |
 |---|---|---|
-| **<= 450Z** | **Harter Standard für alle UI-Komponenten in `src/components/`** | **100% eingehalten (0 Dateien > 450Z)** |
+| **<= 450Z** | **Harter Standard für alle UI-Komponenten in `src/components/`** | **100% eingehalten** |
 | < 300Z | Ideal — modular, lesbar ohne Scroll, agent-freundlich. | Standard für extrahierte Subviews |
 | > 450Z | **Unzulässig:** Sofort in Domain-Subkomponenten im passenden Subfolder aufteilen. | — |
 

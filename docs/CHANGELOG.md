@@ -3,6 +3,27 @@
 All notable changes to **The Combatant** are documented in this file.
 The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- **Modularization & Table-Driven Prerequisites (`b5fe99b`, `043c338`):**
+  - Extracted combat stance and class power panels from `ClassCombatAbilitiesCard.tsx` into `src/components/player/offense/stances/` (`RageStanceSection.tsx`, `MonkStanceSection.tsx`, `BardicMusicSection.tsx`, `FavoredEnemySection.tsx`, `SpecialPowersSection.tsx`).
+  - Extracted feat prerequisite validation from `js/rules/RulesFeats.js` into a table-driven registry in `js/rules/featPrerequisites.js`.
+  - Extracted static racial trait metadata into `src/components/player/features/racialTraitsData.ts` and consolidated test suites.
+- **Tabletop-First Principle — Removal of Digital Dice Bots (`4fb657a`, `0092265`):**
+  - Removed all remaining `Math.random()` digital dice rollers (Dragon Shaman Breath Weapon, Ranger Wild Empathy, Living Construct Repair, and Potion fallback) in favor of pure tabletop formula, modifier, and DC displays.
+
+### Fixed
+- **D&D 3.5e RAW Combat, Class & Racial Audits (Bugs #10–#31, #35, #37, #39–#44):**
+  - **Finessable vs. Light Weapons (#39):** Introduced `isFinessable: true` (`isFinessableWeapon`) for *Rapier*, *Whip*, and *Spiked Chain* while setting `isLight: false`, restoring RAW 2x two-handed Power Attack damage for Spiked Chain, 1x one-handed Power Attack for Rapier, and accurate TWF penalties.
+  - **Smite Evil & Smite Corrupt Separation & Charge Safeguards (#18, #37, #40):** Provisioned separate tactical strike cards for Paladin *Smite Evil* and Shadowbane Inquisitor *Smite Corrupt*, fixed Lv.10 Inquisitor Smite cap (3/day), prevented double charge consumption across attack/damage rolls, and restricted Smite bonuses strictly to the first primary attack of a sequence.
+  - **Shadowbane Inquisitor RAW Fixes (#37):** Corrected *Sacred Stealth* (divine spell slot sacrifice, minute duration) and *Burning Light* (4d6 holy damage).
+  - **Dragon Shaman & Aura Mechanics (#21, `36f7712`):** Integrated Breath Weapon into the active loadout strike slot, enforced single active Draconic Aura (dual at Lv.20), and connected skill/initiative aura bonuses.
+  - **Armor, Shield & Monk AC Rules (#14, `fb8d62c`):** Suspended Monk/Ninja Wisdom and class AC bonuses when wearing armor or shields (including Buckler RAW handling per PHB p. 123).
+  - **Modifier Stacking & Spell Scaling (#10, #11, #12, #15, #16):** Fixed *Righteous Might* (`natural_enhancement`, min +2), *Magic Vestment* / *Greater Magic Weapon* (min +1), additive Circumstance bonus stacking from distinct sources, Generalist Wizard specialist slot exclusion, and `NaN` spell slot guards.
+  - **Racial Traits & Saves (#22, #24, #28, #35, #41, #42):** Restored Lizardfolk 2x Claws + Bite, Deep Halfling +1 racial saves, Dwarf *Stonecunning* (`search` & `appraise`), `baseZa`/`baseFort` reference coupling after deserialization, and header display for Initiative values `<= 0`.
+  - **DM Encounter & Multiplayer Persistence (#25–#31, #43, #44, `43c6e4f`):** Fixed DM encounter data loss on tab-switch and F5 reload, isolated player roster saves via `localPCId`, and prevented host diffs from overwriting rich local PC data.
+
 ## [6.9.3] - 2026-09-18
 
 ### Added
