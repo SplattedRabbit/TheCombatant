@@ -1,0 +1,56 @@
+{
+  "format": "dnd35e-inventory-package",
+  "version": 1,
+  "packageName": "Frontline Crusader Loadout (Lv. 6)",
+  "description": "Complete Sword & Board martial package with Full Plate +1, Heavy Steel Shield +1, Flaming Longsword +1, backup Composite Longbow, and core defensive wondrous items.",
+  "autoEquip": true,
+  "weapons": [
+    {
+      "presetKey": "longsword",
+      "name": "Sunblade of Pelor +1",
+      "enhancement": 1,
+      "extraDamageDice": "1d6",
+      "extraDamageType": "Fire",
+      "hand": "main",
+      "isEquipped": true
+    },
+    {
+      "presetKey": "comp_longbow",
+      "name": "Mighty Composite Longbow (+2 Str)",
+      "strengthRating": 2,
+      "isEquipped": false
+    },
+    {
+      "presetKey": "heavy_mace",
+      "type": "heavy_mace",
+      "name": "Cold Iron Heavy Mace",
+      "isEquipped": false
+    }
+  ],
+  "armors": [
+    {
+      "presetKey": "full_plate",
+      "name": "Dwarven Full Plate +1",
+      "enhancement": 1,
+      "isEquipped": true
+    },
+    {
+      "presetKey": "shield_heavy_steel",
+      "name": "Heavy Steel Shield of the Dawn +1",
+      "enhancement": 1,
+      "isEquipped": true
+    }
+  ],
+  "items": [
+    "gauntlets_of_ogre_power",
+    "cloak_of_resistance_2",
+    "amulet_of_natural_armor_1",
+    "ring_of_protection_1",
+    "ring_of_sustenance",
+    "boots_of_striding_and_springing",
+    "belt_of_battle",
+    "potion_cure_moderate_wounds",
+    "potion_cure_moderate_wounds",
+    "potion_cure_light_wounds"
+  ]
+}

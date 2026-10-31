@@ -60,10 +60,11 @@ Alle früheren System-, Sync- und Klassen-Audits (Bugs #1–#33, #35, #37, #39�
 ## 📋 3. Feature-Backlog (Geplante Erweiterungen)
 
 ### 🎒 3.1 Gruppen-Loot & Münz-Verteilung (Erweiterung des DM Stash)
-- **Status:** 🟩 `Großteils umgesetzt (~80 %)` | **Zielgruppe:** DM & Spieler
+- **Status:** 🟩 `Großteils umgesetzt (~90 %)` | **Zielgruppe:** DM & Spieler
 - **Bereits umgesetzt:**
   - **DM Stash & Loot Vault:** Vollständige Verwaltung von Waffen, Rüstungen und Wondrous Items im DM-Screen (`DMStashTab.tsx`, `js/state/DMStash.js`).
   - **1-Klick-Zuweisung & Loot Reveal:** Direkte Vergabe an Spieler (`DistributeItemModal.tsx` via `item_gift` Realtime-Broadcast) inklusive animierter Schatztruhen-Enthüllung (`LootRevealModal.tsx`).
+  - **Inventar- & Loadout-Pakete (`dnd35e-inventory-package`):** Export und Import von Ausrüstungspaketen (.json) für DM-Stash und Spielercharaktere mit atomarer Transaktion, D&D 3.5e RAW Slot-Auto-Equip und automatischer Neuberechnung aller Werte (`PCInventoryPackage.js`, `ImportInventoryPackageModal.tsx`, `ArmoryTab.tsx`, `DMStashTab.tsx`).
 - **Noch offen:**
   - **Münz-Verteilung:** Übergabe von Platin-, Gold-, Silber- und Kupfermünzen (`pp`, `gp`, `sp`, `cp`) aus dem DM Stash direkt an einzelne Spieler oder gleichmäßig aufgeteilt an die Gruppe.
   - **Geteilte Gruppen-Beutetruhe:** Sichtbarkeit nicht zugewiesener Gruppen-Beute für Spieler zum eigenständigen Beanspruchen („Claim").

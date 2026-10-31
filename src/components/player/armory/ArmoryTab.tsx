@@ -16,6 +16,7 @@ import { BackpackPanel } from './BackpackPanel';
 import { CompendiumPanel } from './CompendiumPanel';
 import { SlotEquipModal } from './SlotEquipModal';
 import { ItemEditorModal } from './ItemEditorModal';
+import { ImportInventoryPackageModal } from '../../dialogs/modals/ImportInventoryPackageModal';
 import { isConsumableItem, getItemTypeIcon, FILTER_CHIPS } from './armoryHelpers';
 
 // Re-export helpers for backward compatibility across the app
@@ -32,6 +33,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
   const [activeEquipSlot, setActiveEquipSlot] = useState<string | null>(null);
   const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; defaultSlot?: string } | null>(null);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [actionFeedback, setActionFeedback] = useState<string | null>(null);
   const [draggedBackpackIdx, setDraggedBackpackIdx] = useState<number | null>(null);
   const [dragOverBackpackIdx, setDragOverBackpackIdx] = useState<number | null>(null);
@@ -39,14 +41,26 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const feedbackTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const showToast = (msg: string) => {
-    if (feedbackTimerRef.current) {
-      clearTimeout(feedbackTimerRef.current);
-    }
+    if (feedbackTimerRef.current) clearTimeout(feedbackTimerRef.current);
     setActionFeedback(msg);
     feedbackTimerRef.current = setTimeout(() => {
       setActionFeedback(null);
       feedbackTimerRef.current = null;
     }, 3500);
+  };
+
+  const handleExportGear = () => {
+    const pkg = CombatState.exportPCInventoryPackage();
+    if (!pkg) return;
+    const blob = new Blob([JSON.stringify(pkg, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const safeName = String(pc?.name || 'character').toLowerCase().replace(/[^a-z0-9_-]/g, '_');
+    a.href = url;
+    a.download = `dnd35e_gear_${safeName}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast(`Exported loadout package (${pkg.weapons.length + pkg.armors.length + pkg.items.length} items).`);
   };
 
   const handleUseItem = (idx: number) => {
@@ -62,9 +76,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         formula: healDetails.formula,
         onConfirm: (val: string) => {
           const res = CombatState.usePCItemAction(idx, val);
-          if (res && res.message) {
-            showToast(`✨ ${res.message}`);
-          }
+          if (res && res.message) showToast(`✨ ${res.message}`);
         }
       });
       return;
@@ -82,18 +94,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         saveText: dmgDetails.saveText,
         onConfirm: () => {
           const res = CombatState.usePCItemAction(idx);
-          if (res && res.message) {
-            showToast(`✨ ${res.message}`);
-          }
+          if (res && res.message) showToast(`✨ ${res.message}`);
         }
       });
       return;
     }
 
     const res = CombatState.usePCItemAction(idx);
-    if (res && res.message) {
-      showToast(`✨ ${res.message}`);
-    }
+    if (res && res.message) showToast(`✨ ${res.message}`);
   };
 
   const items = Array.isArray(pc.items) ? pc.items : [];
@@ -174,9 +182,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const handleUnequipSlot = (idx: number) => {
     const item = pc.items && pc.items[idx];
     CombatState.unequipPCItem(idx);
-    if (item) {
-      showToast(`🎒 ${item.name} moved to Stash.`);
-    }
+    if (item) showToast(`🎒 ${item.name} moved to Stash.`);
   };
 
   const handleEmptySlotClick = (slotKey: string) => {
@@ -193,23 +199,11 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
       {actionFeedback && (
         <div
           style={{
-            position: 'sticky',
-            top: '4px',
-            zIndex: 100,
-            background: 'rgba(253, 246, 226, 0.98)',
-            border: '1.5px solid #10b981',
-            boxShadow: '0 3px 10px rgba(0, 0, 0, 0.18)',
-            borderRadius: '4px',
-            padding: '7px 14px',
-            marginBottom: '10px',
-            color: '#065f46',
-            fontSize: '11.5px',
-            fontFamily: 'var(--font-title)',
-            fontWeight: 'bold',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            backdropFilter: 'blur(4px)'
+            position: 'sticky', top: '4px', zIndex: 100, background: 'rgba(253, 246, 226, 0.98)',
+            border: '1.5px solid #10b981', boxShadow: '0 3px 10px rgba(0, 0, 0, 0.18)', borderRadius: '4px',
+            padding: '7px 14px', marginBottom: '10px', color: '#065f46', fontSize: '11.5px',
+            fontFamily: 'var(--font-title)', fontWeight: 'bold', display: 'flex',
+            justifyContent: 'space-between', alignItems: 'center', backdropFilter: 'blur(4px)'
           }}
         >
           <span>{actionFeedback}</span>
@@ -244,21 +238,17 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         <BaseCard
           title="🎒 Armory Stash & Compendium"
           headerRight={
-            <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
               <button
                 type="button"
                 onClick={() => setRightPanelMode('backpack')}
                 className="btn"
                 style={{
-                  fontSize: '9px',
-                  padding: '2px 8px',
-                  fontFamily: 'var(--font-title)',
+                  fontSize: '9px', padding: '2px 8px', fontFamily: 'var(--font-title)',
                   background: rightPanelMode === 'backpack' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
                   borderColor: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
                   color: rightPanelMode === 'backpack' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
-                  fontWeight: rightPanelMode === 'backpack' ? 'bold' : 'normal',
-                  boxShadow: rightPanelMode === 'backpack' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-                  cursor: 'pointer'
+                  fontWeight: rightPanelMode === 'backpack' ? 'bold' : 'normal', cursor: 'pointer'
                 }}
               >
                 🎒 Backpack ({backpackEntries.length})
@@ -268,15 +258,11 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                 onClick={() => setRightPanelMode('compendium')}
                 className="btn"
                 style={{
-                  fontSize: '9px',
-                  padding: '2px 8px',
-                  fontFamily: 'var(--font-title)',
+                  fontSize: '9px', padding: '2px 8px', fontFamily: 'var(--font-title)',
                   background: rightPanelMode === 'compendium' ? 'var(--pb, #c8a96e)' : 'rgba(253, 246, 226, 0.6)',
                   borderColor: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--pb, #c8a96e)',
                   color: rightPanelMode === 'compendium' ? 'var(--red, #8b1a1a)' : 'var(--ink, #1a0f00)',
-                  fontWeight: rightPanelMode === 'compendium' ? 'bold' : 'normal',
-                  boxShadow: rightPanelMode === 'compendium' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
-                  cursor: 'pointer'
+                  fontWeight: rightPanelMode === 'compendium' ? 'bold' : 'normal', cursor: 'pointer'
                 }}
               >
                 📖 Compendium
@@ -285,34 +271,54 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingBottom: '4px' }}>
-            {/* Controls Bar: Search & New Item Button */}
-            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+            {/* Controls Bar: Search, Custom Item & Compact Loadout Buttons */}
+            <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
               <input
                 type="text"
                 placeholder={rightPanelMode === 'backpack' ? 'Search backpack items...' : 'Search compendium items...'}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="cinput"
-                style={{ flex: 1, padding: '3px 7px', fontSize: '10.5px', height: '24px', boxSizing: 'border-box' }}
+                style={{ flex: 1, minWidth: '80px', padding: '3px 7px', fontSize: '10.5px', height: '24px', boxSizing: 'border-box' }}
               />
               <button
                 type="button"
                 onClick={() => setEditingItemData({ defaultSlot: slotFilter !== 'all' && slotFilter !== 'rings' ? slotFilter : 'slotless' })}
-                className="btn btn-p"
+                className="btn"
+                title="Create a custom wondrous item or equipment"
                 style={{
-                  fontSize: '8.5px',
-                  padding: '2px 8px',
-                  fontFamily: 'var(--font-title)',
-                  fontWeight: 'bold',
-                  whiteSpace: 'nowrap',
-                  background: 'linear-gradient(135deg, #c8a96e, #9a7a2e)',
-                  border: '0.5px solid #8b6914',
-                  color: '#ffffff',
-                  borderRadius: '2px',
-                  cursor: 'pointer'
+                  fontSize: '8.5px', padding: '2px 7px', fontFamily: 'var(--font-title)', fontWeight: 'bold',
+                  whiteSpace: 'nowrap', background: 'rgba(200, 169, 110, 0.15)',
+                  border: '1px solid var(--pb, #c8a96e)', color: 'var(--ink, #1a0f00)', borderRadius: '2px', cursor: 'pointer'
                 }}
               >
-                ➕ Custom Item
+                + Item
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsImportModalOpen(true)}
+                className="btn"
+                title="Import an equipment package (.json)"
+                style={{
+                  fontSize: '8.5px', padding: '2px 7px', fontFamily: 'var(--font-title)', fontWeight: 'bold',
+                  whiteSpace: 'nowrap', background: 'rgba(200, 169, 110, 0.15)',
+                  border: '1px solid var(--pb, #c8a96e)', color: 'var(--ink, #1a0f00)', borderRadius: '2px', cursor: 'pointer'
+                }}
+              >
+                📦 Import
+              </button>
+              <button
+                type="button"
+                onClick={handleExportGear}
+                className="btn"
+                title="Save current loadout as a .json package"
+                style={{
+                  fontSize: '8.5px', padding: '2px 7px', fontFamily: 'var(--font-title)', fontWeight: 'bold',
+                  whiteSpace: 'nowrap', background: 'rgba(200, 169, 110, 0.15)',
+                  border: '1px solid var(--pb, #c8a96e)', color: 'var(--ink, #1a0f00)', borderRadius: '2px', cursor: 'pointer'
+                }}
+              >
+                💾 Save Gear
               </button>
             </div>
 
@@ -325,15 +331,11 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   onClick={() => setSlotFilter(chip.key)}
                   className="btn"
                   style={{
-                    fontSize: '8px',
-                    padding: '1px 6px',
-                    fontFamily: 'var(--font-title)',
+                    fontSize: '8px', padding: '1px 6px', fontFamily: 'var(--font-title)',
                     background: slotFilter === chip.key ? 'linear-gradient(135deg, #c8a96e, #9a7a2e)' : 'rgba(200, 169, 110, 0.08)',
                     borderColor: slotFilter === chip.key ? '#8b6914' : 'var(--pb)',
                     color: slotFilter === chip.key ? '#ffffff' : 'var(--inkm)',
-                    fontWeight: slotFilter === chip.key ? 'bold' : 'normal',
-                    borderRadius: '2px',
-                    cursor: 'pointer'
+                    fontWeight: slotFilter === chip.key ? 'bold' : 'normal', borderRadius: '2px', cursor: 'pointer'
                   }}
                 >
                   {chip.label}
@@ -342,17 +344,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
             </div>
 
             {/* List Content Area */}
-            <div
-              style={{
-                maxHeight: '390px',
-                overflowY: 'auto',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-                paddingRight: '3px',
-                paddingBottom: '6px'
-              }}
-            >
+            <div style={{ maxHeight: '390px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4px', paddingRight: '3px', paddingBottom: '6px' }}>
               {rightPanelMode === 'backpack' ? (
                 <BackpackPanel
                   filteredBackpack={filteredBackpack}
@@ -374,9 +366,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   onDeleteItem={(idx) => {
                     const item = pc.items && pc.items[idx];
                     CombatState.deletePCItem(idx);
-                    if (item) {
-                      showToast(`🗑️ ${item.name} removed from Stash.`);
-                    }
+                    if (item) showToast(`🗑️ ${item.name} removed from Stash.`);
                   }}
                   onReorderItems={(from, to) => CombatState.reorderPCItems(from, to)}
                   onOpenCompendium={() => setRightPanelMode('compendium')}
@@ -415,6 +405,16 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
             itemIdx={editingItemData.itemIdx}
             defaultSlot={editingItemData.defaultSlot}
             onClose={() => setEditingItemData(null)}
+          />
+        )}
+
+        {isImportModalOpen && (
+          <ImportInventoryPackageModal
+            target="pc"
+            onClose={() => setIsImportModalOpen(false)}
+            onImported={(res) => {
+              showToast(`Imported "${res.packageName}" (${res.totalAdded} items, ${res.equippedCount} equipped).`);
+            }}
           />
         )}
       </div>

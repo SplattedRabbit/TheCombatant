@@ -57,7 +57,8 @@ NIEMALS: Models → UI | Rules → State | HTML in Models
 | Magische Gegenstände  | `js/models/Item.js`, `js/data/magicItems-data.js` (Fassade), `js/data/magicItems/`, `src/components/player/armory/PCMagicItemsTab.tsx` | `js/state/PCManager.js` (`addPCItem*`)       |
 | Waffen-UI             | `src/components/player/offense/WeaponStashCard.tsx`      | `AttackEngine.js`, `js/models/Weapon.js`, `js/state/pc/equipment/PCWeapons.js` |
 | Rüstung               | `js/models/Armor.js`, `js/data/armor-data.js`, `src/components/player/offense/ArmorStashCard.tsx`, `js/state/pc/equipment/PCArmor.js` | `src/components/player/offense/PCOffenseTab.tsx` |
-| Ausrüstung (State)    | `js/state/pc/PCEquipment.js` (Fassade), `js/state/pc/equipment/` (`PCWeapons.js`, `PCArmor.js`, `PCItems.js`) | `js/state/PCManager.js` |
+| Ausrüstung (State)    | `js/state/pc/PCEquipment.js` (Fassade), `js/state/pc/equipment/` (`PCWeapons.js`, `PCArmor.js`, `PCItems.js`, `PCInventoryPackage.js`) | `js/state/PCManager.js` |
+| Inventar-Pakete (.json)| `js/state/pc/equipment/PCInventoryPackage.js`, `src/components/dialogs/modals/ImportInventoryPackageModal.tsx` | `ArmoryTab.tsx`, `DMStashTab.tsx`, `js/state/DMStash.js` |
 | Ausrüstung (React)    | `src/components/player/offense/PCOffenseTab.tsx`, `src/components/player/offense/ActiveEquipmentSlots.tsx` | `src/components/player/PlayerSheet.tsx` |
 | Kampf-Stances & Powers| `src/components/player/offense/ClassCombatAbilitiesCard.tsx`, `src/components/player/offense/stances/` | `src/components/player/offense/PCOffenseTab.tsx` |
 | Angriffs-Engine       | `js/rules/AttackEngine.js`, `js/rules/attack/`           | `PCOffenseTab.tsx`, `src/components/dialogs/AttackChoiceDialog.tsx` |
@@ -96,13 +97,15 @@ togglePCWeaponEquip(idx)            // an/ablegen
 addPCArmor(typeKey)                 // neue Rüstung (typeKey aus ARMOR_REGISTRY)
 togglePCArmorEquip(idx)             // an/ablegen
 
-// Magische Gegenstände
+// Magische Gegenstände & Inventar-Pakete
 addPCItem()                         // neues leeres Item
 updatePCItem(idx, field, val)
 togglePCItemEquip(idx, slotKey)
 addPCItemEffect(itemIdx)
 updatePCItemEffect(itemIdx, effectIdx, key, val)
 deletePCItemEffect(itemIdx, effectIdx)
+importPCInventoryPackage(pkg, opts) // JSON-Ausrüstungspaket importieren (merge/replace + RAW autoEquip)
+exportPCInventoryPackage(meta)      // Aktives PC-Inventar als dnd35e-inventory-package exportieren
 
 // Talente & Klasse
 addPCFeat(featId, option?)

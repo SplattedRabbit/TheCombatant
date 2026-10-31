@@ -1,0 +1,52 @@
+{
+  "format": "dnd35e-inventory-package",
+  "version": 1,
+  "packageName": "Shadow Scout & Dual-Wielder Kit (Lv. 6)",
+  "description": "Agile skirmisher and rogue package featuring a Keen Rapier +1 (Main-Hand), Shortsword +1 (Off-Hand), Mithral Chain Shirt +1, and stealth/mobility wondrous items.",
+  "autoEquip": true,
+  "weapons": [
+    {
+      "presetKey": "rapier",
+      "name": "Whispering Needle +1 (Keen)",
+      "enhancement": 1,
+      "isKeen": true,
+      "hand": "main",
+      "isEquipped": true
+    },
+    {
+      "presetKey": "shortsword",
+      "name": "Shadowfang Shortsword +1",
+      "enhancement": 1,
+      "hand": "off",
+      "isEquipped": true
+    },
+    {
+      "presetKey": "shortbow",
+      "name": "Darkwood Shortbow +1",
+      "enhancement": 1,
+      "isEquipped": false
+    }
+  ],
+  "armors": [
+    {
+      "presetKey": "chain_shirt",
+      "name": "Mithral Chain Shirt +1",
+      "enhancement": 1,
+      "maxDexOverride": 6,
+      "checkPenaltyOverride": 0,
+      "spellFailureOverride": 10,
+      "isEquipped": true
+    }
+  ],
+  "items": [
+    "gloves_of_dexterity_2",
+    "cloak_of_the_bat",
+    "boots_of_elvenkind",
+    "goggles_of_night",
+    "ring_of_protection_1",
+    "ring_of_invisibility",
+    "potion_cure_moderate_wounds",
+    "potion_cure_light_wounds"
+  ]
+}
+

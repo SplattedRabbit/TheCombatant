@@ -5,6 +5,13 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
 
+### Added
+- **Inventory & Loadout Package Import / Export (`dnd35e-inventory-package`):**
+  - Added `js/state/pc/equipment/PCInventoryPackage.js` (`parseInventoryPackage`, `importPCInventoryPackage`, `exportPCInventoryPackage`) and DM Stash package operations (`exportStashPackage`, `importStashPackage` in `js/state/DMStash.js`).
+  - Supports shorthand registry `presetKey` strings (weapons, armors, shields, wondrous items, consumables) as well as full custom item objects.
+  - Atomic batch import with **Merge** (`merge`) or **Replace** (`replace`) modes, D&D 3.5e RAW slot conflict resolution (`autoEquip`: concurrent body armor + shield, 2H weapon vs. shield exclusivity, smart `ring1`/`ring2` assignment, consumables kept unequipped in backpack), and instant `recalculatePCStats(pc)` recalculation.
+  - Integrated `ImportInventoryPackageModal.tsx` and export controls in `ArmoryTab.tsx` (Player Armory) and `DMStashTab.tsx` (DM Loot Vault).
+
 ### Changed
 - **Modularization & Table-Driven Prerequisites (`b5fe99b`, `043c338`):**
   - Extracted combat stance and class power panels from `ClassCombatAbilitiesCard.tsx` into `src/components/player/offense/stances/` (`RageStanceSection.tsx`, `MonkStanceSection.tsx`, `BardicMusicSection.tsx`, `FavoredEnemySection.tsx`, `SpecialPowersSection.tsx`).
