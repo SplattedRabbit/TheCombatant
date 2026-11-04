@@ -1,0 +1,155 @@
+{
+  "format": "dnd35e-inventory-package",
+  "version": 1,
+  "packageName": "Tick Frontalstein Loadout (Lv. 11)",
+  "description": "Tiefenhalbling Battle Trickster (110.000 GP Budget). Zwei-Waffen-Finesse (+2 Wounding Keen Rapier & +2 Defending Sickle), Gloves of Dex +6, Shadow Mithral Shirt, Rogue's Vest, Cloak +3 & Tränke.",
+  "autoEquip": true,
+  "weapons": [
+    {
+      "presetKey": "rapier",
+      "name": "+2 Wounding Keen Rapier",
+      "enhancement": 2,
+      "grip": "1h",
+      "hand": "main",
+      "isEquipped": true,
+      "isKeen": true,
+      "crit": "15-20/x2",
+      "extraDamageDice": "1 Con",
+      "extraDamageType": "Ability Damage",
+      "priceGp": 32320,
+      "description": "Kritischer Bedrohungsbereich 15–20. Jeder Stich/Sneak Attack verursacht zusätzlich 1 Punkt Konstitutionsschaden durch Verbluten."
+    },
+    {
+      "presetKey": "sickle",
+      "name": "+2 Defending Sickle",
+      "enhancement": 2,
+      "grip": "1h",
+      "hand": "off",
+      "isEquipped": true,
+      "priceGp": 8306,
+      "description": "Die Sichel kann ihren magischen Angriffsbonus rundenweise komplett oder anteilig auf die RK zur Verteidigung übertragen."
+    }
+  ],
+  "armors": [
+    {
+      "presetKey": "chain_shirt",
+      "name": "+3 Shadow Mithral Shirt",
+      "enhancement": 3,
+      "isEquipped": true,
+      "priceGp": 13250,
+      "maxDexOverride": 6,
+      "checkPenaltyOverride": 0,
+      "spellFailureOverride": 10,
+      "effects": [
+        {
+          "type": "skill",
+          "target": "hide",
+          "value": 5,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "move_silently",
+          "value": 5,
+          "bonusType": "competence"
+        }
+      ],
+      "description": "Kettenhemd aus Mithral mit Schatten-Verzauberung: Gewährt +5 Kompetenzbonus auf Heimlichkeit (Verstecken & Leise bewegen) ohne Rüstungsmalus."
+    }
+  ],
+  "items": [
+    "gloves_of_dexterity_6",
+    {
+      "name": "Rogue’s Vest (MIC)",
+      "slot": "torso",
+      "isEquipped": true,
+      "priceGp": 9200,
+      "effects": [
+        {
+          "type": "save",
+          "target": "ref",
+          "value": 2,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "open_lock",
+          "value": 2,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "disable_device",
+          "value": 2,
+          "bonusType": "competence"
+        }
+      ],
+      "description": "Verleiht +1d6 zusätzlichen Hinterhältigen Schaden (Sneak Attack), +2 Kompetenzbonus auf Reflexwürfe, Schlösserknacken und Fallenentschärfung."
+    },
+    "cloak_of_resistance_3",
+    "ring_of_protection_1",
+    "potion_cure_serious_wounds",
+    "potion_cure_serious_wounds",
+    {
+      "name": "Potion of Neutralize Poison",
+      "slot": "slotless",
+      "category": "potion",
+      "priceGp": 750,
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Neutralisiert Gifte im Körper und entgiftet – Lebensversicherung bei Giftfallen im Dungeon."
+    },
+    {
+      "name": "Potion of Neutralize Poison",
+      "slot": "slotless",
+      "category": "potion",
+      "priceGp": 750,
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Neutralisiert Gifte im Körper und entgiftet – Lebensversicherung bei Giftfallen im Dungeon."
+    },
+    {
+      "name": "Potion of Gaseous Form",
+      "slot": "slotless",
+      "category": "potion",
+      "priceGp": 750,
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Verwandelt in gasförmige Gestalt zur Infiltration durch Felsrisse und Schlüssellöcher (DR 10/Magic)."
+    },
+    {
+      "name": "Potion of Remove Paralysis",
+      "slot": "slotless",
+      "category": "potion",
+      "priceGp": 300,
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Befreit von Lähmungen und Bewegungsunfähigkeit."
+    },
+    {
+      "name": "Potion of Remove Paralysis",
+      "slot": "slotless",
+      "category": "potion",
+      "priceGp": 300,
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Befreit von Lähmungen und Bewegungsunfähigkeit."
+    }
+  ]
+}
+

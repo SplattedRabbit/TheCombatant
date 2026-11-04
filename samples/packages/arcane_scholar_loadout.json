@@ -1,0 +1,44 @@
+{
+  "format": "dnd35e-inventory-package",
+  "version": 1,
+  "packageName": "Arcane Scholar & Battle Mage Kit (Lv. 7)",
+  "description": "Spellcaster loadout with Headband of Intellect +4, Cloak of Charisma +2, Bracers of Armor +2, Vest of Resistance +2, and custom metamagic/defensive gear.",
+  "autoEquip": true,
+  "weapons": [
+    {
+      "presetKey": "quarterstaff",
+      "name": "Runed Quarterstaff of Concentration +1",
+      "enhancement": 1,
+      "isEquipped": true
+    },
+    {
+      "presetKey": "light_crossbow",
+      "name": "Masterwork Light Crossbow",
+      "attackBonus": 1,
+      "isEquipped": false
+    }
+  ],
+  "armors": [],
+  "items": [
+    "headband_of_intellect_4",
+    "cloak_of_charisma_2",
+    "vest_of_resistance_2",
+    "bracers_of_armor_2",
+    "gloves_of_the_starry_sky",
+    "boots_of_speed",
+    "ring_of_protection_2",
+    "ring_of_sustenance",
+    {
+      "name": "Amulet of Arcane Focus",
+      "slot": "neck",
+      "description": "Custom DM item: Grants +2 competence bonus on Spellcraft and Concentration checks.",
+      "effects": [
+        { "type": "skill", "target": "spellcraft", "value": 2, "bonusType": "competence" },
+        { "type": "skill", "target": "concentration", "value": 2, "bonusType": "competence" }
+      ]
+    },
+    "potion_cure_moderate_wounds",
+    "potion_cure_light_wounds"
+  ]
+}
+

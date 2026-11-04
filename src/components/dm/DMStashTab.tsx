@@ -1,6 +1,6 @@
 /**
  * @module    DMStashTab
- * @summary   DM Stash Tab for creating, managing, and distributing weapons, armors, and magic items to player characters.
+ * @summary   DM Stash Tab for creating, managing, exporting/importing packages, and distributing weapons, armors, and magic items to player characters.
  * @exports   DMStashTab
  */
 
@@ -12,6 +12,7 @@ import { WeaponEditorModal } from '../dialogs/modals/WeaponEditorModal';
 import { ArmorEditorModal } from '../dialogs/modals/ArmorEditorModal';
 import { ItemEditorModal } from '../dialogs/modals/ItemEditorModal';
 import { DistributeItemModal } from '../dialogs/modals/DistributeItemModal';
+import { ImportInventoryPackageModal } from '../dialogs/modals/ImportInventoryPackageModal';
 import { WeaponRegistry } from '@core/models/Weapon.js';
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
 
@@ -19,34 +20,52 @@ interface DMStashTabProps {
   state: CombatStateSnapshot;
 }
 
+const cardItemStyle: React.CSSProperties = {
+  background: 'rgba(200, 169, 110, 0.04)',
+  border: '1px solid rgba(200, 169, 110, 0.25)',
+  borderRadius: '4px',
+  padding: '6px 8px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4px'
+};
+
 export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
-  // Stash Data from meta
   const dmStash = (state.meta as any)?.dmStash || { weapons: [], armors: [], items: [] };
   const weapons: any[] = Array.isArray(dmStash.weapons) ? dmStash.weapons : [];
   const armors: any[] = Array.isArray(dmStash.armors) ? dmStash.armors : [];
   const items: any[] = Array.isArray(dmStash.items) ? dmStash.items : [];
 
-  // Active PCs in Session
   const pcs = Array.isArray(state.combatants)
     ? state.combatants.filter((c: any) => c.type === 'p' || c.side === 'p')
     : [];
 
-  // Local Modals State
   const [editingWeapon, setEditingWeapon] = useState<{ item?: any; index?: number } | null>(null);
   const [editingArmor, setEditingArmor] = useState<{ item?: any; index?: number } | null>(null);
   const [editingItem, setEditingItem] = useState<{ item?: any; index?: number } | null>(null);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
 
-  // Distribute Modal State
   const [distributeData, setDistributeData] = useState<{
     itemName: string;
     category: 'weapons' | 'armors' | 'items';
     index: number;
   } | null>(null);
 
-  // Search Filters
   const [weaponSearch, setWeaponSearch] = useState('');
   const [armorSearch, setArmorSearch] = useState('');
   const [itemSearch, setItemSearch] = useState('');
+
+  const handleExportStashPackage = () => {
+    const pkg = CombatState.exportStashPackage();
+    if (!pkg) return;
+    const blob = new Blob([JSON.stringify(pkg, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `dnd35e_dm_loot_package.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const filteredWeapons = weapons.filter(w => {
     if (!weaponSearch) return true;
@@ -71,13 +90,8 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
       {/* Overview Banner */}
       <div
         style={{
-          background: 'rgba(200, 169, 110, 0.08)',
-          border: '1px solid var(--pb)',
-          borderRadius: '4px',
-          padding: '8px 12px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
+          background: 'rgba(200, 169, 110, 0.08)', border: '1px solid var(--pb)', borderRadius: '4px',
+          padding: '8px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px'
         }}
       >
         <div>
@@ -85,19 +99,36 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
             💰 Dungeon Master Stash &amp; Loot Vault
           </span>
           <p style={{ margin: '2px 0 0', fontSize: '9.5px', color: 'var(--inkm)' }}>
-            Forge weapons, armor, and wondrous items here. Hand them out directly to party members in the encounter.
+            Forge weapons, armor, and wondrous items here. Bundle them as a .json package for players or hand them out directly.
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '10px', fontSize: '10px', color: 'var(--ink)' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', fontSize: '10px', color: 'var(--ink)' }}>
           <span>⚔️ Weapons: <strong>{weapons.length}</strong></span>
           <span>🛡️ Armors: <strong>{armors.length}</strong></span>
           <span>✨ Items: <strong>{items.length}</strong></span>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => setIsImportModalOpen(true)}
+            style={{ fontSize: '8.5px', padding: '3px 8px', fontFamily: 'var(--font-title)', fontWeight: 'bold', cursor: 'pointer' }}
+            title="Import a .json equipment package into the DM Stash"
+          >
+            📂 Import Package
+          </button>
+          <button
+            type="button"
+            className="btn btn-p"
+            onClick={handleExportStashPackage}
+            style={{ fontSize: '8.5px', padding: '3px 8px', fontFamily: 'var(--font-title)', fontWeight: 'bold', cursor: 'pointer' }}
+            title="Export current DM Stash as a shareable .json package for players"
+          >
+            📦 Export Package (.json)
+          </button>
         </div>
       </div>
 
       {/* 3-Column Stash Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
-        
         {/* Column 1: Weapons */}
         <BaseCard title="⚔️ Weapons Arsenal">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -128,30 +159,19 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
               ) : (
                 filteredWeapons.map((w) => {
                   const originalIdx = weapons.indexOf(w);
-                  const typeDef = WeaponRegistry[w.type] || {};
+                  const typeDef = (WeaponRegistry as any)[w.type] || {};
                   const typeName = typeDef.nameEn || typeDef.name || w.type || 'Weapon';
 
                   return (
-                    <div
-                      key={w.id || originalIdx}
-                      style={{
-                        background: 'rgba(200, 169, 110, 0.04)',
-                        border: '1px solid rgba(200, 169, 110, 0.25)',
-                        borderRadius: '4px',
-                        padding: '6px 8px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px'
-                      }}
-                    >
+                    <div key={w.id || originalIdx} style={cardItemStyle}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <span style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)', color: 'var(--ink)' }}>
                             {w.name || typeName}
                           </span>
-                          {w.enhancement > 0 && (
+                          {(w.enhancement > 0 || w.magicBonus > 0) && (
                             <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '0 4px', borderRadius: '2px' }}>
-                              +{w.enhancement}
+                              +{w.enhancement || w.magicBonus}
                             </span>
                           )}
                         </div>
@@ -166,7 +186,7 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
                       </div>
 
                       <div style={{ fontSize: '8px', color: 'var(--inkm)' }}>
-                        {typeName} ({w.damageDice || typeDef.damageDice || '1w8'}, {w.crit || typeDef.crit || '20/x2'})
+                        {typeName} ({w.damage || w.damageDice || typeDef.damage || '1d8'}, {w.critRange || 20}/x{w.critMult || 2})
                         {w.isKeen && ' • Keen'}
                         {w.extraDamage && ` • +${w.extraDamage}`}
                       </div>
@@ -227,31 +247,20 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
               ) : (
                 filteredArmors.map((a) => {
                   const originalIdx = armors.indexOf(a);
-                  const typeDef = ARMOR_REGISTRY[a.type] || {};
+                  const typeDef = (ARMOR_REGISTRY as any)[a.type || a.presetKey] || {};
                   const typeName = typeDef.nameEn || typeDef.name || a.type || 'Armor';
-                  const acBonus = (a.armorBonus !== undefined ? a.armorBonus : (typeDef.armorBonus || 0)) + (parseInt(a.enhancement) || 0);
+                  const acBonus = (a.armorBonus !== undefined ? a.armorBonus : (typeDef.armorBonus || 0)) + (parseInt(a.enhancement || a.magicBonus) || 0);
 
                   return (
-                    <div
-                      key={a.id || originalIdx}
-                      style={{
-                        background: 'rgba(200, 169, 110, 0.04)',
-                        border: '1px solid rgba(200, 169, 110, 0.25)',
-                        borderRadius: '4px',
-                        padding: '6px 8px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px'
-                      }}
-                    >
+                    <div key={a.id || originalIdx} style={cardItemStyle}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <span style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)', color: 'var(--ink)' }}>
                             {a.name || typeName}
                           </span>
-                          {a.enhancement > 0 && (
+                          {(a.enhancement > 0 || a.magicBonus > 0) && (
                             <span style={{ fontSize: '8.5px', fontWeight: 'bold', color: 'var(--red)', background: 'rgba(139, 26, 26, 0.08)', padding: '0 4px', borderRadius: '2px' }}>
-                              +{a.enhancement}
+                              +{a.enhancement || a.magicBonus}
                             </span>
                           )}
                         </div>
@@ -266,7 +275,7 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
                       </div>
 
                       <div style={{ fontSize: '8px', color: 'var(--inkm)' }}>
-                        {typeName} (+{acBonus} AC) • MaxDex: {typeDef.maxDex ?? '—'} • ACP: {typeDef.checkPenalty || 0}
+                        {typeName} (+{acBonus} AC) • MaxDex: {a.maxDex ?? typeDef.maxDex ?? '—'} • ACP: {a.checkPenalty ?? typeDef.checkPenalty ?? 0}
                       </div>
 
                       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '4px', marginTop: '2px' }}>
@@ -330,18 +339,7 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
                     : '';
 
                   return (
-                    <div
-                      key={item.id || originalIdx}
-                      style={{
-                        background: 'rgba(200, 169, 110, 0.04)',
-                        border: '1px solid rgba(200, 169, 110, 0.25)',
-                        borderRadius: '4px',
-                        padding: '6px 8px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px'
-                      }}
-                    >
+                    <div key={item.id || originalIdx} style={cardItemStyle}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <span style={{ fontWeight: 'bold', fontSize: '11px', fontFamily: 'var(--font-title)', color: 'var(--ink)' }}>
@@ -369,7 +367,7 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
 
                       {item.charges && (
                         <div style={{ fontSize: '7.5px', color: 'var(--inkl)' }}>
-                          Charges: {item.charges.current} / {item.charges.max}
+                          Charges: {item.charges.current ?? item.charges} / {item.charges.max ?? item.maxCharges ?? item.charges}
                         </div>
                       )}
 
@@ -398,7 +396,6 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
             </div>
           </div>
         </BaseCard>
-
       </div>
 
       {/* Weapon Modal */}
@@ -406,11 +403,8 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
         <WeaponEditorModal
           weapon={editingWeapon.item}
           onSave={(weaponData) => {
-            if (editingWeapon.index !== undefined) {
-              CombatState.updateStashItem('weapons', editingWeapon.index, weaponData);
-            } else {
-              CombatState.addStashItem('weapons', weaponData);
-            }
+            if (editingWeapon.index !== undefined) CombatState.updateStashItem('weapons', editingWeapon.index, weaponData);
+            else CombatState.addStashItem('weapons', weaponData);
           }}
           onClose={() => setEditingWeapon(null)}
         />
@@ -421,11 +415,8 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
         <ArmorEditorModal
           armor={editingArmor.item}
           onSave={(armorData) => {
-            if (editingArmor.index !== undefined) {
-              CombatState.updateStashItem('armors', editingArmor.index, armorData);
-            } else {
-              CombatState.addStashItem('armors', armorData);
-            }
+            if (editingArmor.index !== undefined) CombatState.updateStashItem('armors', editingArmor.index, armorData);
+            else CombatState.addStashItem('armors', armorData);
           }}
           onClose={() => setEditingArmor(null)}
         />
@@ -436,11 +427,8 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
         <ItemEditorModal
           item={editingItem.item}
           onSave={(itemData) => {
-            if (editingItem.index !== undefined) {
-              CombatState.updateStashItem('items', editingItem.index, itemData);
-            } else {
-              CombatState.addStashItem('items', itemData);
-            }
+            if (editingItem.index !== undefined) CombatState.updateStashItem('items', editingItem.index, itemData);
+            else CombatState.addStashItem('items', itemData);
           }}
           onClose={() => setEditingItem(null)}
         />
@@ -454,6 +442,14 @@ export const DMStashTab: React.FC<DMStashTabProps> = ({ state }) => {
           index={distributeData.index}
           pcs={pcs}
           onClose={() => setDistributeData(null)}
+        />
+      )}
+
+      {/* Import Package Modal */}
+      {isImportModalOpen && (
+        <ImportInventoryPackageModal
+          target="stash"
+          onClose={() => setIsImportModalOpen(false)}
         />
       )}
     </div>

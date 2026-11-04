@@ -1,7 +1,7 @@
 /**
  * @module    state
  * @summary   Fassade — re-exportiert alle State-Operationen aus state-core.js, StorageManager.js, PCManager.js, EncounterManager.js. IMPORTIERE DIESE DATEI, NICHT state-core.js direkt.
- * @exports   getState, getActivePC, updatePCField, updatePCBatch, addPCWeapon, updatePCWeapon, addPCFeat, addPCArmor, addPCItem, updatePCItemEffect, applyDamage, nextTurn, loadSampleData u.v.m.
+ * @exports   getState, getActivePC, updatePCField, updatePCBatch, addPCWeapon, updatePCWeapon, addPCFeat, addPCArmor, addPCItem, updatePCItemEffect, parseInventoryPackage, importPCInventoryPackage, exportPCInventoryPackage, exportStashPackage, importStashPackage, applyDamage, nextTurn, loadSampleData u.v.m.
  * @reads     Zustand wird vollständig via getState()/getActivePC() abgefragt
  * @stateOps  Alle Mutationen via PCManager.js und EncounterManager.js — nie state-core.js direkt nutzen
  * @depends   state/state-core.js, state/StorageManager.js, state/PCManager.js, state/EncounterManager.js
@@ -91,6 +91,9 @@ import {
   usePCItemCharge,
   usePCItemAction,
   addPCItemFromCompendium,
+  parseInventoryPackage,
+  importPCInventoryPackage,
+  exportPCInventoryPackage,
   consumeSmiteEvilCharge,
   togglePCRage
 } from './state/PCManager.js';
@@ -122,7 +125,9 @@ import {
   addStashItem,
   updateStashItem,
   deleteStashItem,
-  giveStashItemToPC
+  giveStashItemToPC,
+  exportStashPackage,
+  importStashPackage
 } from './state/DMStash.js';
 
 // Named exports
@@ -131,6 +136,8 @@ export {
   updateStashItem,
   deleteStashItem,
   giveStashItemToPC,
+  exportStashPackage,
+  importStashPackage,
   getState,
   registerStateChangedCallback,
   registerPCChangedCallback,
@@ -206,6 +213,9 @@ export {
   usePCItemCharge,
   usePCItemAction,
   addPCItemFromCompendium,
+  parseInventoryPackage,
+  importPCInventoryPackage,
+  exportPCInventoryPackage,
   
   updateMeta,
   addCombatant,
@@ -235,6 +245,8 @@ export const CombatState = {
   updateStashItem,
   deleteStashItem,
   giveStashItemToPC,
+  exportStashPackage,
+  importStashPackage,
   updateSession,
   getState,
   saveToStorage,
@@ -306,6 +318,9 @@ export const CombatState = {
   usePCItemCharge,
   usePCItemAction,
   addPCItemFromCompendium,
+  parseInventoryPackage,
+  importPCInventoryPackage,
+  exportPCInventoryPackage,
   consumeSmiteEvilCharge,
   togglePCRage,
   updateMeta,

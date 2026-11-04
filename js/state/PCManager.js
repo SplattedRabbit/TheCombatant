@@ -1,7 +1,7 @@
 /**
  * @module    PCManager
  * @summary   Facade for Player Character state mutations. Re-exports operations from modular sub-files.
- * @exports   recalculateDailyAbilities, recalculatePCStats, syncPCToHost, updatePCBatch, clearActivePC, updatePCField, updatePCNumber, togglePCDefensiveFighting, togglePCTotalDefense, addPCClass, removePCClass, updatePCClassLevel, updatePCClassType, clearPCClasses, updatePCWeapon, addPCWeapon, deletePCWeapon, togglePCWeaponEquip, addPCArmor, removePCArmor, togglePCArmorEquip, updatePCArmorField, setPCAutoAC, addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect, updatePCSpellSlotsMax, updatePCSpellSlotsUsed, addPCDailyAbility, removePCDailyAbility, updatePCDailyAbilityUsed, resetDailyResources, addPCFeat, removePCFeat, savePCSpellTemplate, deletePCSpellTemplate, applyPCSpellTemplate, clearPreparedSpells
+ * @exports   recalculateDailyAbilities, recalculatePCStats, syncPCToHost, updatePCBatch, clearActivePC, updatePCField, updatePCNumber, togglePCDefensiveFighting, togglePCTotalDefense, addPCClass, removePCClass, updatePCClassLevel, updatePCClassType, clearPCClasses, updatePCWeapon, addPCWeapon, deletePCWeapon, togglePCWeaponEquip, addPCArmor, removePCArmor, togglePCArmorEquip, updatePCArmorField, setPCAutoAC, addPCItem, deletePCItem, updatePCItem, togglePCItemEquip, addPCItemEffect, deletePCItemEffect, updatePCItemEffect, parseInventoryPackage, importPCInventoryPackage, exportPCInventoryPackage, updatePCSpellSlotsMax, updatePCSpellSlotsUsed, addPCDailyAbility, removePCDailyAbility, updatePCDailyAbilityUsed, resetDailyResources, addPCFeat, removePCFeat, savePCSpellTemplate, deletePCSpellTemplate, applyPCSpellTemplate, clearPreparedSpells
  */
 
 export {
@@ -55,7 +55,10 @@ export {
   swapPCItem,
   usePCItemCharge,
   usePCItemAction,
-  addPCItemFromCompendium
+  addPCItemFromCompendium,
+  parseInventoryPackage,
+  importPCInventoryPackage,
+  exportPCInventoryPackage
 } from './pc/PCEquipment.js';
 
 export {

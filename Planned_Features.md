@@ -1,131 +1,121 @@
-# 🗺️ TheCombatant - Planned Features & Roadmap
+# 🗺️ TheCombatant — Planned Features, Open Issues & Roadmap
 
-Dieses Dokument dient als zentrales Backlog und Tracking-Dokument für geplante Features, Architektur-Refactorings und Verbesserungen.
-
----
-
-## ✅ Zuletzt Abgeschlossen (Recent Releases)
-
-### 🛡️ 1. Duale Rüstungs- & Schild-Ausrüstung, 4. ARPG-Tactical-Slot & Toast-Feedback (v6.9.3)
-- **Status:** `Abgeschlossen & Gemerged (v6.9.3)`
-- **Umfang:**
-  - **Duale Rüstung & Schild (RAW):** Gleichzeitiges Ausrüsten von Körperrüstung und Schild ohne gegenseitige Verdrängung via `isShieldItem(item)`; D&D 3.5e RAW AC-Stacking, MaxDex-Cap und kumulativer ACP; sicheres Ablegen des Schilds bei 2H-Waffen.
-  - **4. ARPG Tactical Slot (Body Armor):** Dedizierte Kachel im Kampftab mit Schnell-Ablage (`✕`), AC-Beitrag, MaxDex/ACP/Spell Failure und Bewegungsrate.
-  - **Taktischer Schildstoß (Shield Bash):** Dynamische `[ BASH +X ]` und `[ DMG +Y ]` Buttons im Off-Hand-Slot via `AttackEngine`.
-  - **Symmetrisches 5-Zonen-Raster & Typografie:** Vereinheitlichte Schriften (`var(--font-title)` / Cinzel), kein Deadspace, harmonisierte 18px Aktionsleiste.
-  - **Einheitliche Leerslot-Navigation:** Klick auf leere Kacheln öffnet direkt das passende Arsenal.
-  - **Ruhige Class-Ability-Leerkachel:** Informative Anzeige ohne Fake-Standard-Angriffe bei Klassen ohne Strike-Features.
-  - **Sticky Action Toasts:** Unaufdringliche Status-Toasts bei Item-Aktionen im Compendium und Ausrüstungs-Modal.
-
-### 🎁 2. Theatrical Loot Reveal, Safe Roster Import & Session Join Sync (v6.9.2)
-- **Status:** `Abgeschlossen (v6.9.2)`
-- **Umfang:**
-  - **Theatrical Loot Reveal:** Immersive Schatztruhen-Animation bei DM-Beuteübergabe (Schatztruhen-Öffnung mit Partikeln).
-  - **Safe Character Import:** Import-Schutz zur Verhinderung der Überschreibung aktiver Charaktere, Namensduplikat-Erkennung (`"Name (1)"`) und HTML-Entitäten-Decoding (`&#x27;`).
-  - **Session Join Sync (DM vs Player):** Synchronisierung der WebSocket-Räume für DM und Spieler. Gäste & Offline-Spieler können nun ohne blockierenden Datenbankfehler einer Kampagne beitreten. 1-Klick Invite-Code-Kopieren im DMHeader.
-
-### 📖 2. Wizard RAW Per-Level Zauberbuch-Limits & Assassin Spells Known (v6.9.1)
-- **Status:** `Abgeschlossen & Gemerged (v6.9.1)`
-- **Umfang:**
-  - **Wizard Per-Level Caps (Option C):** Generische RAW-Formel $\text{Cap}_G = (W - (2 \times G - 1) + 1) \times 2$ für Zaubergrade $G > 1$ basierend auf organischen Level-Ups; automatische Einberechnung von Prestigeklassen (wie Spellwarp Sniper); hartes Deaktivieren des `+ Buch`-Buttons im Compendium bei Erreichen des Stufen- oder Gesamtbudgets; visuelle Warnungen (`⚠️ Über Limit`) und rote Zeilenhervorhebungen für Bestandscharaktere mit Überschreitungen.
-  - **Assassin Spells Known Table:** Vollständige `ASSASSIN_KNOWN_TABLE` gemäß DMG S. 181 und Durchsetzung in `checkSpellKnownLimit` und `validateSpellLearnEligibility`.
-  - **Bugfix Prepared Spells:** Korrektur der Mindest-INT-Prüfung (`intScore >= 10 + lvl` statt `intMod`).
-
-### 🪄 2. Inline Zauberauswahl im Charakter-Wizard & Level-Up-Quoten-Engine (v6.9.0)
-- **Status:** `Abgeschlossen & Gemerged (v6.9.0)`
-- **Umfang:** Vollflächige Zero-Popup/Zero-Modal-Zauberauswahl direkt im Charakter-Erstellungs-Wizard (`Step3SpellSelectionView.tsx`) für Zauberklassen (Wizard, Sorcerer, Bard, Duskblade), inkl. D&D-3.5e-RAW-Quoten-Rechner (`spellSelectionRules.ts`), Wizard-Schul-Spezialisierung mit verbotenen Schulen und voller Wiederverwendung von `PCSpellCompendium.tsx`.
-
-### ⚔️ 2. RAW-Klassenaudits, Spellwarp Sniper & Wizard-Spezialisierung (v6.8.0)
-- **Status:** `Abgeschlossen & Gemerged (v6.8.0)`
-- **Umfang:** Vollständige RAW-Implementierungen für Spellwarp Sniper, Ninja, Dragon Shaman und Battle Trickster; interaktiver Wizard-Schul-Spezialisierungs-Dialog mit verbotenen Schulen; Level-Up-Zauberauswahl-Assistent mit RAW-Quoten-Engine für alle Caster-Typen.
-
-### 🧩 3. Modulare Unified-Class-Features-Registry & Begleiter-Regel-Popups (v6.7.0)
-- **Status:** `Abgeschlossen & Gemerged (v6.7.0)`
-- **Umfang:** Modularisierung der Klassen-Feature-Regeln in dedizierte Registries (`coreClasses.ts`, `expansionClasses.ts`, `prestigeClasses.ts`, PrC-Submodule); interaktive RAW-Regel-Modals für Tierbegleiter- und Vertrauten-Fähigkeiten; überarbeitetes Companion-/Familiar-Dashboard.
-
-### 📄 4. D&D 3.5e 4-Seiten A4 / PDF Charakterbogen (Printable Folio)
-- **Status:** `Abgeschlossen & Gemerged (v6.2.0)`
-- **Umfang:** Authentisches 4-Seiten A4-Folio direkt im Druckdialog des Browsers (inkl. PDF-Export):
-  - **Seite 1:** Kampf- & Verteidigungsübersicht (Attribute, AC-Breakdown, Saves, Initiative, Waffen & Angriffsmatrix).
-  - **Seite 2:** Fertigkeiten-Matrix (45 Skills, Synergien, Ränge) & Talente/Klassenmerkmale.
-  - **Seite 3:** Ausrüstung & Rüstkammer (Rüstung/Schild mit ACP, Gürtel/Magische Gegenstände, Münzen & Traglast).
-  - **Seite 4:** Zauberslots & Tierbegleiter/Vertrauten-Bogen.
-  - Pixelgenaues Drucklayout (`296mm` Seitenbudget, `@page` Zero-Margins, kein Clipping von Headern/Footern).
-
-### 🧙‍♂️ 5. Geführter Level-Up-Assistent (In-Game Level Advancement)
-- **Status:** `Abgeschlossen & Gemerged (v6.1.0)`
-- **Umfang:** Stufenaufstieg bestehender Charaktere ($n \rightarrow n+1$) direkt aus dem Character Sheet in einem 4-Schritte-Assistenten:
-  - **Schritt 1:** Klasse, Attributssteigerung (+1 auf Stufe 4, 8, 12, 16, 20) und Trefferwürfel-Wurf (mit dynamischem CON-Bonus).
-  - **Schritt 2:** Vollflächige Fertigkeiten-Verteilung & Skill-Tricks.
-  - **Schritt 3:** Talente & Alternative Klassenfeatures (ACFs) mit RAW-Voraussetzungsprüfung und Swap-Logik.
-  - **Schritt 4:** Pergament-Zusammenfassung und transaktionales Speichern.
+Dieses Dokument ist die **zentrale Single Source of Truth** für alle offenen Bugs/Regellücken, geplanten Refactorings und zukünftigen Feature-Erweiterungen.  
+*(Die vollständige Historie aller bereits abgeschlossenen Releases und behobenen Bugs 1–45 befindet sich in [docs/CHANGELOG.md](docs/CHANGELOG.md)).*
 
 ---
 
-## 🧹 Geplante Refactorings & Technische Schulden
+## 🐛 1. Offene Bugs & Mechanische Regellücken (D&D 3.5e RAW)
 
-### 🔤 2. Vereinheitlichung auf rein englische Entity-Modelle (Legacy Cleanup)
-- **Priorität:** `Hoch` (nach Abschluss des Level-Up-Features)
-- **Aufwand:** 🟢 Gering bis 🟡 Mittel (~1–2 Tage)
-- **Beschreibung:**
-  - Historisch bedingt enthalten viele Datenstrukturen (`data/spells-*.json`, `js/data/feats/*.js`, `skills-data.js`) noch zweisprachige Felder (`nameDe`, `nameEn`, `benefitDe`).
-  - **Maßnahmen:**
-    - Bereinigung der JSON- und Registry-Dateien auf eindeutige Felder (`id`, `name`, `benefit`, `description`).
-    - Bereinigung von über 30 React-Komponenten von Fallbacks wie `item.nameEn || item.nameDe || item.name`.
-    - Vereinheitlichung der TypeScript-Typen in `src/types/combat.ts`.
-    - Integration eines automatischen Migrationslayers in `CombatState.importPC()`, damit alte exportierte JSON-Dateien mit deutschen Bezeichnungen weiterhin nahtlos importiert werden können.
-  - **Vorteile:** Keine Verwechslungen bei Eigenschaftsnamen mehr, sauberere Types, kleinere Bundle-Größen.
+Alle früheren System-, Sync- und Klassen-Audits (Bugs #1–#33, #35, #37, #39–#45) sind behoben. Aktuell verbleiben nur noch **3 spezifische Punkte**:
 
----
+### 🔮 1.1 Multiclass Spell-DC Attribut-Hijack & Spell Focus Anbindung (ehem. Bug #34)
+- **Status:** ⬜ `Offen` | **Priorität:** `Hoch`
+- **Betroffene Dateien:** `src/components/player/spells/PCCompactGrimoireView.tsx`, `src/components/player/spells/grimoire/GrimoireLevelGroup.tsx`
+- **Problem:**
+  1. **Multiclass Caster-Mod:** `PCCompactGrimoireView.tsx` ermittelt `casterMod` global anhand der ersten gefundenen Zauberklasse (`wizard` → INT, `cleric` → WIS, `sorcerer` → CHA). Bei Multiclass-Zauberern (z. B. Wizard/Cleric oder Paladin/Sorcerer) wird dadurch das Attribut der ersten Klasse auf alle Zauber im Grimoire erzwungen.
+  2. **Fehlende Talent-Anbindung:** Die Talente `spell_focus` (+1 DC) und `greater_spell_focus` (+2 DC für die gewählte Zauberschule) sind in `js/data/feats/general/phb.js` angelegt, werden aber bei der DC-Berechnung (`10 + lvl + casterMod`) im Grimoire noch nicht addiert.
+- **Geplante Lösung:** Caster-Attribut pro Zauber/Klasse auflösen und `spell_focus` / `greater_spell_focus` anhand der Zauberschule (`spell.school`) in die DC-Formel einrechnen.
 
-## 📋 Feature-Backlog (Geplante Erweiterungen)
+### ⚔️ 1.2 Shadowbane Inquisitor: `Turn Undead` Level-Stacking (ehem. Bug #36)
+- **Status:** ⬜ `Offen` | **Priorität:** `Mittel`
+- **Betroffene Dateien:** `src/components/player/features/registry/cumulativeFeatures.ts`, `js/rules/classes/PaladinRules.js`, `js/state/pc/PCGeneral.js`
+- **Problem:**
+  - Gemäß *Complete Adventurer* S. 69 stacken Shadowbane-Inquisitor-Stufen mit Paladin-Stufen für *Turn Undead*.
+  - Aktuell prüft `PaladinRules.js` nur `paladinLevel >= 4` und entfernt andernfalls `Turn Undead` aktiv aus `pc.dailyAbilities` (z. B. bei Paladin 3 / Inquisitor 5). Zudem fehlt das Stacking in `cumulativeFeatures.ts`.
+- **Geplante Lösung:** Effektive Paladinstufe für *Turn Undead* als `paladinLevel + shadowbaneInquisitorLevel` berechnen und ab effektiver Stufe 4 freischalten.
 
-### ⚔️ 3. Encounter Builder & Herausforderungsgrad (CR)-Rechner
-- **Zielgruppe:** DM
-- **Beschreibung:**
-  - Werkzeug zur schnellen Erstellung von Begegnungen basierend auf Spieleranzahl und Gruppenstufe.
-  - Automatische Berechnung des effektiven Encounter-Levels (EL) und XP-Vergabe nach D&D 3.5e DMG-Tabellen.
-
-### 📜 4. Homebrew & Custom Content Creator
-- **Zielgruppe:** Spieler & DM
-- **Beschreibung:**
-  - In-App-Dialoge zur Erstellung eigener Talente, Zauber, Klassen und magischer Gegenstände mit lokaler Speicherung und Exportfunktion.
-
-### 🎲 5. Globaler Würfelverlauf & Realtime Action Log
-- **Zielgruppe:** Spieler & DM
-- **Beschreibung:**
-  - Einblendbare Seitenleiste/Ticker, die alle Angriffe, Rettungswürfe, Zauber und Statuseffekte der aktuellen Spielrunde chronologisch auflistet.
-
-### 🎒 6. Gruppen-Loot & Inventar-Verteilung
-- **Zielgruppe:** DM & Spieler
-- **Beschreibung:**
-  - Eine gemeinsame Beutetruhe für die Kampagne, aus der Gegenstände und Münzen per Klick einzelnen Spielern zugewiesen werden können.
-
-### 🐾 7. Erweiterter Begleiter- & Vertrauten-Assistent
-- **Zielgruppe:** Spieler (Druiden, Waldläufer, Magier, Hexenmeister)
-- **Beschreibung:**
-  - Eigener Sub-Assistent zur Verwaltung, Aufrüstung und zum Stufenaufstieg von Tiergefährten, Vertrauten und Paladin-Reittieren.
-
-### 📚 8. Dynamische Regelwerk-Auswahl pro Charakter / Kampagne
-- **Zielgruppe:** Spieler & DM
-- **Priorität:** `Mittel`
-- **Aufwand:** 🔴 Hoch (~3–5 Tage, großer Umbau)
-- **Beschreibung:**
-  - Spieler sollen selbst konfigurieren können, welche Regelwerke für ihren Charakter (oder die gesamte Kampagne) aktiv sind.
-  - Regelwerke die gesteuert werden sollen: `PHB`, `PHB II`, `Complete Adventurer (CA)`, `Complete Arcane`, `Complete Divine`, `Complete Warrior`, `Prestige-Klassen` etc.
-  - Per Toggle/Checkbox aktivierte Bücher steuern, welche Klassen, Feats, Zauber und Skills im Level-Up, Charakter-Wizard und allen Auswahldialogen angezeigt werden.
-- **Technische Implikationen:**
-  - Aktuell wird die Regelwerks-Filterung lokal in einzelnen Komponenten über Source-Tabs (`phb`, `phb2`, `ca`, ...) gelöst — kein zentraler State.
-  - Benötigt einen globalen **Rulebook-Context** (z.B. `RulebookContext`) der die aktivierten Bücher als Set/Array hält.
-  - Alle Datenregister (`CLASSES_LIST`, `FEATS_LIST`, Zauber-JSON, `SKILLS_DATA`) müssen einheitliche `source`-Felder besitzen und konsequent danach gefiltert werden.
-  - Sinnvoll kombinierbar mit Feature **#2** (Vereinheitlichung auf rein englische Modelle), da dort ohnehin alle `source`-Felder bereinigt werden.
-  - Konfiguration sollte per Charakter (in `pc.settings.allowedSources`) und optional pro Kampagne speicherbar sein.
-- **UX-Vorschlag:**
-  - Ein kleines Settings-Panel im Charakter-Sheet und/oder im Level-Up-Dialog mit Checkboxen pro Regelwerk.
-  - Alternativ: Kampagnen-weite Konfiguration durch den DM, die für alle Spieler gilt.
+### 🎭 1.3 Battle Trickster: Stufe-2 Bonus-Feat & kostenlose Bonus Skill Tricks (ehem. Bug #38)
+- **Status:** ⬜ `Offen` | **Priorität:** `Mittel`
+- **Betroffene Dateien:** `src/components/player/wizard/helpers.feats.ts`, `src/components/player/CharacterWizardDialog.tsx`, `src/components/player/levelup/levelUpSaveHelper.ts`, `js/rules/classes/BattleTricksterRules.js`
+- **Problem:**
+  1. **Stufe 2 Bonus Feat:** In `helpers.feats.ts` fehlt der Bonus-Talentslot für `battle_trickster` auf Klassenstufe 2 (*Fighter Bonus Feat* oder *Skill Trick Feat*, *Complete Scoundrel* S. 28).
+  2. **Kostenlose Bonus Tricks (Stufe 1 & 3):** Im Wizard werden für jeden gewählten Skill Trick pauschal 2 Fertigkeitspunkte abgezogen und kein `{ isBonus: true }` Flag gesetzt, sodass die kostenlosen Klassen-Tricks Punkte kosten und gegen das Trick-Limit zählen.
+  3. **Tricky Fighting Schwelle:** `BattleTricksterRules.js` gewährt *Tricky Fighting* (+1 Attack) bereits ab Stufe 2 statt RAW ab Stufe 3.
 
 ---
 
-## 📌 Bearbeitungs-Richtlinien
-- Neue Feature-Vorschläge werden hier mit Priorität, Zielgruppe und grober Aufwandsschätzung eingetragen.
-- Vor der Umsetzung wird für das jeweilige Feature ein detaillierter Phasenplan erstellt und auf einem dedizierten Branch (`feat/...` oder `refactor/...`) gearbeitet.
+## 🧹 2. Geplante Refactorings & Technische Schulden
+
+### 🔤 2.1 Vereinheitlichung auf rein englische Entity-Modelle (Legacy Cleanup)
+- **Status:** 🟨 `Teilweise umgesetzt (~20 % erledigt)` | **Priorität:** `Hoch` | **Aufwand:** 🟡 Mittel (~1–2 Tage)
+- **Bereits umgesetzt:**
+  - Alle Angriffs- und Schadens-Breakdowns (`AttackEngine.js`, `SequenceBuilder.js`, `ModifierCalculator.js`, `AttackContext.js`) sind komplett auf Englisch umgestellt.
+  - Englische Save-Felder (`fort`, `will`, `baseFort`, `baseWill`) werden bei der Hydrierung unterstützt.
+- **Noch offen:**
+  - Bereinigung der verbleibenden zweisprachigen Felder (`nameDe`, `nameEn`, `benefitDe`) in `data/spells-*.json`, `js/data/feats/**/*.js`, `js/data/skillTricks-data.js`, `js/data/armor-data.js`, `js/data/skills-data.js`, `js/models/Weapon.js` und `js/rules/data/classes.js` auf kanonische englische Felder (`id`, `name`, `benefit`, `description`).
+  - Entfernung von Fallback-Ketten (`item.nameEn || item.nameDe || item.name`) in den React-Komponenten und `src/types/combat.ts` sowie restlicher deutscher UI-Strings (z. B. in `DMToolbox.tsx`, `AddCombatantForm.tsx`, `BuffRules.js`).
+  - Migrationslayer in `CombatState.importPC()` für Abwärtskompatibilität alter Charakter-JSON-Exporte.
+
+### ⚛️ 2.2 Reduzierung von Props-Drilling über `PCContext` (ehem. WP9d Teil 2)
+- **Status:** 🟨 `Teilweise umgesetzt (Tab-Reorganisation zu 100 % erledigt)` | **Priorität:** `Niedrig` | **Aufwand:** 🟢 Gering
+- **Bereits umgesetzt:**
+  - Alle ~20 Spieler-Tab-Komponenten in `src/components/player/` wurden vollständig in thematische Domain-Unterordner (`armory/`, `attributes/`, `buffs/`, `companion/`, `defenses/`, `feats/`, `features/`, `levelup/`, `offense/`, `print/`, `roster/`, `skills/`, `spells/`, `wizard/`) strukturiert.
+  - `src/context/PCContext.tsx` ist angelegt.
+- **Noch offen:**
+  - Schrittweiser Ersatz von tiefem Props-Drilling (`pc`, `onUpdate`) durch direkten `usePC()`-Konsum in tief verschachtelten Subkomponenten sowie gezieltes `React.memo` bei teuren Listen-Komponenten.
+
+---
+
+## 📋 3. Feature-Backlog (Geplante Erweiterungen)
+
+### 🎒 3.1 Gruppen-Loot & Münz-Verteilung (Erweiterung des DM Stash)
+- **Status:** 🟩 `Großteils umgesetzt (~90 %)` | **Zielgruppe:** DM & Spieler
+- **Bereits umgesetzt:**
+  - **DM Stash & Loot Vault:** Vollständige Verwaltung von Waffen, Rüstungen und Wondrous Items im DM-Screen (`DMStashTab.tsx`, `js/state/DMStash.js`).
+  - **1-Klick-Zuweisung & Loot Reveal:** Direkte Vergabe an Spieler (`DistributeItemModal.tsx` via `item_gift` Realtime-Broadcast) inklusive animierter Schatztruhen-Enthüllung (`LootRevealModal.tsx`).
+  - **Inventar- & Loadout-Pakete (`dnd35e-inventory-package`):** Export und Import von Ausrüstungspaketen (.json) für DM-Stash und Spielercharaktere mit atomarer Transaktion, D&D 3.5e RAW Slot-Auto-Equip und automatischer Neuberechnung aller Werte (`PCInventoryPackage.js`, `ImportInventoryPackageModal.tsx`, `ArmoryTab.tsx`, `DMStashTab.tsx`).
+- **Noch offen:**
+  - **Münz-Verteilung:** Übergabe von Platin-, Gold-, Silber- und Kupfermünzen (`pp`, `gp`, `sp`, `cp`) aus dem DM Stash direkt an einzelne Spieler oder gleichmäßig aufgeteilt an die Gruppe.
+  - **Geteilte Gruppen-Beutetruhe:** Sichtbarkeit nicht zugewiesener Gruppen-Beute für Spieler zum eigenständigen Beanspruchen („Claim").
+
+### 🐾 3.2 Erweiterter Begleiter-, Vertrauten- & Reittier-Assistent
+- **Status:** 🟨 `Teilweise umgesetzt (~65 %)` | **Zielgruppe:** Druiden, Waldläufer, Magier, Hexenmeister, Paladine
+- **Bereits umgesetzt:**
+  - **2-Spalten-Dashboards & Print-Bogen:** `CompanionSheet.tsx` und `FamiliarSheet.tsx` sowie Seite 4 des A4-Print-Folios.
+  - **RAW-Skalierungs-Engine & Regel-Popups:** Automatische Berechnung von Bonus-HD, Natural Armor, STR/DEX, Master-Saves und Spezialfähigkeiten (`CompanionRules.js`, `FamiliarRules.js`, `CompanionAbilityDetailsDialog.tsx`).
+- **Noch offen:**
+  - **Paladin Special Mount:** Unterstützung für das besondere Reittier des Paladins ab Stufe 5 (PHB S. 44).
+  - **Erweiterte Tierauswahl & individuelle Progression:** Zusätzliche Tierarten über Wolf/Leopard/Braunbär hinaus sowie manuelle Auswahl von Begleiter-Talenten, Fertigkeiten und Bonus-Tricks bei Bonus-HD-Anstiegen.
+
+### 📜 3.3 Homebrew & Custom Content Creator (Talente & Klassen)
+- **Status:** 🟨 `Teilweise umgesetzt (~50 %)` | **Zielgruppe:** Spieler & DM
+- **Bereits umgesetzt:**
+  - **Eigene Zauber:** `SpellCreatorDialog.tsx` (`pc.customSpells`).
+  - **Eigene Waffen, Rüstungen & Magische Gegenstände:** `WeaponEditorModal.tsx`, `ArmorEditorModal.tsx`, `ItemEditorModal.tsx` (mit freien Effekt-Modifikatoren).
+- **Noch offen:**
+  - In-App-Editoren für **eigene Talente (Custom Feats)** und **eigene Klassen (Custom Classes)** sowie ein dedizierter Export/Import für Homebrew-Pakete.
+
+### 📚 3.4 Dynamische Regelwerk-Auswahl pro Charakter / Kampagne
+- **Status:** ⬜ `Offen (aktuell nur lokale Source-Filter-Pills)` | **Priorität:** `Mittel` | **Aufwand:** 🔴 Hoch (~3–5 Tage)
+- **Bereits vorhanden:** Lokale `sourceFilter`-Pills (`phb`, `phb2`, `ca`, `cs`, `dmg`) in `CompendiumFeatsList.tsx`, `PCSpellCompendium.tsx`, `ClassSelector.tsx` und `Step1ClassAndStats.tsx`.
+- **Geplanter Ausbau:**
+  - Globaler `RulebookContext` bzw. Speicherung erlaubter Quellen in `pc.settings.allowedSources` (oder kampagnenweit durch den DM).
+  - Konsequente Filterung aller Registries (`CLASSES_LIST`, `FEATS_LIST`, Zauber-JSONs, `SKILLS_DATA`, `ACFS`) anhand der freigeschalteten Regelwerke im Charakter-Wizard, Level-Up und Sheet.
+
+### ⚔️ 3.5 Encounter Builder & Herausforderungsgrad (CR)-Rechner
+- **Status:** ⬜ `Offen` | **Zielgruppe:** DM
+- **Beschreibung:**
+  - Werkzeug zur schnellen Zusammenstellung von Begegnungen basierend auf Gruppengröße und durchschnittlicher Gruppenstufe (APL).
+  - Automatische Berechnung des effektiven Encounter-Levels (EL) und der XP-Vergabe nach D&D 3.5e DMG-Tabellen.
+
+### 📜 3.6 Realtime Combat Event Log (Tabletop-First)
+- **Status:** ⬜ `Offen` | **Zielgruppe:** Spieler & DM
+- **Beschreibung:**
+  - *Hinweis zum Tabletop-First-Prinzip:* Da in der App bewusst **keine digitalen Zufallswürfelbots** verwendet werden (physisches Würfeln am Tisch), wird kein digitaler Würfel-Log benötigt.
+  - Optionaler, schlanker **Kampf-Ereignis-Ticker**: Chronologische Anzeige von Runden-/Zugwechseln, gewirkten Zaubern/Buffs, aktivierten Klassenfähigkeiten (z. B. *Smite*, *Rage*) und HP-Änderungen.
+
+---
+
+## ✅ 4. Zuletzt Abgeschlossene Meilensteine (Kurzübersicht)
+
+*(Details siehe [docs/CHANGELOG.md](docs/CHANGELOG.md))*
+- **Post-v6.9.3 Stabilisierung & Modularisierung:** Behebung der Audit-Bugs #10–#31, #35, #37, #39–#45 (`isFinessable`-Trennung, separate Smite-Slots, Multiplayer-Sync-Härtung mit Entity-ID-Diffs & Smart-Merge, Entfernung aller digitalen Würfelbots zugunsten reiner Formelanzeigen, Modularisierung von `ClassCombatAbilitiesCard.tsx` und `featPrerequisites.js`).
+- **v6.9.3:** Gleichzeitiges Tragen von Rüstung & Schild (`isShieldItem`), 4. ARPG Tactical Slot (Body Armor), Shield Bash, symmetrisches 5-Zonen-Grid, Sticky Action Toasts.
+- **v6.9.2:** Theatrical Loot Reveal Animation (`LootRevealModal.tsx`), Safe Character Import, Session Join Sync per Invite-Code.
+- **v6.9.1:** Wizard RAW Per-Level Zauberbuch-Caps (`wizardBudget.ts`) & Assassin Spells Known Tabelle.
+- **v6.9.0:** Inline Zauberauswahl im Charakter-Wizard (`Step3SpellSelectionView.tsx`) & Wizard-Schul-Spezialisierung.
+- **v6.8.0:** Vollständige RAW-Klassenimplementierungen für Spellwarp Sniper, Ninja, Dragon Shaman und Battle Trickster + Level-Up Spell Wizard.
+- **v6.7.0:** Modulare Unified-Class-Features-Registry & klickbare Begleiter-Regel-Popups.
+- **v6.2.0:** Druckbarer 4-Seiten A4 Charakterbogen (`PrintableCharacterSheetModal.tsx`).
+- **v6.1.0:** Geführter 4-Schritte In-Game Level-Up-Assistent (`LevelUpDialog.tsx`).
