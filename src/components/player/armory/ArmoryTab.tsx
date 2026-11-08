@@ -16,8 +16,10 @@ import { BackpackPanel } from './BackpackPanel';
 import { CompendiumPanel } from './CompendiumPanel';
 import { SlotEquipModal } from './SlotEquipModal';
 import { ItemEditorModal } from './ItemEditorModal';
+import { ArmorEditorModal } from '../../dialogs/modals/ArmorEditorModal.tsx';
 import { ImportInventoryPackageModal } from '../../dialogs/modals/ImportInventoryPackageModal';
 import { isConsumableItem, getItemTypeIcon, FILTER_CHIPS } from './armoryHelpers';
+import { isShieldItem } from '@core/models/model-core.js';
 
 // Re-export helpers for backward compatibility across the app
 export { isConsumableItem, getItemTypeIcon };
@@ -32,7 +34,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const [slotFilter, setSlotFilter] = useState('all');
   const [selectedTiers, setSelectedTiers] = useState<Record<string, string>>({});
   const [activeEquipSlot, setActiveEquipSlot] = useState<string | null>(null);
-  const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; defaultSlot?: string } | null>(null);
+  const [editingItemData, setEditingItemData] = useState<{ item?: any; itemIdx?: number; isArmor?: boolean; armorIdx?: number; defaultSlot?: string } | null>(null);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [actionFeedback, setActionFeedback] = useState<string | null>(null);
   const [draggedBackpackIdx, setDraggedBackpackIdx] = useState<number | null>(null);
@@ -107,7 +109,7 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
   const items = Array.isArray(pc.items) ? pc.items : [];
 
   // Map equipped items to slot (excluding consumables)
-  const equippedMap: Record<string, { item: any; idx: number }> = {};
+  const equippedMap: Record<string, { item: any; idx: number; isArmor?: boolean; armorIdx?: number }> = {};
   const slotlessEquipped: Array<{ item: any; idx: number }> = [];
 
   items.forEach((item: any, idx: number) => {
@@ -120,10 +122,37 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     }
   });
 
-  // Backpack entries: unequipped items + all consumables
-  const backpackEntries = items
+  // Bridge equipped suit of armor from pc.armors into the 'body' slot if not already occupied
+  if (Array.isArray(pc.armors)) {
+    const equippedArmorIdx = pc.armors.findIndex((a: any) => a.isEquipped && !isShieldItem(a));
+    if (equippedArmorIdx !== -1 && !equippedMap['body']) {
+      const equippedArmor = pc.armors[equippedArmorIdx];
+      equippedMap['body'] = {
+        item: { ...equippedArmor, slot: 'body' },
+        idx: equippedArmorIdx,
+        isArmor: true,
+        armorIdx: equippedArmorIdx
+      };
+    }
+  }
+
+  // Backpack entries: unequipped items + all consumables + unequipped body armors
+  const backpackEntries: Array<{ item: any; idx: number; isArmor?: boolean; armorIdx?: number }> = items
     .map((item: any, idx: number) => ({ item, idx }))
     .filter(({ item }: { item: any }) => !item.isEquipped || isConsumableItem(item));
+
+  if (Array.isArray(pc.armors)) {
+    pc.armors.forEach((a: any, aIdx: number) => {
+      if (!a.isEquipped && !isShieldItem(a)) {
+        backpackEntries.push({
+          item: { ...a, slot: 'body' },
+          idx: aIdx,
+          isArmor: true,
+          armorIdx: aIdx
+        });
+      }
+    });
+  }
 
   const filteredBackpack = backpackEntries.filter(({ item }: { item: any }) => {
     if (slotFilter !== 'all') {
@@ -179,7 +208,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
     showToast(`⚡ ${name} equipped to ${slotInfo.nameEn}.`);
   };
 
-  const handleUnequipSlot = (idx: number) => {
+  const handleUnequipSlot = (target: any) => {
+    if (typeof target === 'object' && target !== null && target.isArmor) {
+      const armorIdx = target.armorIdx !== undefined ? target.armorIdx : target.idx;
+      CombatState.togglePCArmorEquip(armorIdx);
+      showToast(`🥋 ${target.item?.name || 'Armor'} unequipped.`);
+      return;
+    }
+    const idx = typeof target === 'number' ? target : target?.idx;
     const item = pc.items && pc.items[idx];
     CombatState.unequipPCItem(idx);
     if (item) showToast(`🎒 ${item.name} moved to Stash.`);
@@ -354,7 +390,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                   setDraggedBackpackIdx={setDraggedBackpackIdx}
                   setDragOverBackpackIdx={setDragOverBackpackIdx}
                   onUseItem={handleUseItem}
-                  onEquipItem={(idx, slot) => {
+                  onEquipItem={(idx, slot, isArmor, armorIdx) => {
+                    if (isArmor) {
+                      const aIdx = armorIdx !== undefined ? armorIdx : idx;
+                      CombatState.togglePCArmorEquip(aIdx);
+                      const armor = pc.armors && pc.armors[aIdx];
+                      showToast(`⚡ ${armor?.name || 'Armor'} equipped to Body.`);
+                      return;
+                    }
                     const item = pc.items && pc.items[idx];
                     CombatState.equipPCItem(idx, slot);
                     if (item) {
@@ -363,7 +406,14 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
                     }
                   }}
                   onEditItem={setEditingItemData}
-                  onDeleteItem={(idx) => {
+                  onDeleteItem={(idx, isArmor, armorIdx) => {
+                    if (isArmor) {
+                      const aIdx = armorIdx !== undefined ? armorIdx : idx;
+                      const armor = pc.armors && pc.armors[aIdx];
+                      CombatState.removePCArmor(aIdx);
+                      showToast(`🗑️ ${armor?.name || 'Armor'} removed from Stash.`);
+                      return;
+                    }
                     const item = pc.items && pc.items[idx];
                     CombatState.deletePCItem(idx);
                     if (item) showToast(`🗑️ ${item.name} removed from Stash.`);
@@ -400,12 +450,25 @@ export const ArmoryTab: React.FC<ArmoryTabProps> = ({ pc }) => {
         )}
 
         {editingItemData && (
-          <ItemEditorModal
-            item={editingItemData.item}
-            itemIdx={editingItemData.itemIdx}
-            defaultSlot={editingItemData.defaultSlot}
-            onClose={() => setEditingItemData(null)}
-          />
+          editingItemData.isArmor ? (
+            <ArmorEditorModal
+              armor={editingItemData.item}
+              onSave={(armorData) => {
+                const aIdx = editingItemData.armorIdx !== undefined ? editingItemData.armorIdx : (editingItemData.itemIdx || 0);
+                CombatState.updatePCArmorField(aIdx, armorData);
+                setEditingItemData(null);
+                showToast(`🛡️ ${armorData.name || 'Armor'} updated.`);
+              }}
+              onClose={() => setEditingItemData(null)}
+            />
+          ) : (
+            <ItemEditorModal
+              item={editingItemData.item}
+              itemIdx={editingItemData.itemIdx}
+              defaultSlot={editingItemData.defaultSlot}
+              onClose={() => setEditingItemData(null)}
+            />
+          )
         )}
 
         {isImportModalOpen && (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
+import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
 
 interface BodySlotCardProps {
   slotKey: string;
@@ -149,7 +150,7 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
               </span>
             </div>
 
-            {activeEffects.length > 0 && (
+            {activeEffects.length > 0 ? (
               <span
                 style={{
                   fontSize: '8.5px',
@@ -170,7 +171,23 @@ export const BodySlotCard: React.FC<BodySlotCardProps> = ({
                 {activeEffects.length > 1 ? ` +${activeEffects.length - 1}` : ''}
                 {suppressedEntry ? ' ⚠️' : ''}
               </span>
-            )}
+            ) : (item.armorBonus !== undefined || ARMOR_REGISTRY[item.type]) ? (
+              <span
+                style={{
+                  fontSize: '8.5px',
+                  background: 'rgba(200, 169, 110, 0.25)',
+                  border: '0.5px solid var(--pb)',
+                  borderRadius: '2px',
+                  padding: '0 4px',
+                  color: 'var(--ink)',
+                  fontWeight: 'bold',
+                  fontFamily: 'var(--font-body)',
+                  lineHeight: '14px'
+                }}
+              >
+                +{((item.armorBonus !== undefined ? item.armorBonus : ARMOR_REGISTRY[item.type]?.armorBonus || 0) + (parseInt(item.enhancement) || 0))} AC
+              </span>
+            ) : null}
           </div>
 
           {/* Item Name */}

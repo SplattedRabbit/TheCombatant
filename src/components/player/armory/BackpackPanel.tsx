@@ -5,20 +5,21 @@
 
 import React from 'react';
 import { ITEM_SLOTS } from '@core/data/magicItems-data.js';
+import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
 import { formatEffectDisplay } from './BodySlotCard';
 import { isConsumableItem } from './armoryHelpers';
 
 interface BackpackPanelProps {
-  filteredBackpack: Array<{ item: any; idx: number }>;
+  filteredBackpack: Array<{ item: any; idx: number; isArmor?: boolean; armorIdx?: number }>;
   slotFilter: string;
   draggedBackpackIdx: number | null;
   dragOverBackpackIdx: number | null;
   setDraggedBackpackIdx: (idx: number | null) => void;
   setDragOverBackpackIdx: (idx: number | null) => void;
   onUseItem: (idx: number) => void;
-  onEquipItem: (idx: number, slot: string) => void;
-  onEditItem: (data: { item: any; itemIdx: number }) => void;
-  onDeleteItem: (idx: number) => void;
+  onEquipItem: (idx: number, slot: string, isArmor?: boolean, armorIdx?: number) => void;
+  onEditItem: (data: { item: any; itemIdx?: number; isArmor?: boolean; armorIdx?: number }) => void;
+  onDeleteItem: (idx: number, isArmor?: boolean, armorIdx?: number) => void;
   onReorderItems: (fromIdx: number, toIdx: number) => void;
   onOpenCompendium: () => void;
 }
@@ -69,8 +70,9 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
 
   return (
     <>
-      {filteredBackpack.map(({ item, idx }: { item: any; idx: number }) => {
-        const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: '🎒', nameEn: item.slot || 'Slotless' };
+      {filteredBackpack.map((entry: { item: any; idx: number; isArmor?: boolean; armorIdx?: number }) => {
+        const { item, idx, isArmor, armorIdx } = entry;
+        const slotDef = (ITEM_SLOTS as any)[item.slot] || { icon: isArmor ? '🥋' : '🎒', nameEn: isArmor ? 'Body' : (item.slot || 'Slotless') };
         const rawEffects = Array.isArray(item.effects) ? item.effects : [];
         const activeEffects = rawEffects.filter((e: any) => (parseInt(e.value) || 0) !== 0);
 
@@ -85,9 +87,10 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
 
         return (
           <div
-            key={item.id || idx}
-            draggable={true}
+            key={item.id || (isArmor ? `armor_${armorIdx}` : idx)}
+            draggable={!isArmor}
             onDragStart={(e) => {
+              if (isArmor) return;
               e.dataTransfer.setData('text/plain', String(idx));
               e.dataTransfer.effectAllowed = 'move';
               if (e.currentTarget instanceof HTMLElement && e.dataTransfer.setDragImage) {
@@ -99,11 +102,13 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
               setDraggedBackpackIdx(idx);
             }}
             onDragOver={(e) => {
+              if (isArmor) return;
               e.preventDefault();
               setDragOverBackpackIdx(idx);
             }}
             onDragLeave={() => setDragOverBackpackIdx(null)}
             onDrop={(e) => {
+              if (isArmor) return;
               e.preventDefault();
               if (draggedBackpackIdx !== null && draggedBackpackIdx !== idx) {
                 onReorderItems(draggedBackpackIdx, idx);
@@ -122,13 +127,15 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
               gap: '2px',
               boxShadow: isOver ? '0 0 8px rgba(139, 105, 20, 0.4)' : '0 1px 2px rgba(0,0,0,0.03)',
               opacity: isDragging ? 0.4 : 1,
-              cursor: 'grab',
+              cursor: isArmor ? 'default' : 'grab',
               transition: 'border 0.15s ease, box-shadow 0.15s ease'
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <span style={{ fontSize: '10px', color: 'var(--inkm)', cursor: 'grab', userSelect: 'none' }} title="Drag to reorder">⋮⋮</span>
+                {!isArmor && (
+                  <span style={{ fontSize: '10px', color: 'var(--inkm)', cursor: 'grab', userSelect: 'none' }} title="Drag to reorder">⋮⋮</span>
+                )}
                 <span style={{ fontSize: '12px' }}>{slotDef.icon}</span>
                 <span style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--ink)' }}>
                   {item.name || 'Item'}
@@ -171,7 +178,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                 {!isConsumableItem(item) && (
                   <button
                     type="button"
-                    onClick={() => onEquipItem(idx, item.slot)}
+                    onClick={() => onEquipItem(idx, item.slot, isArmor, armorIdx)}
                     className="btn btn-p"
                     style={{
                       fontSize: '8px',
@@ -187,7 +194,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                 )}
                 <button
                   type="button"
-                  onClick={() => onEditItem({ item, itemIdx: idx })}
+                  onClick={() => onEditItem({ item, itemIdx: idx, isArmor, armorIdx })}
                   className="btn"
                   style={{ fontSize: '8px', padding: '1px 4px' }}
                   title="Edit"
@@ -196,7 +203,7 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                 </button>
                 <button
                   type="button"
-                  onClick={() => onDeleteItem(idx)}
+                  onClick={() => onDeleteItem(idx, isArmor, armorIdx)}
                   className="xbtn"
                   style={{ fontSize: '8px', padding: '1px 4px' }}
                   title="Delete"
@@ -205,6 +212,26 @@ export const BackpackPanel: React.FC<BackpackPanelProps> = ({
                 </button>
               </div>
             </div>
+
+            {isArmor && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
+                <span
+                  style={{
+                    fontSize: '8.5px',
+                    background: 'rgba(59, 130, 246, 0.15)',
+                    border: '0.5px solid #3b82f6',
+                    borderRadius: '2px',
+                    padding: '0 4px',
+                    color: '#1e3a8a',
+                    fontWeight: 600,
+                    fontFamily: 'var(--font-body)'
+                  }}
+                >
+                  🛡️ +{((item.armorBonus !== undefined ? item.armorBonus : ARMOR_REGISTRY[item.type]?.armorBonus || 0) + (parseInt(item.enhancement) || 0))} AC
+                  {item.enhancement ? ` (+${item.enhancement} enh)` : ''}
+                </span>
+              </div>
+            )}
 
             {activeEffects.length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>

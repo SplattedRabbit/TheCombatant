@@ -11,12 +11,12 @@ import { EmptySlotCard } from './EmptySlotCard';
 import { BODY_SLOTS_ORDER } from './armoryHelpers';
 
 interface PaperdollPanelProps {
-  equippedMap: Record<string, { item: any; idx: number }>;
+  equippedMap: Record<string, { item: any; idx: number; isArmor?: boolean; armorIdx?: number }>;
   slotlessEquipped: Array<{ item: any; idx: number }>;
   setBonusData: { activeSets: Array<any>; setEffects: Array<any> };
   stackingBreakdown: any;
-  onUnequipSlot: (idx: number) => void;
-  onEditItem: (data: { item: any; itemIdx: number }) => void;
+  onUnequipSlot: (entryOrIdx: any) => void;
+  onEditItem: (data: { item: any; itemIdx?: number; isArmor?: boolean; armorIdx?: number }) => void;
   onEmptySlotClick: (slotKey: string) => void;
   onUseItem: (idx: number) => void;
 }
@@ -52,8 +52,8 @@ export const PaperdollPanel: React.FC<PaperdollPanelProps> = ({
                   item={equippedEntry.item}
                   itemIdx={equippedEntry.idx}
                   stackingBreakdown={stackingBreakdown}
-                  onUnequip={() => onUnequipSlot(equippedEntry.idx)}
-                  onEdit={() => onEditItem({ item: equippedEntry.item, itemIdx: equippedEntry.idx })}
+                  onUnequip={() => onUnequipSlot(equippedEntry)}
+                  onEdit={() => onEditItem({ item: equippedEntry.item, itemIdx: equippedEntry.idx, isArmor: equippedEntry.isArmor, armorIdx: equippedEntry.armorIdx })}
                 />
               );
             }

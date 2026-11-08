@@ -35,6 +35,11 @@ export function isConsumableItem(item: any): boolean {
   if (type === 'potion' || type === 'scroll' || type === 'wand' || type === 'consumable' || type === 'alchemical') return true;
   if (slot === 'potion' || slot === 'scroll' || slot === 'wand' || slot === 'consumable') return true;
   if (name.includes('potion') || name.includes('trank') || name.includes('scroll') || name.includes('schriftrolle') || name.includes('wand') || name.includes('zauberstab') || name.includes('alchemist') || name.includes('smokestick') || name.includes('tanglefoot') || name.includes('holy water')) return true;
+
+  // Slotted equipment (head, torso, body, feet, etc.) is never consumable
+  if (slot && slot !== 'slotless' && slot !== 'none') {
+    return false;
+  }
   
   const hasPassiveEffects = Array.isArray(item.effects) && item.effects.some((e: any) => (parseInt(e.value) || 0) !== 0);
   if (!hasPassiveEffects && (item.healingFormula || item.damageFormula || item.activation?.appliedBuffKey || item.charges?.max === 1)) {

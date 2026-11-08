@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { DialogOverlay } from '../../dialogs/modals/DialogOverlay.tsx';
 import { CombatState } from '@core/state.js';
 import { MAGIC_ITEMS_REGISTRY, ITEM_SLOTS, CONSOLIDATED_COMPENDIUM } from '@core/data/magicItems-data.js';
+import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
+import { isShieldItem } from '@core/models/model-core.js';
 import { formatEffectDisplay } from './BodySlotCard';
 import { isConsumableItem } from './ArmoryTab';
 
@@ -29,7 +31,7 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
   const items = Array.isArray(pc.items) ? pc.items : [];
 
   // 1. Matching backpack items
-  const backpackCandidates: Array<{ item: any; idx: number }> = [];
+  const backpackCandidates: Array<{ item: any; idx: number; isArmor?: boolean; armorIdx?: number }> = [];
   items.forEach((item: any, idx: number) => {
     if (!item.isEquipped) {
       const isDirectMatch = item.slot === slotKey && !isConsumableItem(item);
@@ -40,6 +42,19 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
       }
     }
   });
+
+  if (slotKey === 'body' && Array.isArray(pc.armors)) {
+    pc.armors.forEach((a: any, aIdx: number) => {
+      if (!a.isEquipped && !isShieldItem(a)) {
+        backpackCandidates.push({
+          item: { ...a, slot: 'body' },
+          idx: aIdx,
+          isArmor: true,
+          armorIdx: aIdx
+        });
+      }
+    });
+  }
 
   // 2. Matching consolidated compendium entries for this slot
   const slotConsolidated = CONSOLIDATED_COMPENDIUM.filter((entry: any) => {
@@ -61,7 +76,17 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
     setSelectedTiers(prev => ({ ...prev, [entryId]: presetKey }));
   };
 
-  const handleEquipBackpackItem = (idx: number) => {
+  const handleEquipBackpackItem = (candidate: { item: any; idx: number; isArmor?: boolean; armorIdx?: number }) => {
+    if (candidate.isArmor) {
+      const aIdx = candidate.armorIdx !== undefined ? candidate.armorIdx : candidate.idx;
+      CombatState.togglePCArmorEquip(aIdx);
+      onClose();
+      if (onFeedback) {
+        onFeedback(`⚡ ${candidate.item?.name || 'Armor'} equipped to ${slotDef.nameEn}.`);
+      }
+      return;
+    }
+    const idx = candidate.idx;
     const item = pc.items && pc.items[idx];
     CombatState.equipPCItem(idx, slotKey);
     onClose();
@@ -135,9 +160,9 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 {backpackCandidates
                   .filter(({ item }) => !search.trim() || item.name.toLowerCase().includes(search.toLowerCase()))
-                  .map(({ item, idx }) => (
+                  .map((candidate) => (
                     <div
-                      key={item.id || idx}
+                      key={candidate.isArmor ? `armor_${candidate.idx}` : (candidate.item.id || candidate.idx)}
                       style={{
                         display: 'flex',
                         justifyContent: 'space-between',
@@ -151,15 +176,22 @@ export const SlotEquipModal: React.FC<SlotEquipModalProps> = ({
                     >
                       <div>
                         <div style={{ fontFamily: 'var(--font-title)', fontSize: '11.5px', fontWeight: 'bold', color: 'var(--red)' }}>
-                          {item.name}
+                          {candidate.item.name}
                         </div>
                         <div style={{ fontSize: '9px', color: 'var(--inkm)', fontFamily: 'var(--font-body)' }}>
-                          {(item.effects || []).map((e: any) => formatEffectDisplay(e)).join(', ')}
+                          {candidate.isArmor ? (
+                            <span style={{ fontWeight: 600, color: '#1e3a8a' }}>
+                              🛡️ +{((candidate.item.armorBonus !== undefined ? candidate.item.armorBonus : ARMOR_REGISTRY[candidate.item.type]?.armorBonus || 0) + (parseInt(candidate.item.enhancement) || 0))} AC
+                              {candidate.item.enhancement ? ` (+${candidate.item.enhancement} enh)` : ''}
+                            </span>
+                          ) : (
+                            (candidate.item.effects || []).map((e: any) => formatEffectDisplay(e)).join(', ')
+                          )}
                         </div>
                       </div>
                       <button
                         type="button"
-                        onClick={() => handleEquipBackpackItem(idx)}
+                        onClick={() => handleEquipBackpackItem(candidate)}
                         className="btn btn-p"
                         style={{
                           fontSize: '8px',

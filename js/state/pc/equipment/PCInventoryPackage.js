@@ -144,7 +144,135 @@ export function parseInventoryPackage(rawInput) {
       return { isValid: false, error: 'Invalid package structure: root must be a JSON object.' };
     }
 
-    const source = data.dmStash && typeof data.dmStash === 'object' ? data.dmStash : data;
+    let source = data.dmStash && typeof data.dmStash === 'object' ? data.dmStash : data;
+    let packageName = String(data.packageName || data.name || '').trim();
+
+    // Auto-adapt package if provided in character format: { characters: [ { character, items: [...] } ] }
+    if ((!source.weapons && !source.armors && !source.items) && Array.isArray(data.characters) && data.characters.length > 0) {
+      const activePc = getActivePC();
+      const pcName = activePc?.name?.toLowerCase().trim() || '';
+      let charObj = data.characters.find(c => {
+        const cName = (c.character || c.name || '').toLowerCase().trim();
+        return pcName && (cName.includes(pcName) || pcName.includes(cName));
+      });
+      if (!charObj) charObj = data.characters[0];
+      packageName = charObj.character || charObj.name || packageName || 'Character Loadout';
+
+      const convertedWeapons = [];
+      const convertedArmors = [];
+      const convertedItems = [];
+
+      (charObj.items || []).forEach(it => {
+        const cat = (it.category || '').toLowerCase();
+        const slot = (it.slot || '').toLowerCase();
+        const enhMatch = String(it.enhancement || '').match(/\+?(\d+)/);
+        const enhVal = enhMatch ? parseInt(enhMatch[1], 10) : 0;
+
+        if (cat.includes('waffe') || cat.includes('weapon') || slot.includes('haupthand') || slot.includes('nebenhand')) {
+          let wType = (it.type || it.name || '').toLowerCase().replace(/[^a-z0-9]/g, '_');
+          if (wType.includes('warhammer')) wType = 'warhammer';
+          else if (wType.includes('rapier')) wType = 'rapier';
+          else if (wType.includes('sickle') || wType.includes('sichel')) wType = 'sickle';
+          else if (wType.includes('crossbow') || wType.includes('armbrust')) wType = 'light_crossbow';
+          else if (wType.includes('longsword')) wType = 'longsword';
+          else if (wType.includes('shortsword')) wType = 'shortsword';
+          else if (wType.includes('greatsword')) wType = 'greatsword';
+          else if (wType.includes('dagger') || wType.includes('dolch')) wType = 'dagger';
+
+          convertedWeapons.push({
+            name: it.name,
+            type: wType,
+            enhancement: enhVal,
+            grip: (slot.includes('beidhändig') || slot.includes('2h')) ? '2h' : '1h',
+            hand: slot.includes('nebenhand') ? 'off' : 'main',
+            isEquipped: true,
+            description: it.effect || ''
+          });
+        } else if (cat.includes('rüstung') || cat.includes('armor') || cat.includes('schild') || cat.includes('shield') || slot.includes('schild')) {
+          let aType = (it.type || it.name || '').toLowerCase();
+          let matchedType = 'chain_shirt';
+          if (aType.includes('full plate') || aType.includes('vollplatte')) matchedType = 'full_plate';
+          else if (aType.includes('breastplate') || aType.includes('brustpanzer')) matchedType = 'breastplate';
+          else if (aType.includes('mithral shirt') || aType.includes('chain shirt') || aType.includes('kettenhemd')) matchedType = 'chain_shirt';
+          else if (aType.includes('leather') || aType.includes('leder')) matchedType = 'leather';
+          else if (aType.includes('heavy steel shield') || aType.includes('stahlschild')) matchedType = 'shield_heavy_steel';
+          else if (aType.includes('light steel shield')) matchedType = 'shield_light_steel';
+          else if (aType.includes('buckler')) matchedType = 'shield_buckler';
+          else if (aType.includes('tower shield')) matchedType = 'shield_tower';
+
+          const isShield = cat.includes('schild') || cat.includes('shield') || slot.includes('schild') || aType.includes('shield') || aType.includes('schild');
+          const isAnim = String(it.enhancement || it.name || it.effect || '').toLowerCase().includes('animated') || String(it.enhancement || it.name || it.effect || '').toLowerCase().includes('schwebend');
+
+          convertedArmors.push({
+            name: it.name,
+            type: matchedType,
+            enhancement: enhVal,
+            isShield,
+            isAnimated: isAnim,
+            isEquipped: true
+          });
+        } else {
+          // Wondrous / Consumable Item
+          let mappedSlot = 'slotless';
+          if (slot.includes('körper') || slot.includes('body')) mappedSlot = 'body';
+          else if (slot.includes('torso')) mappedSlot = 'torso';
+          else if (slot.includes('gürtel') || slot.includes('waist') || slot.includes('taille')) mappedSlot = 'waist';
+          else if (slot.includes('schulter') || slot.includes('umhang') || slot.includes('shoulders')) mappedSlot = 'shoulders';
+          else if (slot.includes('finger') || slot.includes('ring')) mappedSlot = 'ring';
+          else if (slot.includes('fuß') || slot.includes('füße') || slot.includes('feet')) mappedSlot = 'feet';
+          else if (slot.includes('kopf') || slot.includes('stirn') || slot.includes('head')) mappedSlot = 'head';
+          else if (slot.includes('auge') || slot.includes('brille') || slot.includes('face') || slot.includes('eyes')) mappedSlot = 'face';
+          else if (slot.includes('hals') || slot.includes('throat') || slot.includes('neck')) mappedSlot = 'throat';
+          else if (slot.includes('arm') || slot.includes('handgelenk') || slot.includes('arms')) mappedSlot = 'arms';
+          else if (slot.includes('hand') || slot.includes('hände') || slot.includes('hands')) mappedSlot = 'hands';
+
+          const isConsumable = cat.includes('trank') || cat.includes('potion') || cat.includes('scroll') || cat.includes('wand') || slot.includes('gürteltasche');
+          const chargeMatch = String(it.enhancement || '').match(/(\d+)\s*Ladung/i);
+          const maxCharges = chargeMatch ? parseInt(chargeMatch[1], 10) : undefined;
+
+          // Parse potential stat effects from effect description
+          const effects = [];
+          const strMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Stärke/i);
+          if (strMatch) effects.push({ target: 'str', value: parseInt(strMatch[1], 10), type: 'enhancement' });
+          const dexMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Geschicklichkeit/i);
+          if (dexMatch) effects.push({ target: 'dex', value: parseInt(dexMatch[1], 10), type: 'enhancement' });
+          const conMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Konstitution/i);
+          if (conMatch) effects.push({ target: 'con', value: parseInt(conMatch[1], 10), type: 'enhancement' });
+          const intMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Intelligenz/i);
+          if (intMatch) effects.push({ target: 'int', value: parseInt(intMatch[1], 10), type: 'enhancement' });
+          const wisMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Weisheit/i);
+          if (wisMatch) effects.push({ target: 'wis', value: parseInt(wisMatch[1], 10), type: 'enhancement' });
+          const chaMatch = String(it.effect || '').match(/\+(\d+)\s*(?:Verbesserungsbonus auf\s*)?Charisma/i);
+          if (chaMatch) effects.push({ target: 'cha', value: parseInt(chaMatch[1], 10), type: 'enhancement' });
+          const saveMatch = String(it.effect || '').match(/\+(\d+)\s*Widerstandsbonus auf alle Rettungswürfe/i);
+          if (saveMatch) effects.push({ target: 'all', value: parseInt(saveMatch[1], 10), type: 'resistance' });
+          const deflMatch = String(it.effect || '').match(/\+(\d+)\s*Ablenkungsbonus auf (?:die )?Rüstungsklasse/i);
+          if (deflMatch) effects.push({ target: 'deflection', value: parseInt(deflMatch[1], 10), type: 'deflection' });
+          const natMatch = String(it.effect || '').match(/\+(\d+)\s*Verbesserungsbonus auf bestehende natürliche Rüstung/i);
+          if (natMatch) effects.push({ target: 'natural', value: parseInt(natMatch[1], 10), type: 'natural' });
+
+          const quantity = it.quantity || 1;
+          for (let q = 0; q < quantity; q++) {
+            convertedItems.push({
+              name: it.name,
+              slot: isConsumable ? 'slotless' : mappedSlot,
+              category: isConsumable ? 'potion' : (it.category || 'Wondrous'),
+              isEquipped: !isConsumable && mappedSlot !== 'slotless',
+              effects,
+              charges: maxCharges ? { current: maxCharges, max: maxCharges } : undefined,
+              description: it.effect || ''
+            });
+          }
+        }
+      });
+
+      source = {
+        weapons: convertedWeapons,
+        armors: convertedArmors,
+        items: convertedItems
+      };
+    }
+
     const rawWeapons = Array.isArray(source.weapons) ? source.weapons : null;
     const rawArmors = Array.isArray(source.armors) ? source.armors : null;
     const rawItems = Array.isArray(source.items) ? source.items : null;
@@ -178,7 +306,7 @@ export function parseInventoryPackage(rawInput) {
     }).filter(Boolean);
 
     const totalCount = weapons.length + armors.length + items.length;
-    const packageName = String(data.packageName || data.name || 'Equipment Package').trim();
+    packageName = packageName || String(data.packageName || data.name || 'Equipment Package').trim();
     const description = String(data.description || '').trim();
     const autoEquip = data.autoEquip !== undefined ? Boolean(data.autoEquip) : true;
 
