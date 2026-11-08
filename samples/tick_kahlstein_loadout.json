@@ -1,0 +1,145 @@
+{
+  "format": "dnd35e-inventory-package",
+  "version": 1,
+  "packageName": "Tick von Kahlstein Loadout (Lv. 13)",
+  "description": "Tiefenhalbling Schurke / Battle Trickster (Lv. 13). Zwei-Waffen-Kampf mit +2 Wounding Keen Rapier & +2 Defending Sickle, Shadow Mithral Shirt, Gloves of Dexterity +6, Rogue’s Vest (MIC), Cloak of Resistance +3, Ring of Protection +1 & Tränke.",
+  "autoEquip": true,
+  "weapons": [
+    {
+      "presetKey": "rapier",
+      "name": "+2 Wounding Keen Rapier",
+      "enhancement": 2,
+      "grip": "1h",
+      "hand": "main",
+      "isEquipped": true,
+      "isKeen": true,
+      "crit": "15-20/x2",
+      "extraDamageDice": "1 Con",
+      "extraDamageType": "Ability Damage",
+      "description": "Bedrohungsbereich 15–20. Jeder erfolgreiche Treffer verursacht zusätzlich 1 Punkt Konstitutionsschaden durch Verbluten."
+    },
+    {
+      "presetKey": "sickle",
+      "name": "+2 Defending Sickle",
+      "enhancement": 2,
+      "grip": "1h",
+      "hand": "off",
+      "isEquipped": true,
+      "description": "Erlaubt es, zu Beginn der Runde bis zu +2 des Angriffsbonus direkt als Schutzbonus auf die Rüstungsklasse zu übertragen."
+    }
+  ],
+  "armors": [
+    {
+      "presetKey": "chain_shirt",
+      "name": "Shadow Mithral Shirt (+3)",
+      "enhancement": 3,
+      "isEquipped": true,
+      "maxDexOverride": 6,
+      "checkPenaltyOverride": 0,
+      "spellFailureOverride": 10,
+      "effects": [
+        {
+          "type": "skill",
+          "target": "hide",
+          "value": 5,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "move_silently",
+          "value": 5,
+          "bonusType": "competence"
+        }
+      ],
+      "description": "+7 RK, max DEX +6, Rüstungsmalus 0. Verleiht +5 Kompetenzbonus auf Heimlichkeitswürfe (Hide / Move Silently)."
+    }
+  ],
+  "items": [
+    "gloves_of_dexterity_6",
+    {
+      "name": "Rogue’s Vest (MIC)",
+      "slot": "torso",
+      "isEquipped": true,
+      "effects": [
+        {
+          "type": "save",
+          "target": "ref",
+          "value": 2,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "open_lock",
+          "value": 2,
+          "bonusType": "competence"
+        },
+        {
+          "type": "skill",
+          "target": "disable_device",
+          "value": 2,
+          "bonusType": "competence"
+        }
+      ],
+      "description": "Erhöht den Hinterhältigen Angriff (Sneak Attack) um +1d6. Gewährt +2 Kompetenzbonus auf Reflexwürfe, Schlösser öffnen und Fallen entschärfen."
+    },
+    "cloak_of_resistance_3",
+    "ring_of_protection_1",
+    "potion_cure_serious_wounds",
+    "potion_cure_serious_wounds",
+    {
+      "name": "Potion of Neutralize Poison",
+      "slot": "slotless",
+      "category": "potion",
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Neutralisiert sofort alle Gifte im Körper und macht vorübergehend immun gegen weiteres Vergiften."
+    },
+    {
+      "name": "Potion of Neutralize Poison",
+      "slot": "slotless",
+      "category": "potion",
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Neutralisiert sofort alle Gifte im Körper und macht vorübergehend immun gegen weiteres Vergiften."
+    },
+    {
+      "name": "Potion of Gaseous Form",
+      "slot": "slotless",
+      "category": "potion",
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Verwandelt den Körper in Nebelgestalt (DR 10/Magic, Durchqueren winziger Spalten und Schlüssellöcher)."
+    },
+    {
+      "name": "Potion of Remove Paralysis",
+      "slot": "slotless",
+      "category": "potion",
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Sofortige Aufhebung von Lähmungen und Bewegungsunfähigkeit."
+    },
+    {
+      "name": "Potion of Remove Paralysis",
+      "slot": "slotless",
+      "category": "potion",
+      "isEquipped": false,
+      "charges": {
+        "current": 1,
+        "max": 1
+      },
+      "description": "Sofortige Aufhebung von Lähmungen und Bewegungsunfähigkeit."
+    }
+  ]
+}

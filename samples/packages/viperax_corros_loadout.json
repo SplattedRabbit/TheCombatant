@@ -1,65 +1,51 @@
 {
   "format": "dnd35e-inventory-package",
   "version": 1,
-  "packageName": "Viperax Corros Loadout (Lv. 11)",
-  "description": "Lizardfolk Dragon Shaman (110.000 GP Budget). +3 Flaming Burst Knochenspeer, Animated Dragonhide Shield, Dragonhide Breastplate, Amulet +4, Cloak of Cha +4, Dragon Spirit Cincture, Boots of the Battle Charger & Tränke.",
+  "packageName": "Viperax Corros Loadout (Lv. 13)",
+  "description": "Lizardfolk Dragon Shaman (Totem: Grüner Drache / Ouroboros-Vola, Lv. 13). Corrosive Venomous Knochenspeer (+3), Dragonhide Breastplate (+3), Animated Dragonhide Shield (+2), Amulet of Health +4, Cloak of Charisma +4, Dragon Spirit Cincture, Boots of the Battle Charger & Tränke.",
   "autoEquip": true,
   "weapons": [
     {
       "presetKey": "spear",
-      "name": "+3 Flaming Burst Knochenspeer",
+      "name": "Corrosive Venomous Knochenspeer (+3)",
       "enhancement": 3,
       "grip": "1h",
       "hand": "main",
       "isEquipped": true,
       "extraDamageDice": "1d6",
-      "extraDamageType": "Fire",
-      "priceGp": 32305,
-      "description": "Entfesselt bei normalen Treffern +1d6 Feuerschaden und bei kritischen Treffern +2d10 verheerende Feuereruptionen (x3). Freihändig geführt in Kombination mit dem animierten Schild."
+      "extraDamageType": "Acid",
+      "description": "Verursacht zusätzlichen Säureschaden (+1d6). Vergiftet Feinde bei kritischen Treffern oder Aktivierung. Schwebt dank animiertem Schild für effektive beidhändige Führung."
     }
   ],
   "armors": [
     {
       "presetKey": "breastplate",
-      "name": "+3 Dragonhide Breastplate",
+      "name": "Dragonhide Breastplate (+3)",
       "enhancement": 3,
       "isEquipped": true,
-      "priceGp": 9700,
-      "description": "Meisterhafter Brustpanzer aus gehärteten roten Drachenschuppen."
+      "description": "Aus gehäuteten Schuppen grüner Wyrms gefertigt. Zählt als leichte Rüstung ohne Einbußen der Schamanenkräfte."
     },
     {
       "presetKey": "shield_heavy_steel",
-      "name": "+2 Animated Dragonhide Shield",
+      "name": "Animated Dragonhide Shield (+2)",
       "enhancement": 2,
       "isEquipped": true,
-      "priceGp": 16170,
-      "description": "Aus zähem Drachenleder gefertigter Schild, der magisch vor dem Schamanen schwebt (Animated), sodass der Speer beidhändig für Reichweitenvorteile geführt werden kann."
+      "description": "Schwebt schützend um Viperax (Animated), sodass der Speer beidhändig geführt werden kann (+1,5x Stärkebonus)."
     }
   ],
   "items": [
     "amulet_of_health_4",
     "cloak_of_charisma_4",
     {
-      "presetKey": "cloak_of_resistance_2",
-      "name": "Cloak of Resistance +2",
-      "slot": "shoulders",
-      "isEquipped": false,
-      "priceGp": 4000,
-      "description": "Ersatzumhang zur Verstärkung aller Rettungswürfe (Rucksack-Reserve, teilt sich Schulter-Slot mit Cloak of Charisma)."
-    },
-    {
       "name": "Dragon Spirit Cincture (MIC)",
       "slot": "waist",
       "isEquipped": true,
-      "priceGp": 2000,
-      "description": "Erhöht den Grundschaden des Drachenodems (Breath Weapon) um +1d6. Hält man eine Waffe/Fokus des passenden Drachentyps, steigt der DC um +1."
+      "description": "Erhöht den Schaden der Odemwaffe (Gift/Säure) dauerhaft um +1d6 und steigert den Rettungswurf-SG um +1."
     },
-    "ring_of_protection_2",
     {
       "name": "Boots of the Battle Charger (MIC)",
       "slot": "feet",
       "isEquipped": true,
-      "priceGp": 2000,
       "charges": {
         "current": 2,
         "max": 2
@@ -72,15 +58,22 @@
         "actionType": "standard",
         "costType": "charges",
         "cost": 1,
-        "effectDescription": "Ermöglicht Ansturmangriffe (Charge) quer durch unwegsames Minengelände als Standard-Aktion."
+        "effectDescription": "Erlaubt Sturmangriffe (Charge) als Standard-Aktion sowie durch schwieriges Gelände und unwegsame Felsböden."
       },
-      "description": "2x pro Tag blitzartiger Ansturm selbst bei schwierigem Gelände oder engen Gängen."
+      "description": "Erlaubt Sturmangriffe (Charge) als Standard-Aktion sowie durch schwieriges Gelände und unwegsame Felsböden (2 Ladungen / Tag)."
+    },
+    "ring_of_protection_2",
+    {
+      "presetKey": "cloak_of_resistance_2",
+      "name": "Cloak of Resistance +2",
+      "slot": "shoulders",
+      "isEquipped": false,
+      "description": "+2 Widerstandsbonus auf Zähigkeits-, Reflex- und Willenswürfe (Rucksack-Reserve, teilt sich Schulter-Slot mit Cloak of Charisma)."
     },
     {
       "name": "Healing Belt (MIC)",
       "slot": "waist",
       "isEquipped": false,
-      "priceGp": 750,
       "charges": {
         "current": 3,
         "max": 3
@@ -93,9 +86,9 @@
         "actionType": "standard",
         "costType": "charges",
         "cost": 1,
-        "effectDescription": "Heilt 2d8 (1 Ladung), 3d8 (2 Ladungen) oder 4d8 (3 Ladungen) Trefferpunkte."
+        "effectDescription": "Verbraucht Ladungen für sofortige 2d8 bis 4d8 Punkte Heilung."
       },
-      "description": "Rucksack-Gürtel für Notfallheilung bei Gefährten."
+      "description": "Verbraucht Ladungen für sofortige 2d8 bis 4d8 Punkte Heilung (3 Ladungen / Tag)."
     },
     "potion_cure_serious_wounds",
     "potion_cure_serious_wounds",
@@ -103,39 +96,35 @@
       "name": "Potion of Neutralize Poison",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 750,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Neutralisiert Gifte im Organismus."
+      "description": "Sofortige Heilung und Immunität gegen fremde Gifte."
     },
     {
       "name": "Potion of Remove Paralysis",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 300,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Befreit von Lähmungseffekten."
+      "description": "Hebt Lähmungen und Bewegungssperren auf."
     },
     {
       "name": "Potion of Remove Paralysis",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 300,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Befreit von Lähmungseffekten."
+      "description": "Hebt Lähmungen und Bewegungssperren auf."
     },
     "potion_fly"
   ]
 }
-

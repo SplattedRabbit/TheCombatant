@@ -1,8 +1,8 @@
 {
   "format": "dnd35e-inventory-package",
   "version": 1,
-  "packageName": "Kjell Ketzerbrecher Loadout (Lv. 11)",
-  "description": "Zwerg Paladin / Shadowbane Inquisitor (110.000 GP Budget). Ketzerbrecher Warhammer, Full Plate des Seelenfriedens, Animated Shield, Belt +4, Cloak +3, Ring +2, MIC Utility & Tränke.",
+  "packageName": "Bruder Kjell Ketzerbrecher Loadout (Lv. 13)",
+  "description": "Zwerg Paladin / Shadowbane Inquisitor (Lv. 13). Ketzerbrecher (+3 Holy Magebane Warhammer), +3 Full Plate des Seelenfriedens, +2 Animated Heavy Steel Shield, Belt of Giant Strength +4, Cloak of Resistance +3, Ring of Protection +2, MIC Utility & Tränke.",
   "autoEquip": true,
   "weapons": [
     {
@@ -18,8 +18,7 @@
       "extraDamageType": "Holy",
       "hand": "main",
       "isEquipped": true,
-      "priceGp": 50312,
-      "description": "Gegen böse Wesen verursacht der Hammer +2d6 heiligen Schaden. Gegen arkan/göttlich Zauberkundige erhöht sich der Angriffsbonus effektiv auf +5 und fügt zusätzliche +2d6 Schaden zu. Freihändig führbar dank animiertem Schild."
+      "description": "Gegen böse Wesen +2d6 heiliger Schaden. Gegen arkan/göttlich Zauberkundige erhöht sich der Angriffsbonus effektiv auf +5 und fügt zusätzliche +2d6 Schaden zu. Freihändig führbar dank animiertem Schild."
     }
   ],
   "armors": [
@@ -28,16 +27,14 @@
       "name": "+3 Full Plate des Seelenfriedens",
       "enhancement": 3,
       "isEquipped": true,
-      "priceGp": 10650,
-      "description": "Geschwärzter Adamantit-Stil. Schützt Körper und Geist vor feindlicher Beherrschung und Furcht."
+      "description": "Schwere Rüstung mit hoher Schutzwirkung, geschwärztes Design des Ordens (Adamantit-Stil)."
     },
     {
       "presetKey": "shield_heavy_steel",
       "name": "+2 Animated Heavy Steel Shield",
       "enhancement": 2,
       "isEquipped": true,
-      "priceGp": 16170,
-      "description": "Schwebt freihändig vor dem Träger (Animated), sodass der Kriegshammer beidhändig für maximalen Power Attack Schaden geführt werden kann."
+      "description": "Schwebt freihändig vor dem Träger (Aktivierung: Move Action), sodass die Haupthandwaffe beidhändig geführt werden kann."
     }
   ],
   "items": [
@@ -48,7 +45,6 @@
       "name": "Healing Belt (MIC)",
       "slot": "waist",
       "isEquipped": false,
-      "priceGp": 750,
       "charges": {
         "current": 3,
         "max": 3
@@ -61,7 +57,7 @@
         "actionType": "standard",
         "costType": "charges",
         "cost": 1,
-        "effectDescription": "Heilt 2d8 (1 Ladung), 3d8 (2 Ladungen) oder 4d8 (3 Ladungen) Trefferpunkte."
+        "effectDescription": "Verbraucht 1/2/3 Ladungen als Standard-Aktion für 2d8 / 3d8 / 4d8 Punkte Heilung per Berührung."
       },
       "description": "Magischer Gürtel aus dem Magic Item Compendium mit 3 Ladungen pro Tag zur Notfallheilung."
     },
@@ -69,7 +65,6 @@
       "name": "Anklets of Translocation (MIC)",
       "slot": "feet",
       "isEquipped": true,
-      "priceGp": 1400,
       "charges": {
         "current": 2,
         "max": 2
@@ -82,7 +77,7 @@
         "actionType": "swift",
         "costType": "charges",
         "cost": 1,
-        "effectDescription": "Swift Action: Teleportiert den Träger bis zu 3 Meter (10 ft) in Sichtlinie."
+        "effectDescription": "Swift Action: Teleportiert den Träger sofort bis zu 3 Meter (10 ft) in ein sichtbares, unbesetztes Feld."
       },
       "description": "2x pro Tag kurzzeitige Sofort-Teleportation als Swift Action, um Engpässe oder Blockaden zu überwinden."
     },
@@ -92,40 +87,36 @@
       "name": "Potion of Remove Paralysis",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 300,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Befreit von Lähmungseffekten (z.B. Beholder-Lähmungsstrahlen oder Ghultreffer)."
+      "description": "Befreit sofort von Lähmungseffekten und Beholder-Augenstrahlen."
     },
     {
       "name": "Potion of Remove Paralysis",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 300,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Befreit von Lähmungseffekten (z.B. Beholder-Lähmungsstrahlen oder Ghultreffer)."
+      "description": "Befreit sofort von Lähmungseffekten und Beholder-Augenstrahlen."
     },
     "potion_fly",
     "potion_fly",
     {
-      "name": "Potion of Protection from Energy (Fire)",
+      "name": "Potion of Protection from Energy: Fire",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 750,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Absorbiert bis zu 60 Punkte Feuerschaden (CL 5)."
+      "description": "Absorbiert bis zu 60 Punkte Feuerschaden."
     }
   ]
 }
-

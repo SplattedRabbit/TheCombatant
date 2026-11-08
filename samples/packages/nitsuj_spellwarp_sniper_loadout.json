@@ -1,32 +1,30 @@
 {
   "format": "dnd35e-inventory-package",
   "version": 1,
-  "packageName": "Gelehrter Nit’suj Loadout (Lv. 11)",
-  "description": "Zwerg Magier / Spellwarp Sniper (110.000 GP Budget). Seeking Distance Crossbow, Headband +6, +3 Twilight Mithral Shirt, Cloak +4, Metamagic Rods, MIC Utility & Tränke.",
+  "packageName": "Gelehrter Nit’suj Loadout (Lv. 13)",
+  "description": "Zwerg Magier / Spellwarp Sniper (Lv. 13). Fokus-Armbrust der Zielsuchung (+2 Seeking Distance Light Crossbow), +3 Twilight Mithral Shirt, Headband of Intellect +6, Cloak of Resistance +4, Ring of Protection +2, Amulet of Natural Armor +1, Metamagic Rods & Tränke.",
   "autoEquip": true,
   "weapons": [
     {
       "presetKey": "light_crossbow",
-      "name": "+2 Seeking Distance Light Crossbow",
+      "name": "Fokus-Armbrust der Zielsuchung (+2 Seeking Distance)",
       "enhancement": 2,
       "grip": "rng",
       "hand": "main",
       "isEquipped": true,
-      "priceGp": 18335,
-      "description": "Verdoppelt die Grundreichweite (Distance) und ignoriert jede Form von Deckung oder Verschleierung (Seeking) – unabdingbar für Scharfschützen-Strahlenzauber."
+      "description": "Verdoppelt die Grundreichweite. 'Seeking' negiert jegliche Deckung und Verschleierung beim Zielen von Geschossen und Zauberstrahlen."
     }
   ],
   "armors": [
     {
       "presetKey": "chain_shirt",
-      "name": "+3 Twilight Mithral Shirt",
+      "name": "Twilight Mithral Shirt (+3)",
       "enhancement": 3,
       "isEquipped": true,
-      "priceGp": 10100,
       "maxDexOverride": 6,
       "checkPenaltyOverride": 0,
       "spellFailureOverride": 0,
-      "description": "Mithral Kettenhemd mit Twilight-Verzauberung (-10% ASF): Gewährt +7 RK bei 0% arkanem Fehlschlag und keinerlei Behinderung beim Zaubern."
+      "description": "+7 RK, maximaler DEX-Bonus +6, Rüstungsmalus 0. Dank Twilight (MIC) und Mithral hat sie exakt 0% arkanen Zauberpatzer."
     }
   ],
   "items": [
@@ -35,10 +33,55 @@
     "ring_of_protection_2",
     "amulet_of_natural_armor_1",
     {
+      "name": "Lesser Metamagic Rod of Empower",
+      "slot": "slotless",
+      "isEquipped": false,
+      "charges": {
+        "current": 3,
+        "max": 3
+      },
+      "dailyUses": {
+        "current": 3,
+        "max": 3
+      },
+      "activation": {
+        "actionType": "free",
+        "costType": "charges",
+        "cost": 1,
+        "effectDescription": "Verstärkt Zauber bis Grad 3 um +50% Schaden ohne höhere Zauberslots."
+      },
+      "description": "3x / Tag: Verstärkt Zauber bis Grad 3 (z. B. Scorching Ray oder Ray of Frost) um +50% Schaden ohne höhere Zauberslots."
+    },
+    {
+      "name": "Lesser Metamagic Rod of Extend",
+      "slot": "slotless",
+      "isEquipped": false,
+      "charges": {
+        "current": 3,
+        "max": 3
+      },
+      "dailyUses": {
+        "current": 3,
+        "max": 3
+      },
+      "activation": {
+        "actionType": "free",
+        "costType": "charges",
+        "cost": 1,
+        "effectDescription": "Verdoppelt die Wirkungsdauer von Schutzzaubern und Buffs bis Grad 3."
+      },
+      "description": "3x / Tag: Verdoppelt die Wirkungsdauer von Schutzzaubern und Buffs bis Grad 3."
+    },
+    {
+      "name": "Artificer’s Monocle (MIC)",
+      "slot": "face",
+      "isEquipped": true,
+      "description": "Ermöglicht in Verbindung mit Detect Magic die Identifikation magischer Gegenstände und Runen ohne Materialkosten."
+    },
+    {
       "name": "Anklets of Translocation (MIC)",
       "slot": "feet",
       "isEquipped": true,
-      "priceGp": 1400,
       "charges": {
         "current": 2,
         "max": 2
@@ -51,58 +94,9 @@
         "actionType": "swift",
         "costType": "charges",
         "cost": 1,
-        "effectDescription": "Swift Action: Teleportiert den Träger bis zu 3 Meter (10 ft) in Sichtlinie."
+        "effectDescription": "Swift Action: Sofortiger 3-Meter-Teleport für blitzschnelle Neupositionierung aus dem Nahkampf."
       },
-      "description": "2x pro Tag taktischer Stellungswechsel ohne Zauberaufwand (Swift Action)."
-    },
-    {
-      "name": "Metamagic Rod of Empower, Lesser",
-      "slot": "slotless",
-      "isEquipped": false,
-      "priceGp": 9000,
-      "charges": {
-        "current": 3,
-        "max": 3
-      },
-      "dailyUses": {
-        "current": 3,
-        "max": 3
-      },
-      "activation": {
-        "actionType": "free",
-        "costType": "charges",
-        "cost": 1,
-        "effectDescription": "Verstärkt einen vorbereiteten Zauber bis Grad 3 um +50% variablen numerischen Effekt."
-      },
-      "description": "3x pro Tag +50% Schaden auf Zauber/Strahlen bis Grad 3 ohne Erhöhung des Zaubergrads."
-    },
-    {
-      "name": "Metamagic Rod of Extend, Lesser",
-      "slot": "slotless",
-      "isEquipped": false,
-      "priceGp": 3000,
-      "charges": {
-        "current": 3,
-        "max": 3
-      },
-      "dailyUses": {
-        "current": 3,
-        "max": 3
-      },
-      "activation": {
-        "actionType": "free",
-        "costType": "charges",
-        "cost": 1,
-        "effectDescription": "Verdoppelt die Wirkungsdauer eines Zaubers bis Grad 3."
-      },
-      "description": "3x pro Tag verdoppelt die Dauer von Schutzzaubern und Buffs bis Grad 3."
-    },
-    {
-      "name": "Artificer’s Monocle (MIC)",
-      "slot": "face",
-      "isEquipped": true,
-      "priceGp": 1500,
-      "description": "Erlaubt in Kombination mit Detect Magic zügige Identifikation magischer Runen und Mechanismen im Dungeon."
+      "description": "Swift Action: Sofortiger 3-Meter-Teleport für blitzschnelle Neupositionierung aus dem Nahkampf."
     },
     "potion_cure_serious_wounds",
     "potion_cure_serious_wounds",
@@ -110,28 +104,25 @@
       "name": "Potion of Remove Blindness/Deafness",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 750,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Kurieren von Erblindung oder Taubheit – essenziell für Scharfschützen-Magier."
+      "description": "Heilt sofort Blindheit oder Taubheit (entscheidend für Sniper)."
     },
     {
       "name": "Potion of Remove Blindness/Deafness",
       "slot": "slotless",
       "category": "potion",
-      "priceGp": 750,
       "isEquipped": false,
       "charges": {
         "current": 1,
         "max": 1
       },
-      "description": "Kurieren von Erblindung oder Taubheit – essenziell für Scharfschützen-Magier."
+      "description": "Heilt sofort Blindheit oder Taubheit (entscheidend für Sniper)."
     },
     "potion_fly",
     "potion_fly"
   ]
 }
-
