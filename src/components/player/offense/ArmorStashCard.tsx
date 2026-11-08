@@ -7,6 +7,7 @@
 import React, { useState } from 'react';
 import { CombatState } from '@core/state.js';
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
+import { isAnimatedShield } from '@core/models/model-core.js';
 import { ArmorEditorModal } from '../../dialogs/modals/ArmorEditorModal.tsx';
 
 interface ArmorStashCardProps {
@@ -64,6 +65,11 @@ export const ArmorStashCard: React.FC<ArmorStashCardProps> = ({
             <span style={{ fontSize: '8px', color: 'var(--inkm)', background: 'rgba(200, 169, 110, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>
               {typeName} (+{totalAC} AC)
             </span>
+            {isAnimatedShield(a) && (
+              <span style={{ fontSize: '7.5px', color: '#6b21a8', background: 'rgba(107, 33, 168, 0.1)', border: '0.5px solid #a855f7', padding: '0 4px', borderRadius: '2px', fontWeight: 'bold' }}>
+                ✨ Animated
+              </span>
+            )}
           </div>
 
           <button

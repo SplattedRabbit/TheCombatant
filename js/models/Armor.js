@@ -17,6 +17,15 @@ export function isShieldItem(item) {
   return def ? Boolean(def.isShield) : false;
 }
 
+export function isAnimatedShield(item) {
+  if (!item || !isShieldItem(item)) return false;
+  if (typeof item.isAnimated === 'boolean') return item.isAnimated;
+  if (typeof item.animated === 'boolean') return item.animated;
+  const name = String(item.name || '').toLowerCase();
+  const desc = String(item.description || '').toLowerCase();
+  return name.includes('animated') || name.includes('schwebend') || desc.includes('animated') || desc.includes('schwebt');
+}
+
 export function matchesShieldFeatOption(shield, option) {
   if (!shield) return false;
   if (!option || typeof option !== 'string' || !option.trim()) return true;
@@ -56,6 +65,8 @@ export class Armor {
     this.maxDexOverride = a.maxDexOverride !== undefined ? a.maxDexOverride : '';
     this.checkPenaltyOverride = a.checkPenaltyOverride !== undefined ? a.checkPenaltyOverride : '';
     this.spellFailureOverride = a.spellFailureOverride !== undefined ? a.spellFailureOverride : '';
+    if (a.isAnimated !== undefined) this.isAnimated = !!a.isAnimated;
+    else if (a.animated !== undefined) this.isAnimated = !!a.animated;
   }
 
   get isShield() {

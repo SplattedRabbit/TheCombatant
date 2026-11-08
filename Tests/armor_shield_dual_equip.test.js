@@ -1,16 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { Armor, isShieldItem } from '../js/models/Armor.js';
+import { Armor, isShieldItem, isAnimatedShield } from '../js/models/Armor.js';
 import { Weapon } from '../js/models/Weapon.js';
 import { CombatState } from '../js/state.js';
 import { getActivePC, updateSession } from '../js/state/state-core.js';
 
-test('isShieldItem helper validates class instances and plain objects', () => {
+test('isShieldItem and isAnimatedShield helpers validate class instances and plain objects', () => {
   const breastplate = new Armor({ type: 'breastplate' });
   const shield = new Armor({ type: 'shield_heavy_steel' });
+  const animatedShield = new Armor({ type: 'shield_heavy_steel', name: '+2 Animated Heavy Steel Shield', isAnimated: true });
 
   assert.strictEqual(isShieldItem(breastplate), false, 'Breastplate Armor instance should not be shield');
   assert.strictEqual(isShieldItem(shield), true, 'Heavy shield Armor instance should be shield');
+  assert.strictEqual(isAnimatedShield(shield), false, 'Standard shield should not be animated');
+  assert.strictEqual(isAnimatedShield(animatedShield), true, 'Animated shield instance should be animated');
 
   // Plain object tests (e.g. from JSON or plain state)
   assert.strictEqual(isShieldItem({ type: 'shield_heavy_steel' }), true, 'Plain object heavy shield should be shield');
@@ -19,6 +22,12 @@ test('isShieldItem helper validates class instances and plain objects', () => {
   assert.strictEqual(isShieldItem({ isShield: false }), false, 'Explicit isShield flag false should not be shield');
   assert.strictEqual(isShieldItem(null), false, 'null should safely return false');
   assert.strictEqual(isShieldItem(undefined), false, 'undefined should safely return false');
+
+  // isAnimatedShield name detection fallback
+  assert.strictEqual(isAnimatedShield({ type: 'shield_heavy_steel', name: 'Animated Shield' }), true, 'Name contains Animated');
+  assert.strictEqual(isAnimatedShield({ type: 'shield_heavy_steel', name: 'Schwebender Schild' }), true, 'Name contains Schwebend');
+  assert.strictEqual(isAnimatedShield({ type: 'shield_heavy_steel', isAnimated: false, name: 'Normal Shield' }), false, 'Explicit false is not animated');
+  assert.strictEqual(isAnimatedShield({ type: 'breastplate', name: 'Animated Armor' }), false, 'Armor is not shield, cannot be animated shield');
 });
 
 test('Armor and Shield dual-equipping, AC stacking, ACP and 2H interaction', () => {
@@ -99,4 +108,19 @@ test('Armor and Shield dual-equipping, AC stacking, ACP and 2H interaction', () 
   assert.strictEqual(pc.armors[1].isEquipped, true, 'Shield is equipped again');
   assert.strictEqual(pc.weapons[0].isEquipped, false, 'Two-handed weapon is unequipped when shield is equipped');
   assert.strictEqual(pc.armors[0].isEquipped, true, 'Body armor remains equipped');
+
+  // 6. Test Animated Shield (floating shield):
+  // An animated shield floats in front of the wielder and CAN be equipped concurrently with a 2-Handed weapon.
+  pc.armors[1] = new Armor({ name: '+2 Animated Heavy Steel Shield', type: 'shield_heavy_steel', enhancement: 2, isAnimated: true, isEquipped: false });
+  CombatState.togglePCArmorEquip(1);
+  assert.strictEqual(pc.armors[1].isEquipped, true, 'Animated shield is equipped');
+
+  // Equip two-handed weapon: Animated shield should REMAIN equipped!
+  CombatState.togglePCWeaponEquip(0);
+  assert.strictEqual(pc.weapons[0].isEquipped, true, 'Two-handed weapon is equipped');
+  assert.strictEqual(pc.armors[1].isEquipped, true, 'Animated shield remains equipped with 2H weapon');
+  assert.strictEqual(pc.armors[0].isEquipped, true, 'Body armor remains equipped');
+
+  // Verify AC includes Dex (2) + Breastplate (5) + Shield (2) + Shield Enhancement (2) = 21
+  assert.strictEqual(pc.ac.getValue(), 21, 'Full AC bonus granted: 10 + 2 (Dex) + 5 (Armor) + 4 (Animated Shield +2) = 21');
 });

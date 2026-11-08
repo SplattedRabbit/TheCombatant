@@ -8,6 +8,7 @@ import { CombatState } from '@core/state.js';
 import { AttackEngine } from '@core/rules/AttackEngine.js';
 import { matchesFeatOption, getCritThreatDisplay } from '@core/models/Weapon.js';
 import { ARMOR_REGISTRY } from '@core/data/armor-data.js';
+import { isAnimatedShield } from '@core/models/model-core.js';
 
 export interface OffHandSlotProps {
   pc: any;
@@ -208,7 +209,7 @@ export const OffHandSlot: React.FC<OffHandSlotProps> = ({
 
         {/* Zone 1: Slot Label */}
         <div style={{ fontSize: '6.5px', color: 'var(--inkl)', fontWeight: 'bold', textTransform: 'uppercase', fontFamily: 'var(--font-title)', opacity: 0.9 }}>
-          🛡️ Off-Hand
+          🛡️ Off-Hand {isAnimatedShield(sh) && <span style={{ color: '#6b21a8' }}>(✨ Animated)</span>}
         </div>
 
         {/* Zone 2: Title */}

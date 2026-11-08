@@ -62,6 +62,7 @@ declare module '@core/models/model-core.js' {
   export const Weapon: any;
   export const Armor: any;
   export const isShieldItem: (item: any) => boolean;
+  export const isAnimatedShield: (item: any) => boolean;
   export const Item: any;
   export const createInitialState: (...args: any[]) => any;
   export const createCombatant: (...args: any[]) => any;
@@ -323,6 +324,7 @@ declare module '@core/models/Armor.js' {
     [key: string]: any;
   }
   export const isShieldItem: (item: any) => boolean;
+  export const isAnimatedShield: (item: any) => boolean;
   export const matchesShieldFeatOption: (shield: any, option?: string) => boolean;
 }
 
@@ -381,6 +383,7 @@ declare module '*js/models/model-core.js' {
   export const PlayerCharacter: any;
   export const Monster: any;
   export const isShieldItem: (item: any) => boolean;
+  export const isAnimatedShield: (item: any) => boolean;
   export const createInitialState: (...args: any[]) => any;
   export const createCombatant: (...args: any[]) => any;
 }

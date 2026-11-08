@@ -8,7 +8,7 @@
 import { getActivePC, StateEvents } from '../../state-core.js';
 import { saveToStorage } from '../../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from '../PCGeneral.js';
-import { Weapon, Armor, isShieldItem, Item } from '../../../models/model-core.js';
+import { Weapon, Armor, isShieldItem, isAnimatedShield, Item } from '../../../models/model-core.js';
 import { WeaponRegistry } from '../../../models/Weapon.js';
 import { ARMOR_REGISTRY } from '../../../data/armor-data.js';
 import { MAGIC_ITEMS_REGISTRY } from '../../../data/magicItems-data.js';
@@ -216,7 +216,7 @@ function equipArmorRAW(pc, targetArmor) {
     }
   });
 
-  if (isTargetShield && Array.isArray(pc.weapons)) {
+  if (isTargetShield && !isAnimatedShield(targetArmor) && Array.isArray(pc.weapons)) {
     pc.weapons.forEach(w => {
       if (!w.isEquipped) return;
       if (w.grip === '2h' || w.isDoubleWielded || w.hand === 'off' || isTwoHandedRangedWeapon(w)) {
@@ -242,7 +242,7 @@ function equipWeaponRAW(pc, targetWeapon) {
     });
     if (Array.isArray(pc.armors)) {
       pc.armors.forEach(a => {
-        if (isShieldItem(a)) a.isEquipped = false;
+        if (isShieldItem(a) && !isAnimatedShield(a)) a.isEquipped = false;
       });
     }
   } else {
@@ -261,7 +261,7 @@ function equipWeaponRAW(pc, targetWeapon) {
     });
     if (desiredHand === 'off' && Array.isArray(pc.armors)) {
       pc.armors.forEach(a => {
-        if (isShieldItem(a)) a.isEquipped = false;
+        if (isShieldItem(a) && !isAnimatedShield(a)) a.isEquipped = false;
       });
     }
   }

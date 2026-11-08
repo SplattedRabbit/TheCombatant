@@ -8,7 +8,7 @@
 import { getActivePC } from '../../state-core.js';
 import { saveToStorage } from '../../StorageManager.js';
 import { recalculatePCStats, syncPCToHost } from '../PCGeneral.js';
-import { Weapon, isShieldItem } from '../../../models/model-core.js';
+import { Weapon, isShieldItem, isAnimatedShield } from '../../../models/model-core.js';
 import { WeaponRegistry } from '../../../models/Weapon.js';
 
 export function updatePCWeapon(idx, key, val) {
@@ -71,10 +71,10 @@ export function togglePCWeaponEquip(idx) {
         pc.weapons.forEach((w, wIdx) => {
           if (wIdx !== idx) w.isEquipped = false;
         });
-        // Unequip shields
+        // Unequip shields (unless animated)
         if (Array.isArray(pc.armors)) {
           pc.armors.forEach(a => {
-            if (isShieldItem(a)) a.isEquipped = false;
+            if (isShieldItem(a) && !isAnimatedShield(a)) a.isEquipped = false;
           });
         }
       } else {
@@ -89,10 +89,10 @@ export function togglePCWeaponEquip(idx) {
           pc.weapons.forEach((w, wIdx) => {
             if (wIdx !== idx) w.isEquipped = false;
           });
-          // Unequip shields
+          // Unequip shields (unless animated)
           if (Array.isArray(pc.armors)) {
             pc.armors.forEach(a => {
-              if (isShieldItem(a)) a.isEquipped = false;
+              if (isShieldItem(a) && !isAnimatedShield(a)) a.isEquipped = false;
             });
           }
         } else {
@@ -105,11 +105,11 @@ export function togglePCWeaponEquip(idx) {
               w.isEquipped = false;
             }
           });
-          // If this weapon is designated as off-hand, unequip any equipped shield
+          // If this weapon is designated as off-hand, unequip any equipped non-animated shield
           if (target.hand === 'off') {
             if (Array.isArray(pc.armors)) {
               pc.armors.forEach(a => {
-                if (isShieldItem(a)) a.isEquipped = false;
+                if (isShieldItem(a) && !isAnimatedShield(a)) a.isEquipped = false;
               });
             }
           }

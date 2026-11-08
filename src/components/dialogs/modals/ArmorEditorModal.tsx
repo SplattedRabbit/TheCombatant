@@ -24,6 +24,12 @@ export const ArmorEditorModal: React.FC<ArmorEditorModalProps> = ({
   const [name, setName] = useState(armor?.name || '');
   const [type, setType] = useState(armor?.type || 'chain_shirt');
   const [enhancement, setEnhancement] = useState<number>(armor?.enhancement !== undefined ? parseInt(armor.enhancement) || 0 : 0);
+  const [isAnimated, setIsAnimated] = useState<boolean>(
+    Boolean(
+      armor?.isAnimated || armor?.animated ||
+      (armor?.name && (armor.name.toLowerCase().includes('animated') || armor.name.toLowerCase().includes('schwebend')))
+    )
+  );
 
   // Overrides
   const [showOverrides, setShowOverrides] = useState(
@@ -51,6 +57,7 @@ export const ArmorEditorModal: React.FC<ArmorEditorModalProps> = ({
       name: finalName,
       type,
       enhancement: parseInt(enhancement as any) || 0,
+      isAnimated: typeDef.isShield ? isAnimated : false,
       armorBonusOverride: armorBonusOverride.trim(),
       maxDexOverride: maxDexOverride.trim(),
       checkPenaltyOverride: checkPenaltyOverride.trim(),
@@ -191,6 +198,26 @@ export const ArmorEditorModal: React.FC<ArmorEditorModalProps> = ({
               </div>
             </div>
           </div>
+
+          {/* Animated Shield Property (D&D 3.5e DMG p. 217) */}
+          {Boolean(typeDef.isShield) && (
+            <div style={{ padding: '6px 8px', background: 'rgba(200, 169, 110, 0.1)', border: '0.5px solid var(--pb)', borderRadius: '3px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }}>
+                <input
+                  type="checkbox"
+                  checked={isAnimated}
+                  onChange={(e) => setIsAnimated(e.target.checked)}
+                  style={{ cursor: 'pointer', margin: 0 }}
+                />
+                <span style={{ fontSize: '11px', fontFamily: 'var(--font-title)', fontWeight: 'bold', color: 'var(--ink)' }}>
+                  ✨ Animated Shield (Schwebend)
+                </span>
+              </label>
+              <div style={{ fontSize: '8.5px', color: 'var(--inkl)', fontStyle: 'italic', marginTop: '2px', marginLeft: '22px' }}>
+                Schwebt freihändig vor dem Träger: Erlaubt das Führen von Zweihandwaffen bei vollem Schildbonus auf die RK.
+              </div>
+            </div>
+          )}
 
           {/* Advanced Overrides Toggle */}
           <div>
