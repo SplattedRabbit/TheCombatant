@@ -56,7 +56,6 @@ export const PCOffenseTab: React.FC = () => {
     isDoubleWielded = true;
   }
   
-  const equippedArmor = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && !isShieldItem(a)) : null;
   const equippedShield = Array.isArray(loosePc.armors) ? loosePc.armors.find((a: any) => a.isEquipped && isShieldItem(a)) : null;
 
   // Rarity style helper
@@ -212,7 +211,6 @@ export const PCOffenseTab: React.FC = () => {
             mainHandWeapon={mainHandWeapon}
             offHandWeapon={offHandWeapon}
             equippedShield={equippedShield}
-            equippedArmor={equippedArmor}
             isDoubleWielded={isDoubleWielded}
             getRarityStyle={getRarityStyle}
             formatMod={formatMod}

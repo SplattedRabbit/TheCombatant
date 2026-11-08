@@ -10,7 +10,6 @@
 import React from 'react';
 import { MainHandSlot } from './slots/MainHandSlot';
 import { OffHandSlot } from './slots/OffHandSlot';
-import { ArmorSlot } from './slots/ArmorSlot';
 import { StrikeAbilitySlot } from './slots/StrikeAbilitySlot';
 import { NaturalAttacksSection } from './slots/NaturalAttacksSection';
 
@@ -19,7 +18,6 @@ export interface ActiveEquipmentSlotsProps {
   mainHandWeapon: any;
   offHandWeapon: any;
   equippedShield: any;
-  equippedArmor: any;
   isDoubleWielded: boolean;
   getRarityStyle: (enhancement: number) => { border: string; background: string; boxShadow: string; glowClass: string };
   formatMod: (val: number) => string;
@@ -35,7 +33,6 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
   mainHandWeapon,
   offHandWeapon,
   equippedShield,
-  equippedArmor,
   isDoubleWielded,
   getRarityStyle,
   formatMod,
@@ -79,12 +76,6 @@ export const ActiveEquipmentSlots: React.FC<ActiveEquipmentSlotsProps> = ({
         handleRollAttack={handleRollAttack}
         handleRollDamage={handleRollDamage}
         onOpenWeaponStash={onOpenWeaponStash}
-        onOpenArmorStash={onOpenArmorStash}
-      />
-      <ArmorSlot
-        pc={pc}
-        equippedArmor={equippedArmor}
-        getRarityStyle={getRarityStyle}
         onOpenArmorStash={onOpenArmorStash}
       />
       <StrikeAbilitySlot
