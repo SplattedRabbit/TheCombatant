@@ -202,6 +202,24 @@ Die 4 taktischen Slots im Combat-Tab (`MainHandSlot.tsx`, `OffHandSlot.tsx`, `Ar
 
 ---
 
+## 6.5 Zugelassene Regelbücher & Kampagnen-Umfang (Regelbasis)
+
+Die autorisierte Regelbasis der CombatApp umfasst ausschließlich folgende offizielle D&D 3.5e Quellen:
+- **Player's Handbook (PHB):** 11 Kernklassen, 22 Domänen, Talente, Zauber (`spells-phb.json`), Ausrüstung, Kernkampfregeln.
+- **Dungeon Master's Guide (DMG):** Prestigeklassen (Assassin, Arcane Trickster, Mystic Theurge, Dragon Disciple, Eldritch Knight, Shadowdancer), Standard-Magiegegenstände.
+- **Player's Handbook II (PHB II):** Erweiterte Klassen (*Duskblade, Beguiler, Knight, Dragon Shaman* inkl. Drachentotems & den 7 offiziellen Draconic Auras), Talente, Zauber (`spells-phb2.json`).
+- **Complete Adventurer (CAd / CA):** Klassen (*Ninja, Scout, Spellthief*), Prestigeklasse *Shadowbane Inquisitor*, Talente, Zauber (`spells-ca.json`).
+- **Complete Scoundrel (CS):** Prestigeklassen (*Battle Trickster, Spellwarp Sniper*), *Skill Tricks*, Talente, Zauber (`spells-cs.json`).
+- **Magic Item Compendium (MIC):** 12-Slot Paperdoll System (*Head, Face, Neck, Shoulders, Torso, Body, Waist, Wrists, Hands, Rings, Feet, Slotless*), Gegenstände mit Ladungen/Daily Uses, Rüstungs-/Waffeneigenschaften (z. B. *Twilight*).
+
+### Prinzip „Gruppen-Buffs & Empfangene Auren (Ally Buffs)“:
+- **Rezeptive vs. Projizierende Berechtigung:** Die Klassen- und Stufenvoraussetzungen (`classRequirements`) eines Buffs bestimmen nur, wer die Fähigkeit *erzeugen / wirken* kann. **Auren (z. B. die Draconic Auras des Dragon Shamans, Paladin Aura of Courage) und Bardenlieder wirken jedoch auf Verbündete.**
+- Im Buffmanagement (`BuffSearchSection.tsx`, `BuffRules.js`) dürfen Auren und Gruppen-Buffs **niemals** durch die Klassenstufe des suchenden Empfängers ausgeblendet werden. Jeder Charakter muss die Auren des Dragon Shamans im Buffmanagement finden und als empfangenen Gruppen-Buff aktivieren können.
+- Beim Aktivieren einer empfangenen Draconic Aura kann die Dragon-Shaman-Stufe der Quelle (bzw. der Bonuswert +1 bis +5) vom Spieler eingegeben werden.
+- **Stacking:** Nur identische Draconic Auren stacken nicht (höherer Bonus gilt). Verschiedene Draconic Auren (z. B. *Vigor* und *Power*) dürfen gleichzeitig aktiv sein.
+
+---
+
 ## 7. Dokumentations-Struktur (Single Source of Truth)
 
 Das Projekt nutzt bewusst nur **5 zentrale Markdown-Dokumente**, um Redundanzen zu vermeiden:

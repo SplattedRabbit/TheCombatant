@@ -168,6 +168,8 @@ declare module '@core/spells.js' {
     loadSpells: () => Promise<boolean>;
     [key: string]: any;
   };
+  export const SpellsRegistry: Record<string, any>;
+  export const getSpellById: (id: string) => any;
   export const getSpellSchoolCode: (schoolStr?: string, id?: string, name?: string) => string | null;
   export const getSchoolCodeFromInput: (inputStr?: string) => string | null;
   export const getSchoolLabel: (code: string) => string;
@@ -273,15 +275,6 @@ declare module '*/dragonTotems.js' {
   }
   export const DRAGON_TOTEMS: Record<string, DragonTotemDef>;
   export const isTotemAllowedForAlignment: (totemKey: string, alignment: string) => boolean;
-}
-
-declare module '@core/spells.js' {
-  export const CombatSpells: any;
-  export const SpellsRegistry: Record<string, any>;
-  export const getSchoolCodeFromInput: (input: string) => string;
-  export const getSchoolLabel: (code: string) => string;
-  export const getSpellById: (id: string) => any;
-  export const getSpellSchoolCode: (...args: any[]) => string;
 }
 
 declare module '@core/data/skills-data.js' {
@@ -562,4 +555,58 @@ declare module '*acf-data.js' {
 declare module '*js/ui/dialogs/BaseDialogs.js' {
   export function showParchmentMessage(text: string, sender?: string): { dismiss: () => void };
   export function showLootRevealDialog(item: any, category?: string, onAcknowledge?: () => void): { dismiss: () => void };
+}
+
+declare module '@core/data/class-buffs-data.js' {
+  export interface ClassBuffDef {
+    key: string;
+    name: string;
+    school: string;
+    duration: string;
+    description: string;
+    classRequirements?: Array<{ classType: string; level: number }>;
+    isAura?: boolean;
+    isAllyBuff?: boolean;
+    isDraconicAura?: boolean;
+    effects?: Array<{ target: string; value: number; valueFormula?: string; type: string; source: string }>;
+  }
+  export const CLASS_BUFFS: ClassBuffDef[];
+}
+
+declare module '*class-buffs-data.js' {
+  export interface ClassBuffDef {
+    key: string;
+    name: string;
+    school: string;
+    duration: string;
+    description: string;
+    classRequirements?: Array<{ classType: string; level: number }>;
+    isAura?: boolean;
+    isAllyBuff?: boolean;
+    isDraconicAura?: boolean;
+    effects?: Array<{ target: string; value: number; valueFormula?: string; type: string; source: string }>;
+  }
+  export const CLASS_BUFFS: ClassBuffDef[];
+}
+
+declare module '@core/rules/BuffRules.js' {
+  export function translateTarget(target: string): string;
+  export function translateType(type: string): string;
+  export function resolveSpellEffectValue(formula: string, casterLevel: any, defaultValue?: any): any;
+  export function calculateDurationRounds(durationStr: string, casterLevel: any): number | null;
+  export function checkBuffConflict(pc: any, spellKey?: string | null, customEffects?: any): any;
+  export function isBuffEligible(pc: any, key: string, isClass: boolean): boolean;
+  export function isBuffSuppressed(pc: any, buff: any): boolean;
+  export function activateBuffByKey(pc: any, key: string, isClass: boolean, dialogs?: any): void;
+}
+
+declare module '*BuffRules.js' {
+  export function translateTarget(target: string): string;
+  export function translateType(type: string): string;
+  export function resolveSpellEffectValue(formula: string, casterLevel: any, defaultValue?: any): any;
+  export function calculateDurationRounds(durationStr: string, casterLevel: any): number | null;
+  export function checkBuffConflict(pc: any, spellKey?: string | null, customEffects?: any): any;
+  export function isBuffEligible(pc: any, key: string, isClass: boolean): boolean;
+  export function isBuffSuppressed(pc: any, buff: any): boolean;
+  export function activateBuffByKey(pc: any, key: string, isClass: boolean, dialogs?: any): void;
 }

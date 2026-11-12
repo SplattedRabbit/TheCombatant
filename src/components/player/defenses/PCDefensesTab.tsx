@@ -33,7 +33,18 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
   const effWilMod = hasFeat('force_of_personality') ? chaMod : (hasFeat('steadfast_determination') ? conMod : wisMod);
 
   const hasImprovedInit = Array.isArray(pc.feats) && pc.feats.some((f: any) => f.id === 'improved_initiative');
-  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0);
+  let buffInitBonus = 0;
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach((b: any) => {
+      const effects = Array.isArray(b.effects) ? b.effects : [];
+      effects.forEach((eff: any) => {
+        if (eff.target === 'init') {
+          buffInitBonus += parseInt(eff.value) || 0;
+        }
+      });
+    });
+  }
+  const totIni = dexMod + (parseInt(pc.iniMisc) || 0) + (hasImprovedInit ? 4 : 0) + buffInitBonus;
 
   const baseZaVal = extractStatValue(pc.baseZa, 0);
   const baseRefVal = extractStatValue(pc.baseRef, 0);
@@ -120,6 +131,7 @@ export const PCDefensesTab: React.FC<PCDefensesTabProps> = ({ pc }) => {
         dexMod={dexMod}
         totIni={totIni}
         hasImprovedInit={hasImprovedInit}
+        buffInitBonus={buffInitBonus}
         localValues={localValues}
         onInputChange={handleInputChange}
         onCommitNumber={handleCommitNumber}

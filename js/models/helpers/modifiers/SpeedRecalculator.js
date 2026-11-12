@@ -54,6 +54,17 @@ export function recalculateSpeed(pc) {
     });
   }
 
+  if (Array.isArray(pc.activeBuffs)) {
+    pc.activeBuffs.forEach(buff => {
+      const effects = Array.isArray(buff.effects) ? buff.effects : [];
+      effects.forEach(eff => {
+        if (eff.target === 'speed' || eff.type === 'speed') {
+          speedBonus += parseInt(eff.value) || 0;
+        }
+      });
+    });
+  }
+
   let baseAndBonus = (pc.baseBw !== undefined ? pc.baseBw : 30) + speedBonus;
 
   // Apply speed reduction for medium or heavy armor (Dwarves are immune to this)

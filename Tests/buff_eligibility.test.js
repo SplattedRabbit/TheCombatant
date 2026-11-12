@@ -175,3 +175,73 @@ test('Buff Eligibility - Combatant quickBuffs initialization and serialization',
   assert.deepStrictEqual(serialized.quickBuffs, testQuickBuffs, 'serialized quickBuffs should match instance data');
 });
 
+test('Draconic Auras - PHB II Dragon Shaman Auras discovery & scaling', async () => {
+  const { CLASS_BUFFS } = await import('../js/data/class-buffs-data.js');
+  const { resolveSpellEffectValue, activateBuffByKey } = await import('../js/rules/BuffRules.js');
+
+  // 1. Verify all 7 PHB II Draconic Auras exist and are flagged as ally auras
+  const draconicAuraKeys = [
+    'draconic_aura_power',
+    'draconic_aura_presence',
+    'draconic_aura_resistance',
+    'draconic_aura_senses',
+    'draconic_aura_toughness',
+    'draconic_aura_vigor',
+    'draconic_aura_energy_shield'
+  ];
+
+  for (const key of draconicAuraKeys) {
+    const aura = CLASS_BUFFS.find(b => b.key === key);
+    assert.ok(aura, `Aura ${key} should exist in CLASS_BUFFS`);
+    assert.strictEqual(aura.isAura, true, `${key} should have isAura: true`);
+    assert.strictEqual(aura.isAllyBuff, true, `${key} should have isAllyBuff: true`);
+    assert.strictEqual(aura.isDraconicAura, true, `${key} should have isDraconicAura: true`);
+    assert.strictEqual(aura.school, 'Aura (Dragon Shaman)', `${key} school should be Aura (Dragon Shaman)`);
+  }
+
+  // 2. Verify scaling: Dragon Shaman levels 1-4 (+1), 5-9 (+2), 10-14 (+3), 15-19 (+4), 20 (+5)
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 1), 1, 'Level 1 grants +1');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 4), 1, 'Level 4 grants +1');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 5), 2, 'Level 5 grants +2');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 13), 3, 'Level 13 grants +3 (Viperax)');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 15), 4, 'Level 15 grants +4');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', 20), 5, 'Level 20 grants +5');
+
+  // Verify explicit string bonus (e.g. '+3')
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura', '+3'), 3, 'Explicit +3 bonus');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_resist', '+3'), 15, 'Explicit +3 gives 15 resistance');
+  assert.strictEqual(resolveSpellEffectValue('draconic_aura_shield', '+3'), 6, 'Explicit +3 gives 6 energy shield');
+
+  // 3. Verify that non-Dragon-Shaman (e.g. Paladin or Wizard) can activate multiple different Draconic Auras simultaneously
+  const paladin = new Combatant({
+    id: 'kjell_paladin',
+    name: 'Bruder Kjell',
+    type: 'p',
+    classes: [{ classType: 'paladin', level: 13 }]
+  });
+
+  const mockBatch = (fn) => fn(paladin);
+
+  // Activate Draconic Aura: Power (+3)
+  activateBuffByKey(paladin, 'draconic_aura_power', true, {
+    showCustomPrompt: (title, msg, def, onConfirm) => onConfirm('13'),
+    updatePCBatch: mockBatch
+  });
+
+  assert.strictEqual(paladin.activeBuffs.length, 1, 'One buff active');
+  assert.strictEqual(paladin.activeBuffs[0].spellKey, 'draconic_aura_power');
+  assert.strictEqual(paladin.activeBuffs[0].effects[0].value, 3, 'Power grants +3 damage');
+
+  // Activate Draconic Aura: Vigor (+3) - should NOT remove Power!
+  activateBuffByKey(paladin, 'draconic_aura_vigor', true, {
+    showCustomPrompt: (title, msg, def, onConfirm) => onConfirm('+3'),
+    updatePCBatch: mockBatch
+  });
+
+  assert.strictEqual(paladin.activeBuffs.length, 2, 'Both different Draconic Auras must remain active simultaneously');
+  const activeKeys = paladin.activeBuffs.map(b => b.spellKey);
+  assert.ok(activeKeys.includes('draconic_aura_power'), 'Power aura remains active');
+  assert.ok(activeKeys.includes('draconic_aura_vigor'), 'Vigor aura is active');
+});
+
+

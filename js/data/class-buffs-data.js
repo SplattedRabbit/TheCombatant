@@ -53,6 +53,7 @@ export const CLASS_BUFFS = [
     duration: '5 rounds after performance ends',
     description: 'Grants a +1 morale bonus on saving throws against fear and a +1 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 1 }],
+    isAllyBuff: true,
     effects: [
       { target: 'atk', value: 1, type: 'morale', source: 'Inspire Courage' },
       { target: 'dmg', value: 1, type: 'morale', source: 'Inspire Courage' }
@@ -65,6 +66,7 @@ export const CLASS_BUFFS = [
     duration: '5 rounds after performance ends',
     description: 'Grants a +2 morale bonus on saving throws against fear and a +2 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 8 }],
+    isAllyBuff: true,
     effects: [
       { target: 'atk', value: 2, type: 'morale', source: 'Inspire Courage' },
       { target: 'dmg', value: 2, type: 'morale', source: 'Inspire Courage' }
@@ -77,6 +79,7 @@ export const CLASS_BUFFS = [
     duration: '5 rounds after performance ends',
     description: 'Grants a +3 morale bonus on saving throws against fear and a +3 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 14 }],
+    isAllyBuff: true,
     effects: [
       { target: 'atk', value: 3, type: 'morale', source: 'Inspire Courage' },
       { target: 'dmg', value: 3, type: 'morale', source: 'Inspire Courage' }
@@ -89,6 +92,7 @@ export const CLASS_BUFFS = [
     duration: '5 rounds after performance ends',
     description: 'Grants a +4 morale bonus on saving throws against fear and a +4 morale bonus on attack and weapon damage rolls.',
     classRequirements: [{ classType: 'bard', level: 20 }],
+    isAllyBuff: true,
     effects: [
       { target: 'atk', value: 4, type: 'morale', source: 'Inspire Courage' },
       { target: 'dmg', value: 4, type: 'morale', source: 'Inspire Courage' }
@@ -101,6 +105,8 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'A paladin is immune to fear. Each ally within 10 feet gains a +4 morale bonus on saving throws against fear.',
     classRequirements: [{ classType: 'paladin', level: 3 }],
+    isAura: true,
+    isAllyBuff: true,
     effects: [
       { target: 'baseWil', value: 4, type: 'morale', source: 'Aura of Courage (vs Fear)' }
     ]
@@ -112,6 +118,8 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'A paladin is immune to compulsion effects. Each ally within 10 feet gains a +4 morale bonus on saving throws against compulsion.',
     classRequirements: [{ classType: 'paladin', level: 8 }],
+    isAura: true,
+    isAllyBuff: true,
     effects: [
       { target: 'baseWil', value: 4, type: 'morale', source: 'Aura of Resolve (vs Compulsion)' }
     ]
@@ -123,6 +131,7 @@ export const CLASS_BUFFS = [
     duration: 'Up to 2 minutes (concentration)',
     description: 'Grants an ally a +2 competence bonus on skill checks.',
     classRequirements: [{ classType: 'bard', level: 3 }],
+    isAllyBuff: true,
     effects: []
   },
   {
@@ -132,6 +141,7 @@ export const CLASS_BUFFS = [
     duration: 'Duration of song + 5 rounds',
     description: 'Grants +2 Hit Dice (temporary hit points, AC and saving throw adjustments), a +2 competence bonus on attacks, and a +1 competence bonus on Fortitude saves.',
     classRequirements: [{ classType: 'bard', level: 9 }],
+    isAllyBuff: true,
     effects: [
       { target: 'atk', value: 2, type: 'competence', source: 'Inspire Greatness' },
       { target: 'baseZa', value: 1, type: 'competence', source: 'Inspire Greatness' }
@@ -144,6 +154,7 @@ export const CLASS_BUFFS = [
     duration: 'Duration of song + 5 rounds',
     description: 'Grants a +4 morale bonus on all saves and a +4 dodge bonus to Armor Class (AC).',
     classRequirements: [{ classType: 'bard', level: 15 }],
+    isAllyBuff: true,
     effects: [
       { target: 'baseZa', value: 4, type: 'morale', source: 'Inspire Heroics' },
       { target: 'baseRef', value: 4, type: 'morale', source: 'Inspire Heroics' },
@@ -158,6 +169,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft a bonus on melee damage rolls (+1 to +5 based on class level) and rolls to confirm critical hits.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'dmg', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Power' }
     ]
@@ -169,6 +183,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Bluff, Diplomacy, and Intimidate checks.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'skill_bluff', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Presence' },
       { target: 'skill_diplomacy', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Presence' },
@@ -182,6 +199,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft energy resistance (5, 10, 15, 20, or 25) against your totem dragon\'s energy type.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'energy_resistance', value: 5, valueFormula: 'draconic_aura_resist', type: 'untyped', source: 'Draconic Aura: Resistance' }
     ]
@@ -193,6 +213,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft a bonus (+1 to +5) on Listen checks, Spot checks, and Initiative checks.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'init', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Senses' },
       { target: 'skill_listen', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Senses' },
@@ -206,6 +229,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants you and all allies within 30 ft Damage Reduction (DR 1/magic to DR 5/magic).',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'dr', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Toughness' }
     ]
@@ -217,6 +243,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Grants Fast Healing (1 to 5) to you and all allies within 30 ft who are currently at or below 50% of maximum HP.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'fast_healing', value: 1, valueFormula: 'draconic_aura', type: 'untyped', source: 'Draconic Aura: Vigor' }
     ]
@@ -228,6 +257,9 @@ export const CLASS_BUFFS = [
     duration: 'Permanent',
     description: 'Any creature striking you or an ally within 30 ft with a melee attack or natural weapon takes 2 × aura bonus (2 to 10) elemental damage matching your totem dragon.',
     classRequirements: [{ classType: 'dragon_shaman', level: 1 }],
+    isAura: true,
+    isAllyBuff: true,
+    isDraconicAura: true,
     effects: [
       { target: 'damage_shield', value: 2, valueFormula: 'draconic_aura_shield', type: 'untyped', source: 'Draconic Aura: Energy Shield' }
     ]

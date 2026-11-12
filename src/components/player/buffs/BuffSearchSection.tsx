@@ -46,13 +46,15 @@ export const BuffSearchSection: React.FC<BuffSearchSectionProps> = ({
 
     const matchedClassBuffs = CLASS_BUFFS.filter((b: any) =>
       (b.name.toLowerCase().includes(q) || b.key.toLowerCase().includes(q)) &&
-      isBuffEligible(pc, b.key, true)
+      (isBuffEligible(pc, b.key, true) || b.isAura || b.isAllyBuff)
     ).map((b: any) => ({
       key: b.key,
       name: b.name,
-      school: b.school || 'Class',
+      school: b.school || (b.isAura ? 'Aura' : 'Class'),
       duration: b.duration || '—',
-      isClass: true
+      isClass: true,
+      isAura: !!b.isAura,
+      isAllyBuff: !!b.isAllyBuff
     }));
 
     const matchedSpellBuffs: any[] = [];
@@ -141,7 +143,7 @@ export const BuffSearchSection: React.FC<BuffSearchSectionProps> = ({
             setIsSearchOpen(true);
           }}
           onFocus={() => setIsSearchOpen(true)}
-          placeholder="Enter name (e.g. Heroism, Rage)..."
+          placeholder="Enter name (e.g. Heroism, Vigor, Power, Rage)..."
           className="cinput"
           style={{ height: '18px', fontSize: '9px', padding: '0 3px', boxSizing: 'border-box' }}
           autoComplete="off"
@@ -194,7 +196,7 @@ export const BuffSearchSection: React.FC<BuffSearchSectionProps> = ({
                     }}
                   >
                     <span>
-                      ✨ <strong>{m.name}</strong>{warningBadge}
+                      {m.isAura ? '🔆' : '✨'} <strong>{m.name}</strong>{warningBadge}
                       <div style={{ fontSize: '8px', color: 'var(--inkl)' }}>{m.school} • {m.duration}</div>
                     </span>
                     <span style={{ fontSize: '9px', fontWeight: 'bold', color: 'var(--red)' }}>[Select]</span>
@@ -249,6 +251,9 @@ export const BuffSearchSection: React.FC<BuffSearchSectionProps> = ({
               <option value="za">Fortitude (Fort)</option>
               <option value="ref">Reflex (Ref)</option>
               <option value="wil">Will (Will)</option>
+              <option value="init">Initiative Mod</option>
+              <option value="dr">Damage Reduction (DR)</option>
+              <option value="fast_healing">Fast Healing</option>
             </select>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'left' }}>

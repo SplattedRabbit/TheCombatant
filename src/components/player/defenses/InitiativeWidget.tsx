@@ -12,6 +12,7 @@ interface InitiativeWidgetProps {
   dexMod: number;
   totIni: number;
   hasImprovedInit: boolean;
+  buffInitBonus?: number;
   localValues: Record<string, string>;
   onInputChange: (key: string, val: string) => void;
   onCommitNumber: (key: string, val: string, fallback?: number) => void;
@@ -23,6 +24,7 @@ export const InitiativeWidget: React.FC<InitiativeWidgetProps> = ({
   dexMod,
   totIni,
   hasImprovedInit,
+  buffInitBonus = 0,
   localValues,
   onInputChange,
   onCommitNumber,
@@ -35,6 +37,9 @@ export const InitiativeWidget: React.FC<InitiativeWidgetProps> = ({
     ];
     if (hasImprovedInit) {
       items.push({ label: 'Feat: Improved Initiative', value: 4 });
+    }
+    if (buffInitBonus) {
+      items.push({ label: 'Buff / Aura: Initiative', value: buffInitBonus });
     }
     showRollBreakdown('Initiative Breakdown', '1d20', items, e.nativeEvent);
   };

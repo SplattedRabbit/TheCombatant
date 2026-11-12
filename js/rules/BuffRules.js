@@ -29,7 +29,17 @@ export function translateTarget(target) {
     acDeflection: 'Deflection Bonus (AC)',
     acDodge: 'Dodge Bonus (AC)',
     atk: 'Attack Roll (ATK)',
-    dmg: 'Damage Roll (DMG)'
+    dmg: 'Damage Roll (DMG)',
+    dr: 'Damage Reduction (DR)',
+    fast_healing: 'Fast Healing',
+    energy_resistance: 'Energy Resistance',
+    damage_shield: 'Energy Shield Damage',
+    init: 'Initiative Mod',
+    skill_bluff: 'Bluff',
+    skill_diplomacy: 'Diplomacy',
+    skill_intimidate: 'Intimidate',
+    skill_listen: 'Listen',
+    skill_spot: 'Spot'
   };
   return mapping[target] || target;
 }
@@ -56,7 +66,19 @@ export function translateType(type) {
 
 export function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
   if (!formula) return defaultValue;
+
+  let explicitBonus = null;
+  if (typeof casterLevel === 'string') {
+    const trimmed = casterLevel.trim();
+    if (trimmed.startsWith('+')) {
+      explicitBonus = Math.min(5, Math.max(1, parseInt(trimmed.substring(1)) || 1));
+    } else if (trimmed.toLowerCase().startsWith('bonus')) {
+      explicitBonus = Math.min(5, Math.max(1, parseInt(trimmed.replace(/[^0-9]/g, '')) || 1));
+    }
+  }
   const cl = parseInt(casterLevel) || 1;
+  const draconicBonus = explicitBonus !== null ? explicitBonus : Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+
   switch (formula) {
     case 'shield_of_faith':
       return Math.min(5, 2 + Math.floor(cl / 6));
@@ -71,11 +93,11 @@ export function resolveSpellEffectValue(formula, casterLevel, defaultValue) {
       return Math.max(1, Math.min(5, Math.floor(cl / 4)));
     case 'draconic_aura':
     case 'dragon_aura':
-      return Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+      return draconicBonus;
     case 'draconic_aura_resist':
-      return 5 * Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+      return 5 * draconicBonus;
     case 'draconic_aura_shield':
-      return 2 * Math.min(5, Math.max(1, 1 + Math.floor(cl / 5)));
+      return 2 * draconicBonus;
     default:
       return defaultValue;
   }
@@ -342,11 +364,8 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
         }
 
         if (!Array.isArray(freshPc.activeBuffs)) freshPc.activeBuffs = [];
-        if (key.startsWith('draconic_aura_')) {
-          freshPc.activeBuffs = freshPc.activeBuffs.filter(b => !b.spellKey?.startsWith('draconic_aura_'));
-        } else {
-          freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
-        }
+        // Only replace instance with the same spellKey (allows multiple different Draconic Auras per D&D 3.5e RAW)
+        freshPc.activeBuffs = freshPc.activeBuffs.filter(b => b.spellKey !== key);
         
         freshPc.activeBuffs.push({
           id: 'spell_' + key + '_' + Date.now(),
@@ -408,6 +427,28 @@ export function activateBuffByKey(pc, key, isClass, dialogs = {}) {
           }
         });
       }
+    }
+
+    const isDraconicAura = isClass && (classBuff?.isDraconicAura || key.startsWith('draconic_aura_'));
+    if (isDraconicAura) {
+      let dsLevel = defaultCL;
+      const pcDs = Array.isArray(pc.classes) && pc.classes.find(c => c.classType === 'dragon_shaman');
+      if (pcDs) {
+        dsLevel = pcDs.level;
+      } else {
+        const totalLvl = Array.isArray(pc.classes) ? pc.classes.reduce((sum, c) => sum + (c.level || 0), 0) : 1;
+        dsLevel = totalLvl > 0 ? totalLvl : 1;
+      }
+
+      showCustomPrompt(
+        "Draconic Aura Bonus / Level",
+        `Please enter the Dragon Shaman Level (1–20) or direct bonus (e.g. +3) for <strong>${buffName}</strong>:<br><small style="color:var(--inkl);">1–4: +1 | 5–9: +2 | 10–14: +3 | 15–19: +4 | 20: +5</small>`,
+        String(dsLevel),
+        (inputVal) => {
+          performActivation(inputVal, shouldDeduct);
+        }
+      );
+      return;
     }
 
     if (isClass && !isRoundBased) {

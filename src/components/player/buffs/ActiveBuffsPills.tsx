@@ -76,7 +76,17 @@ export const ActiveBuffsPills: React.FC<ActiveBuffsPillsProps> = ({
                 wil: 'Will',
                 baseZa: 'Fort',
                 baseRef: 'Ref',
-                baseWil: 'Will'
+                baseWil: 'Will',
+                dr: 'DR',
+                fast_healing: 'Fast Healing',
+                energy_resistance: 'Resist',
+                damage_shield: 'Dmg Shield',
+                init: 'Init',
+                skill_bluff: 'Bluff',
+                skill_diplomacy: 'Diplomacy',
+                skill_intimidate: 'Intimidate',
+                skill_listen: 'Listen',
+                skill_spot: 'Spot'
               };
               const t = targetShort[eff.target] || eff.target;
               return `${sign}${eff.value} ${t}`;
